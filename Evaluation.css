@@ -1,0 +1,13 @@
+#pageHeader{
+	list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    width: 100%;
+    background: #fafafa;
+    color: #414141;
+}
+
+#pageHeader>li{
+	float: left;
+}
