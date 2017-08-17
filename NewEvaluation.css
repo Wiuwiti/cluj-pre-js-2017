@@ -33,6 +33,9 @@ body{
 .right-button{
 	float:right;
 }
+ul{
+	padding-left: 0;
+}
 #main-logo{
 	height: 35px; 
 	vertical-align: middle;
@@ -98,6 +101,7 @@ h3{
 .legend-box li{
 	float:left;
 	width: 33%;
+	padding-bottom: 10px;
 }
 .legend-box select{
 	width: 40%;
@@ -107,14 +111,69 @@ h3{
 	display: inline-block;
 	width: 49%;
 }
-.legend-box li{
-	padding-bottom: 10px;
-}
+
 
 
 
 #butonu{
 	color:red;
+}
+
+#extra{
+	width: 22px;
+	float: left;
+	background-color: #03a8f3;
+}
+#top-list-radio{
+	list-style-type: none;
+	margin-top:0;
+	margin-bottom: 0;
+	color:white;
+}
+#top-list-radio li{
+	background-color: #03a8f3;
+	height: 4em;
+	line-height: 4em;
+	vertical-align: middle;
+
+}
+#down-list-radio{
+	list-style-type: none;
+	margin-top:0;
+	padding:10px 0px 10px 0px;
+	margin-bottom: 0;
+	border:1px solid black;
+}
+#down-list-radio li{
+	padding-right:10px;
+	float:left;
+}
+
+#placeHolder{
+	width: 50px;
+	float: left;
+}
+#RR1{
+
+	width: 13%;
+	float: left;
+	padding-left: 60px;
+}
+.spacer{
+	width: 20%;
+}
+
+.clearfix{
+	clear:both;
+}
+#R1{
+	width: 16%;
+	float: left;
+}
+.R2{
+	width: 26%;
+	float: left;
+
 }
 
 input[type=submit]{

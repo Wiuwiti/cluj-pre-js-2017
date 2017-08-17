@@ -4,6 +4,7 @@ body{
   margin: 0;
   padding-bottom: 6rem;
   min-height: 100%;
+
 }
 #pageHeader{
 	font-weight: 400;
@@ -71,6 +72,10 @@ body{
 }
 .hidden-clone-row{
 	width:50px;
+
+}
+.hidden-clone-row input{
+	 outline: none;
 }
 .tableBlock td{
 	font-size: 18px;
