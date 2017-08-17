@@ -44,6 +44,17 @@ body{
 	border-color: #03a8f3;
 }
 
+.mainBlock{
+	width:1200px;
+	top:0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	margin: auto;
+}
+
+
+
 
 
 .BottomFooter{
