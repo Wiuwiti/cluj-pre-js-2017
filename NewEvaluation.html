@@ -23,13 +23,14 @@
 
 
 	<div class = "mainBlock">
-
+	<div class="spacing"></div>
 		<form >
-			<input type="text" name="Candidate" autocomplete="on" placeholder="Candidate" required />
-			<input type="text" name="Interviewer" autocomplete="on" placeholder="Interviewer" required />
-			<input type="date" name="Date" placeholder="dd/mm/yyyy" required/>
+			<input class="input-candidate" type="text" name="Candidate" autocomplete="on" placeholder="Candidate" required />
+			<input class="input-candidate" type="text" name="Interviewer" autocomplete="on" placeholder="Interviewer" required />
+			<input class="input-candidate" type="date" name="Date" placeholder="dd/mm/yyyy" required/>
 		</form>
 
+		<div class="littleSpacing"></div>
 
 		<div class="radio-boxes">
 			<h3>
@@ -82,21 +83,20 @@
 
 		<div class="user-textarea">
 			<h3>Should the candidate be hired?</h3>
-			<textarea  style= "width:1200px ; height: 200px;" placeholder="The type of project that is suitable for the candidate &#13;&#10;Is guidance requiredd for the candidate"></textarea>
+			<textarea placeholder="The type of project that is suitable for the candidate &#13;&#10;Is guidance requiredd for the candidate"></textarea>
 		</div>
 
 		<div class="user-textarea">
 			<h3>General Impression</h3>
-			<textarea  style= "width:1200px ; height: 200px;" placeholder="*required" required></textarea>
+			<textarea placeholder="*required" required></textarea>
 		</div>
 
 		<div class="user-textarea">
 			<h3>Workflow, Leadership &#38; Soft Skills</h3>
-			<textarea  style= "width:1200px ; height: 200px;" placeholder="Describe the enviroment in which the candidate works. &#13;&#10;Describe ani guidance or management experience."></textarea>
+			<textarea placeholder="Describe the enviroment in which the candidate works. &#13;&#10;Describe ani guidance or management experience."></textarea>
 		</div>
 
-		<div style="width: 1200px">
-		<form  id="DesignPaterns">
+		<form class="legend-box" id="DesignPaterns">
 			<fieldset>
 				<legend>OOP, Design Patterns</legend>
 				<ul style="list-style-type: none">
@@ -639,9 +639,10 @@
 			</fieldset>
 		</form>
 
-		</div>
+
 
 	</div>
+	
 
 	<form style= "float: right" action="Evaluation.html">
 		<input type="submit" name="" value="Submit">
