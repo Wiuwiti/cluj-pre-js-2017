@@ -23,20 +23,18 @@
 
 
 	<div class = "mainBlock">
-	<div class="spacing"></div>
-		<form >
-			<input class="input-candidate" type="text" name="Candidate" autocomplete="on" placeholder="Candidate" required />
-			<input class="input-candidate" type="text" name="Interviewer" autocomplete="on" placeholder="Interviewer" required />
-			<input class="input-candidate" type="date" name="Date" placeholder="dd/mm/yyyy" required/>
+		<form class = "candidate-input-box">
+				<input class="input-candidate" type="text" name="Candidate" autocomplete="on" placeholder="Candidate" required />
+				<input class="input-candidate" type="text" name="Interviewer" autocomplete="on" placeholder="Interviewer" required />
+				<input class="input-candidate" type="date" name="Date" placeholder="dd/mm/yyyy" required/>
 		</form>
 
-		<div class="littleSpacing"></div>
 
 		<div class="radio-boxes">
 			<h3>
 				Technical level
 			</h3>
-			<ul id="top-list-radio" >
+			<ul class="top-list-radio" >
 				<li id="placeHolder"></li>
 				<li id="R1" >Trainee</li>
 				<li class="R2" >Junior</li>
@@ -47,7 +45,7 @@
 			</ul>
 			
 
-			<ul id="down-list-radio">
+			<ul class="down-list-radio">
 				<li id= "RR1">
 					<input type="radio" name="level" value = "T">
 				</li>
@@ -80,8 +78,7 @@
 				</li>
 				<div class="clearfix"></div>
 			</ul>
-			<br>
-			
+			<br>			
 		</div>
 
 
@@ -101,9 +98,8 @@
 			<textarea placeholder="Describe the enviroment in which the candidate works. &#13;&#10;Describe ani guidance or management experience."></textarea>
 		</div>
 
-		<div class="littleSpacing"></div>
 
-		<form class="legend-box" id="DesignPaterns">
+		<form class="legend-box">
 			<fieldset>
 				<legend>OOP, Design Patterns</legend>
 				<ul style="list-style-type: none">
@@ -198,8 +194,6 @@
 			</fieldset>
 		</form>
 
-		<div class="littleSpacing"></div>
-
 		<form  class="legend-box" id="HTTP">
 			<fieldset>
 				<legend>HTTP</legend>
@@ -277,8 +271,6 @@
 			</fieldset>
 		</form>
 
-		<div class="littleSpacing"></div>
-
 		<form  class="legend-box" id="HTML">
 			<fieldset>
 				<legend>HTML</legend>
@@ -330,7 +322,6 @@
 			</fieldset>
 		</form>
 
-		<div class="littleSpacing"></div>
 
 		<form  class="legend-box" id="CSS">
 			<fieldset>
@@ -405,7 +396,6 @@
 			</fieldset>
 		</form>
 
-		<div class="littleSpacing"></div>
 
 		<form  class="legend-box" id="DesignPaterns">
 			<fieldset>
@@ -601,7 +591,6 @@
 			</fieldset>
 		</form>
 
-		<div class="littleSpacing"></div>
 
 		<form  class="legend-box" id="HTML">
 			<fieldset>
@@ -654,20 +643,18 @@
 			</fieldset>
 		</form>
 
-	<div class="littleSpacing"></div>
-
-	<form  action="Evaluation.html">
-		<input  type="submit" name="button" value="Submit">
-	</form>
+		<div class= "submit-button">
+			<form action="Evaluation.html">
+				<input  type="submit" name="button" value="Submit">
+			</form>
+		</div>
 
 	</div>
 	
 
-		<div class="littleSpacing"></div>
-
 
 	<footer class="BottomFooter" >
-		<p><small>Copyright@Sofvision 2017</small></p>
+		<p><small>Copyright@Softvision 2017</small></p>
 	</footer>
 
 

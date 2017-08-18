@@ -7,6 +7,9 @@ body{
 
 }
 
+
+
+/*----------------  Page header   --------------------*/
 .pageHeader{
 	font-weight: 400;
 	font-size: 24px;
@@ -48,6 +51,9 @@ body{
 }
 
 
+/*-----------------------   Main Table   -----------------------*/
+
+
 .tableBlock{
 	border-collapse: collapse;
 	border: 0px solid;
@@ -59,6 +65,7 @@ body{
 	right: 0;
 	margin: auto;
 	color: #414141;
+	margin-top: 25vh;
 
 }
 .tableBlock  th{
@@ -74,8 +81,6 @@ body{
 	width: 46px;
 }
 
-
-
 }
 .tableBlock td{
 	font-size: 18px;
@@ -83,7 +88,7 @@ body{
 }
 
 td{
-  border-bottom:1pt solid black;
+  border-bottom:1px solid black;
 }
 
 .detail-button{
@@ -98,10 +103,10 @@ td{
     _top:expression(eval(document.documentElement.scrollTop+
         (document.documentElement.clientHeight-this.offsetHeight)));
     height:35px;
-  	width:100%;  background-color: #dfdfdf; text-align: center; vertical-align: center; padding-bottom: 1em;
+  	width:100%;  
+  	background-color: #dfdfdf; 
+  	text-align: center; 
+  	vertical-align: center; 
+  	padding-bottom: 1em;
   	color:#828384;
-}
-
-.spacing{
-	padding-top: 25vh;
 }

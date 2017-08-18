@@ -87,7 +87,7 @@
 }
 
 .header-shadow{
-  box-shadow: 0px 10px 5px 0px #888888;
+  box-shadow: 0px 10px 50px black;
 }
 
 #special-color{
@@ -97,14 +97,20 @@
 }
 
 
+/*-----------------   Footer -----------------*/
+
 .BottomFooter{
   bottom:0;
-    position:fixed;
-    z-index:150;
-    _position:absolute;
-    _top:expression(eval(document.documentElement.scrollTop+
-        (document.documentElement.clientHeight-this.offsetHeight)));
-    height:35px;
-    width:100%;  background-color: #dfdfdf; text-align: center; vertical-align: center; padding-bottom: 1em;
-    color:#828384;
+  position:fixed;
+  z-index:150;
+  _position:absolute;
+  _top:expression(eval(document.documentElement.scrollTop+
+      (document.documentElement.clientHeight-this.offsetHeight)));
+  height:35px;
+  width:100%;  
+  background-color: #dfdfdf; 
+  text-align: center; 
+  vertical-align: center; 
+  padding-bottom: 1em;
+  color:#828384;
 }
