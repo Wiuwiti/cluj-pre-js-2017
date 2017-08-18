@@ -70,10 +70,16 @@ body{
 	font-weight: 500;
 	text-align: left;
 }
-.hidden-clone-row{
+.button-row{
 	width:50px;
 
 }
+
+.table-first-line{
+	padding-left: 50px;
+}
+
+
 .hidden-clone-row input{
 	 outline: none;
 }
