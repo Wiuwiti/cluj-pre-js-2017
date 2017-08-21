@@ -9,8 +9,7 @@ body{
 h3{
 	padding-left: 30px;
 	color:#03a8f3;
-	margin-bottom: 0;
-	margin-top: 2em;
+	margin: 2em 0 0 0 ;
 }
 
 /*----------------  Page header   --------------------*/
@@ -162,6 +161,10 @@ h3{
 
 
 /*------------------- Legend Box ------------------*/
+.legend-box{
+	margin-top: 10vh;
+}
+
 .legend-box legend{
 	color:#03a8f3;
 	font-size: 18px;
@@ -170,11 +173,16 @@ h3{
 	padding-right: 1em;
 }
 
-.legend-box li{
+.legend-box-list{
+	list-style-type: none;
+}
+
+.legend-box-drop{
 	float:left;
 	width: 33%;
 	padding-bottom: 10px;
 }
+
 .legend-box select{
 	width: 40%;
 	padding: 3px;
@@ -184,9 +192,6 @@ h3{
 	width: 49%;
 }
 
-.legend-box{
-	margin-top: 10vh;
-}
 
 
 
