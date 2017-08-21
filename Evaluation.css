@@ -63,16 +63,13 @@ body{
 .tableBlock{
 	border-collapse: collapse;
 	border: 0px solid;
-	
 	width: 1200px;
 	top:0;
 	bottom: 0;
 	left: 0;
 	right: 0;
-	margin: auto;
+	margin: 25vh auto;
 	color: #414141;
-	margin-top: 25vh;
-
 }
 .tableBlock  th{
 	font-size: 22px;

@@ -14,31 +14,36 @@ h3{
 }
 
 /*----------------  Page header   --------------------*/
-
-.pageHeader{
-	font-weight: 400;
-	font-size: 24px;
+.header{
 	list-style-type: none;
     margin: 0;
     padding: 0;
     overflow: hidden;
     width: 100%;
-    box-shadow: 0px 2px 2px #888888;
     min-width: 1200px;
 }
-
-.pageHeader li{
+.headerT{
+	box-shadow: 0px 2px 2px #888888;
+	font-weight: 400;
+	font-size: 24px;
+}
+.header-elements{
 	display: inline-block;
 }
 
 
-.pageHeader>li>a{
-	display: block;
+.header-elements-link{
+	display: block;	
+	padding: 1vw 3vw;
+}
+.header-elements-linkT{
 	color: #414141;
 	text-align: center;
-	padding: 1vw 3vw;
 	text-decoration: none;
 }
+
+
+
 .right-button{
 	float:right;
 }
@@ -54,7 +59,6 @@ h3{
 	border-width: 0px 0px 5px 0px;
 	border-color: #03a8f3;
 }
-
 
 /*-----------------------   Main Table   -----------------------*/
 
