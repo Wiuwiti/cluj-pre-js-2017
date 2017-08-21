@@ -115,18 +115,17 @@
 
 /*-----------------   Footer -----------------*/
 
-.BottomFooter{
+.footer{
   bottom:0;
   position:fixed;
   z-index:150;
-  _position:absolute;
-  _top:expression(eval(document.documentElement.scrollTop+
-      (document.documentElement.clientHeight-this.offsetHeight)));
   height:35px;
   width:100%;  
-  background-color: #dfdfdf; 
-  text-align: center; 
-  vertical-align: center; 
   padding-bottom: 1em;
   color:#828384;
+}
+.footerT{
+  background-color: #dfdfdf;
+  text-align: center; 
+  vertical-align: middle;
 }

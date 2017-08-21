@@ -10,30 +10,36 @@ body{
 
 
 /*----------------  Page header   --------------------*/
-.pageHeader{
-	font-weight: 400;
-	font-size: 24px;
+.header{
 	list-style-type: none;
     margin: 0;
     padding: 0;
     overflow: hidden;
     width: 100%;
-    box-shadow: 0px 2px 2px #888888;
     min-width: 1200px;
 }
-
-.pageHeader li{
+.headerT{
+	box-shadow: 0px 2px 2px #888888;
+	font-weight: 400;
+	font-size: 24px;
+}
+.header-elements{
 	display: inline-block;
 }
 
 
-.pageHeader>li>a{
-	display: block;
+.header-elements-link{
+	display: block;	
+	padding: 1vw 3vw;
+}
+.header-elements-linkT{
 	color: #414141;
 	text-align: center;
-	padding: 1vw 3vw;
 	text-decoration: none;
 }
+
+
+
 .right-button{
 	float:right;
 }
@@ -81,7 +87,7 @@ body{
 	width: 46px;
 }
 
-}
+
 .tableBlock td{
 	font-size: 18px;
 	vertical-align: center;
@@ -95,18 +101,20 @@ td{
 	text-align: right;
 }
 
-.BottomFooter{
+/*-----------------   Footer -----------------*/
+
+
+.footer{
 	bottom:0;
-    position:fixed;
-    z-index:150;
-    _position:absolute;
-    _top:expression(eval(document.documentElement.scrollTop+
-        (document.documentElement.clientHeight-this.offsetHeight)));
-    height:35px;
-  	width:100%;  
-  	background-color: #dfdfdf; 
-  	text-align: center; 
-  	vertical-align: center; 
-  	padding-bottom: 1em;
-  	color:#828384;
-}
+	position:fixed;
+	z-index:150;
+	height:35px;
+	width:100%;  
+	padding-bottom: 1em;
+	color:#828384;
+  }
+  .footerT{
+	background-color: #dfdfdf;
+	text-align: center; 
+	vertical-align: middle;
+  }
