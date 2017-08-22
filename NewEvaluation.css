@@ -1,34 +1,48 @@
 body{
 	font-family: "Arial", sans-serif;
 	position: relative;
-  margin: 0;
-  padding-bottom: 6rem;
-  min-height: 100%;
+  	margin: 0;
+  	padding-bottom: 6rem;
+  	min-height: 100%;
 }
-.pageHeader{
-	font-weight: 400;
-	font-size: 24px;
+
+h3{
+	padding-left: 30px;
+	color:#03a8f3;
+	margin: 2em 0 0 0 ;
+}
+
+/*----------------  Page header   --------------------*/
+.header{
 	list-style-type: none;
     margin: 0;
     padding: 0;
     overflow: hidden;
     width: 100%;
-    box-shadow: 0px 2px 2px #888888;
     min-width: 1200px;
 }
-
-.pageHeader li{
+.headerT{
+	box-shadow: 0px 2px 2px #888888;
+	font-weight: 400;
+	font-size: 24px;
+}
+.header-elements{
 	display: inline-block;
 }
 
 
-.pageHeader>li>a{
-	display: block;
+.header-elements-link{
+	display: block;	
+	padding: 1vw 3vw;
+}
+.header-elements-linkT{
 	color: #414141;
 	text-align: center;
-	padding: 1vw 3vw;
 	text-decoration: none;
 }
+
+
+
 .right-button{
 	float:right;
 }
@@ -45,6 +59,7 @@ body{
 	border-color: #03a8f3;
 }
 
+/*-----------------------   Main Table   -----------------------*/
 
 .mainBlock{
 	width:1200px;
@@ -55,6 +70,11 @@ body{
 	margin: auto;
 }
 
+/*-------------- Input Candidate -----------------*/
+
+.candidate-input-box{
+	margin-top: 25vh;
+}
 
 .input-candidate{
 	width:33%;
@@ -62,64 +82,15 @@ body{
 	padding: 0;
 	vertical-align: middle;
 	height: 2em;
-	/*box-shadow: 0px 1px 0px #888888; */
 }
 .input-candidate::placeholder{
-		border-bottom: 1px solid lightgrey;
-		columns: lightgrey;
-}
-
-h3{
-	padding-left: 30px;
-	color:#03a8f3;
-	margin-bottom: 0;
-	margin-top: 2em;
-}
-.user-textarea textarea{
-	width:100%;
-	height: 100px;
-}
-
-.BottomFooter{
-	bottom:0;
-    position:fixed;
-    z-index:150;
-    _position:absolute;
-    _top:expression(eval(document.documentElement.scrollTop+
-        (document.documentElement.clientHeight-this.offsetHeight)));
-    height:35px;
-  	width:100%;  background-color: #dfdfdf; text-align: center; vertical-align: center; padding-bottom: 1em;
-  	color:#828384;
+	border-bottom: 1px solid lightgrey;
 }
 
 
-.legend-box legend{
-	color:#03a8f3;
-	font-size: 18px;
-	font-weight: 500;
-	padding-left: 1em;
-	padding-right: 1em;
-}
-
-.legend-box li{
-	float:left;
-	width: 33%;
-	padding-bottom: 10px;
-}
-.legend-box select{
-	width: 40%;
-	padding: 3px;
-}
-.legend-box label{
-	display: inline-block;
-	width: 49%;
-}
-
-
-
-
-#butonu{
-	color:red;
+/*---------------- Radio Input Box -----------------------*/
+.radio-boxes{
+	margin-top: 10vh;
 }
 
 #extra{
@@ -127,28 +98,28 @@ h3{
 	float: left;
 	background-color: #03a8f3;
 }
-#top-list-radio{
+.top-list-radio{
 	list-style-type: none;
 	margin-top:0;
 	margin-bottom: 0;
 	padding-left: 0;
 	color:white;
 }
-#top-list-radio li{
+.top-list-radio li{
 	background-color: #03a8f3;
 	height: 4em;
 	line-height: 4em;
 	vertical-align: middle;
 
 }
-#down-list-radio{
+.down-list-radio{
 	list-style-type: none;
 	margin-top:0;
 	padding:10px 0px 10px 0px;
 	margin-bottom: 0;
 	border:1px solid black;
 }
-#down-list-radio li{
+.down-list-radio li{
 	padding-right:10px;
 	float:left;
 }
@@ -180,6 +151,58 @@ h3{
 
 }
 
+/*---------------------- TextArea Box---------------------------*/
+
+.user-textarea textarea{
+	width:100%;
+	height: 100px;
+}
+
+
+
+/*------------------- Legend Box ------------------*/
+.legend-box{
+	margin-top: 10vh;
+}
+
+.legend-box legend{
+	color:#03a8f3;
+	font-size: 18px;
+	font-weight: 500;
+	padding-left: 1em;
+	padding-right: 1em;
+}
+
+.legend-box-list{
+	list-style-type: none;
+}
+
+.legend-box-drop{
+	float:left;
+	width: 33%;
+	padding-bottom: 10px;
+}
+
+.legend-box select{
+	width: 40%;
+	padding: 3px;
+}
+.legend-box label{
+	display: inline-block;
+	width: 49%;
+}
+
+
+
+
+/*------- Submit button --------*/
+
+.submit-button{
+	margin-top: 10vh;
+	margin-bottom: 20vh;
+}
+
+
 input[type=submit]{
 	border:0;
 	font-size:40px;
@@ -190,9 +213,25 @@ input[type=submit]{
 	float: right;
 	box-shadow: 5px 5px 5px #888888;
 }
-.spacing{
-	padding-top: 25vh;
-}
-.littleSpacing{
-	padding-top: 10vh;
-}
+
+
+
+
+
+/*-----------------   Footer -----------------*/
+
+
+.footer{
+	bottom:0;
+	position:fixed;
+	z-index:150;
+	height:35px;
+	width:100%;  
+	padding-bottom: 1em;
+	color:#828384;
+  }
+  .footerT{
+	background-color: #dfdfdf;
+	text-align: center; 
+	vertical-align: middle;
+  }

@@ -5,38 +5,34 @@
 </head>
 <body>
 	<header>
-		<ul class="pageHeader">
-			<li >
+		<ul class="header headerT">
+			<li class="header-elements">
 				<img class= "main-logo" src="logo-v2.jpg">
 			</li>
-			<li >
-				<a href="Evaluation.html"> Evaluations</a>
+			<li class="header-elements">
+				<a class = "header-elements-link header-elements-linkT " href="Evaluation.html"> Evaluations</a>
 			</li>
-			<li >
-				<a class = "active-page" href="NewEvaluation.html">New Evaluation</a>
-			</li>
-			<li class="right-button">
-				<a href="login.html">Logout</a>
+				<li class="header-elements">
+					<a class="header-elements-link header-elements-linkT active-page" href="NewEvaluation.html">New Evaluation</a>
+				</li>
+			<li class="header-elements right-button">
+				<a class= "header-elements-link header-elements-linkT" href="login.html">Logout</a>
 			</li>
 		</ul> 
 	</header>
 
 
 	<div class = "mainBlock">
-	<div class="spacing"></div>
-		<form >
-			<input class="input-candidate" type="text" name="Candidate" autocomplete="on" placeholder="Candidate" required />
-			<input class="input-candidate" type="text" name="Interviewer" autocomplete="on" placeholder="Interviewer" required />
-			<input class="input-candidate" type="date" name="Date" placeholder="dd/mm/yyyy" required/>
+		<form class = "candidate-input-box">
+				<input class="input-candidate" type="text" name="Candidate" autocomplete="on" placeholder="Candidate" required />
+				<input class="input-candidate" type="text" name="Interviewer" autocomplete="on" placeholder="Interviewer" required />
+				<input class="input-candidate" type="date" name="Date" placeholder="dd/mm/yyyy" required/>
 		</form>
-
-		<div class="littleSpacing"></div>
-
 		<div class="radio-boxes">
 			<h3>
 				Technical level
 			</h3>
-			<ul id="top-list-radio" >
+			<ul class="top-list-radio" >
 				<li id="placeHolder"></li>
 				<li id="R1" >Trainee</li>
 				<li class="R2" >Junior</li>
@@ -47,7 +43,7 @@
 			</ul>
 			
 
-			<ul id="down-list-radio">
+			<ul class="down-list-radio">
 				<li id= "RR1">
 					<input type="radio" name="level" value = "T">
 				</li>
@@ -80,8 +76,7 @@
 				</li>
 				<div class="clearfix"></div>
 			</ul>
-			<br>
-			
+			<br>			
 		</div>
 
 
@@ -101,13 +96,12 @@
 			<textarea placeholder="Describe the enviroment in which the candidate works. &#13;&#10;Describe ani guidance or management experience."></textarea>
 		</div>
 
-		<div class="littleSpacing"></div>
 
-		<form class="legend-box" id="DesignPaterns">
+		<form class="legend-box">
 			<fieldset>
 				<legend>OOP, Design Patterns</legend>
-				<ul style="list-style-type: none">
-					<li>
+				<ul class="legend-box-list">
+					<li class="legend-box-drop">
 						<label for="Classes" >Classes</label>
 						<select name="Classes" >
 							<option selected disabled hidden>Evaluation</option>
@@ -118,7 +112,7 @@
 						</select>
 					</li>
 
-					<li >
+					<li class="legend-box-drop">
 					<label for="Exception handling" >Exception handling</label>
 						<select name="Exception handling" >
 							<option selected disabled hidden>Evaluation</option>
@@ -129,7 +123,7 @@
 						</select>
 					</li>
 
-					<li >
+					<li class="legend-box-drop">
 						<label for="Version Control" >Version Control</label>
 						<select name="Version Control" >
 							<option selected disabled hidden>Evaluation</option>
@@ -140,7 +134,7 @@
 						</select>
 					</li>
 
-					<li >
+					<li class="legend-box-drop">
 						<label for="Access modifiers" >Access modifiers</label>
 						<select name="Access modifiers" >
 							<option selected disabled hidden>Evaluation</option>
@@ -151,7 +145,7 @@
 						</select>
 					</li>
 
-					<li >
+					<li class="legend-box-drop">
 						<label for="Design Patterns" >Design Patterns</label>
 						<select name="Design Patterns" >
 							<option selected disabled hidden>Evaluation</option>
@@ -162,7 +156,7 @@
 						</select>
 					</li>
 
-					<li >
+					<li class="legend-box-drop">
 						<label for="Issue Tracking" >Issue Tracking</label>
 						<select name="Issue Tracking" >
 							<option selected disabled hidden>Evaluation</option>
@@ -173,7 +167,7 @@
 						</select>
 					</li>
 
-					<li >
+					<li class="legend-box-drop">
 						<label for="Polymorphism" >Polymorphism</label>
 						<select name="Polymorphism" >
 							<option selected disabled hidden>Evaluation</option>
@@ -184,7 +178,7 @@
 						</select>
 					</li>
 
-					<li >
+					<li class="legend-box-drop">
 						<label for="RegEx" >RegEx</label>
 						<select name="RegEx" >
 							<option selected disabled hidden>Evaluation</option>
@@ -198,13 +192,11 @@
 			</fieldset>
 		</form>
 
-		<div class="littleSpacing"></div>
-
 		<form  class="legend-box" id="HTTP">
 			<fieldset>
 				<legend>HTTP</legend>
-				<ul style="list-style-type: none">
-					<li style="float:left;">
+				<ul class = "legend-box-list">
+					<li class="legend-box-drop">
 						<label for="Protocol" >Protocol</label>
 						<select name="Protocol" >
 							<option selected hidden>Evaluation</option>
@@ -215,7 +207,7 @@
 						</select>
 					</li>
 
-					<li style="float:left;">
+					<li class="legend-box-drop">
 						<label for="Response codes" >Response codes</label>
 						<select name="Response codes" >
 							<option selected hidden>Evaluation</option>
@@ -226,7 +218,7 @@
 						</select>
 					</li>
 
-					<li style="float:left;">
+					<li class="legend-box-drop">
 						<label for="REST" >REST</label>
 						<select name="REST" >
 							<option selected hidden>Evaluation</option>
@@ -237,7 +229,7 @@
 						</select>
 					</li>
 
-					<li style="float:left;">
+					<li class="legend-box-drop">
 						<label for="Headers" >Headers</label>
 						<select name="Headers" >
 							<option selected hidden>Evaluation</option>
@@ -248,7 +240,7 @@
 						</select>
 					</li>
 
-					<li style="float:left;">
+					<li class="legend-box-drop">
 						<label for="Request methods" >Request methods</label>
 						<select name="Request methods" >
 							<option selected hidden>Evaluation</option>
@@ -259,7 +251,7 @@
 						</select>
 					</li>
 
-					<li style="float:left;">
+					<li class="legend-box-drop">
 						<label for="Issue Tracking" >Sessions &#38; Cookies</label>
 						<select name="Issue Tracking" >
 							<option selected hidden>Evaluation</option>
@@ -277,13 +269,11 @@
 			</fieldset>
 		</form>
 
-		<div class="littleSpacing"></div>
-
 		<form  class="legend-box" id="HTML">
 			<fieldset>
 				<legend>HTML</legend>
-				<ul style="list-style-type: none">
-					<li style="float:left;">
+				<ul class="legend-box-list">
+					<li class="legend-box-drop">
 						<label for="Doctype" >Doctype</label>
 						<select name="Doctype" >
 							<option selected hidden>Evaluation</option>
@@ -294,7 +284,7 @@
 						</select>
 					</li>
 
-					<li style="float:left;">
+					<li class="legend-box-drop">
 						<label for="Tags" >Tags</label>
 						<select name="Tags" >
 							<option selected hidden>Evaluation</option>
@@ -305,7 +295,7 @@
 						</select>
 					</li>
 
-					<li style="float:left;">
+					<li class="legend-box-drop">
 						<label for="Basic SEO" >Basic SEO</label>
 						<select name="Basic SEO" >
 							<option selected hidden>Evaluation</option>
@@ -316,7 +306,7 @@
 						</select>
 					</li>
 
-					<li style="float:left;">
+					<li class="legend-box-drop">
 						<label for="Syntax rules" >Syntax rules</label>
 						<select name="Syntax rules" >
 							<option selected hidden>Evaluation</option>
@@ -330,13 +320,12 @@
 			</fieldset>
 		</form>
 
-		<div class="littleSpacing"></div>
 
 		<form  class="legend-box" id="CSS">
 			<fieldset>
 				<legend>CSS</legend>
-				<ul style="list-style-type: none">
-					<li style="float:left;">
+				<ul class="legend-box-list">
+					<li class="legend-box-drop">
 						<label for="Usage" >Usage</label>
 						<select name="Usage" >
 							<option selected hidden>Evaluation</option>
@@ -347,7 +336,7 @@
 						</select>
 					</li>
 
-					<li style="float:left;">
+					<li class="legend-box-drop">
 						<label for="Box Modeling" >Box Modeling</label>
 						<select name="Box Modeling" >
 							<option selected hidden>Evaluation</option>
@@ -358,7 +347,7 @@
 						</select>
 					</li>
 
-					<li style="float:left;">
+					<li class="legend-box-drop">
 						<label for="CSS 3.0" >CSS 3.0</label>
 						<select name="CSS 3.0" >
 							<option selected hidden>Evaluation</option>
@@ -369,7 +358,7 @@
 						</select>
 					</li>
 
-					<li style="float:left;">
+					<li class="legend-box-drop">
 						<label for="Selectors" >Selectors</label>
 						<select name="Selectors" >
 							<option selected hidden>Evaluation</option>
@@ -380,7 +369,7 @@
 						</select>
 					</li>
 
-					<li style="float:left;">
+					<li class="legend-box-drop">
 						<label for="Styling" >Styling</label>
 						<select name="Styling" >
 							<option selected hidden>Evaluation</option>
@@ -391,7 +380,7 @@
 						</select>
 					</li>
 
-					<li style="float:left;">
+					<li class="legend-box-drop">
 						<label for="Dynamic Stylesheets" >Dynamic Stylesheets</label>
 						<select name="Dynamic Stylesheets" >
 							<option selected hidden>Evaluation</option>
@@ -405,13 +394,12 @@
 			</fieldset>
 		</form>
 
-		<div class="littleSpacing"></div>
 
 		<form  class="legend-box" id="DesignPaterns">
 			<fieldset>
 				<legend>Javascript</legend>
-				<ul style="list-style-type: none">
-					<li style="float:left;">
+				<ul class="legend-box-list">
+					<li class="legend-box-drop">
 						<label for="Date types" >Date types &#38; variables </label>
 						<select name="Date types" >
 							<option selected disabled hidden>Evaluation</option>
@@ -422,7 +410,7 @@
 						</select>
 					</li>
 
-					<li style="float:left;">
+					<li class="legend-box-drop">
 						<label for="Object manipulation" >Object manipulation</label>
 						<select name="Object manipulation" >
 							<option selected disabled hidden>Evaluation</option>
@@ -433,7 +421,7 @@
 						</select>
 					</li>
 
-					<li style="float:left;">
+					<li class="legend-box-drop">
 						<label for="DOM manipulation" >DOM manipulation</label>
 						<select name="DOM manipulation" >
 							<option selected disabled hidden>Evaluation</option>
@@ -444,7 +432,7 @@
 						</select>
 					</li>
 
-					<li style="float:left;">
+					<li class="legend-box-drop">
 						<label for="Functions" >Functions</label>
 						<select name="Functions" >
 							<option selected disabled hidden>Evaluation</option>
@@ -455,7 +443,7 @@
 						</select>
 					</li>
 
-					<li style="float:left;">
+					<li class="legend-box-drop">
 						<label for="Templating" >Templating</label>
 						<select name="Templating" >
 							<option selected disabled hidden>Evaluation</option>
@@ -466,7 +454,7 @@
 						</select>
 					</li>
 
-					<li style="float:left;">
+					<li class="legend-box-drop">
 						<label for="Issue Tracking" >Issue Tracking</label>
 						<select name="Issue Tracking" >
 							<option selected disabled hidden>Evaluation</option>
@@ -477,7 +465,7 @@
 						</select>
 					</li>
 
-					<li style="float:left;">
+					<li class="legend-box-drop">
 						<label for="Polymorphism" >Event Hnadling</label>
 						<select name="Polymorphism" >
 							<option selected disabled hidden>Evaluation</option>
@@ -488,7 +476,7 @@
 						</select>
 					</li>
 
-					<li style="float:left;">
+					<li class="legend-box-drop">
 						<label for="Prototype" >Prototype &#38; OOP</label>
 						<select name="Prototype" >
 							<option selected disabled hidden>Evaluation</option>
@@ -499,7 +487,7 @@
 						</select>
 					</li>
 
-					<li style="float:left;">
+					<li class="legend-box-drop">
 						<label for="Testing" >Testing(unit, E2E)</label>
 						<select name="Testing" >
 							<option selected disabled hidden>Evaluation</option>
@@ -510,7 +498,7 @@
 						</select>
 					</li>
 
-					<li style="float:left;">
+					<li class="legend-box-drop">
 						<label for="AJAX" >AJAX</label>
 						<select name="AJAX" >
 							<option selected disabled hidden>Evaluation</option>
@@ -521,7 +509,7 @@
 						</select>
 					</li>
 
-					<li style="float:left;">
+					<li class="legend-box-drop">
 						<label for="Dubugging" >Dubugging</label>
 						<select name="Dubugging" >
 							<option selected disabled hidden>Evaluation</option>
@@ -532,7 +520,7 @@
 						</select>
 					</li>
 
-					<li style="float:left;">
+					<li class="legend-box-drop">
 						<label for="Websockets" >Websockets</label>
 						<select name="Websockets" >
 							<option selected disabled hidden>Evaluation</option>
@@ -543,7 +531,7 @@
 						</select>
 					</li>
 
-					<li style="float:left;">
+					<li class="legend-box-drop">
 						<label for="Tooling" >Tooling</label>
 						<select name="Tooling" >
 							<option selected disabled hidden>Evaluation</option>
@@ -554,7 +542,7 @@
 						</select>
 					</li>
 
-					<li style="float:left;">
+					<li class="legend-box-drop">
 						<label for="Libraries" >Libraries</label>
 						<select name="Libraries" >
 							<option selected disabled hidden>Evaluation</option>
@@ -565,7 +553,7 @@
 						</select>
 					</li>
 
-					<li style="float:left;">
+					<li class="legend-box-drop">
 						<label for="Promisses" >Promisses</label>
 						<select name="Promisses" >
 							<option selected disabled hidden>Evaluation</option>
@@ -576,7 +564,7 @@
 						</select>
 					</li>
 
-					<li style="float:left;">
+					<li class="legend-box-drop">
 						<label for="Browser Engines" >Browser Engines</label>
 						<select name="Browser Engines" >
 							<option selected disabled hidden>Evaluation</option>
@@ -587,7 +575,7 @@
 						</select>
 					</li>
 
-					<li style="float:left;">
+					<li class="legend-box-drop">
 						<label for="Frameworks" >Frameworks</label>
 						<select name="Frameworks" >
 							<option selected disabled hidden>Evaluation</option>
@@ -601,13 +589,12 @@
 			</fieldset>
 		</form>
 
-		<div class="littleSpacing"></div>
 
 		<form  class="legend-box" id="HTML">
 			<fieldset>
 				<legend>NodeJS</legend>
-				<ul style="list-style-type: none">
-					<li style="float:left;">
+				<ul class="legend-box-list">
+					<li class="legend-box-drop">
 						<label for="Backend frameworks" >Backend frameworks</label>
 						<select name="Backend frameworks" >
 							<option selected hidden>Evaluation</option>
@@ -618,7 +605,7 @@
 						</select>
 					</li>
 
-					<li style="float:left;">
+					<li class="legend-box-drop">
 						<label for="Templating" >Templating</label>
 						<select name="Templating" >
 							<option selected hidden>Evaluation</option>
@@ -629,7 +616,7 @@
 						</select>
 					</li>
 
-					<li style="float:left;">
+					<li class="legend-box-drop">
 						<label for="DOM Manipulation" >DOM Manipulation</label>
 						<select name="DOM Manipulation" >
 							<option selected hidden>Evaluation</option>
@@ -640,7 +627,7 @@
 						</select>
 					</li>
 
-					<li style="float:left;">
+					<li class="legend-box-drop">
 						<label for="Unit Testing" >Unit Testing</label>
 						<select name="Unit Testing" >
 							<option selected hidden>Evaluation</option>
@@ -654,20 +641,18 @@
 			</fieldset>
 		</form>
 
-	<div class="littleSpacing"></div>
-
-	<form  action="Evaluation.html">
-		<input  type="submit" name="button" value="Submit">
-	</form>
+		<div class= "submit-button">
+			<form action="Evaluation.html">
+				<input  type="submit" name="button" value="Submit">
+			</form>
+		</div>
 
 	</div>
 	
 
-		<div class="littleSpacing"></div>
 
-
-	<footer class="BottomFooter" >
-		<p><small>Copyright@Sofvision 2017</small></p>
+	<footer class="footer footerT" >
+		p>SoftVision@2017</p>
 	</footer>
 
 
