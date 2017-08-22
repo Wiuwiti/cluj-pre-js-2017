@@ -16,6 +16,31 @@ const NAV = function (option = {}){
     </ul>`
 }
 
+const tableRows = function (option = {}){
+    return `<tr>
+    <td></td>
+    <td>${option.Nume}</td>
+    <td>${option.Technology}</td>
+    <td>${option.Nivel}</td>
+    <td class="detail-button">Detail</td>
+    <td>
+    <img src="${option.ImageLink}" alt="More Deatails">
+    </td>
+    </tr>
+    `
+
+}
+
+const contructT = function (option = {}){
+    const result = []
+    for (var i=0;i<option.Nume.length;i++){
+         result.push(tableRows({Nume: option.Nume[i], Technology: option.Technology[i], Nivel: option.Nivel[i], ImageLink: option.ImageLink} ))
+    }
+    return result.join('')
+}
+
+
+
 const tableBody = function(option = {}){
     return `<table cellspacing="0" cellpadding= "0" class = "tableBlock" >
     <colgroup>
@@ -31,16 +56,7 @@ const tableBody = function(option = {}){
         <th> </th>
         <th> </th>
     </tr>
-    <tr class="border-bottom">
-        <td></td>
-        <td>Popescu Adrian</td>
-        <td>Javascript</td>
-        <td>Mid 2</td>
-        <td class="detail-button">Detail</td>
-        <td>
-            <img src="/assets/button.jpg" alt="More Deatails">
-        </td>
-    </tr>
+    ${contructT(option)}
     <tr class="border-bottom">
         <td></td>
         <td>Dragan Roxana</td>
@@ -80,12 +96,13 @@ const Footer = function(option = {}){
     <p>SoftVision@2017</p>
 </footer>`
 }
-const EvaluationPage = function(){
-    return `${NAV()}${tableBody()}${Footer()}`
+const EvaluationPage = function(option ={}){
+    return `${NAV()}${tableBody(option)}${Footer()}`
 }
 
 window.onload = function(){
     const result = [];
-    result.push(EvaluationPage({}))
+    option = {Nume : ["Jew jew", "Margarita"] ,Technology : ["Lewd", "munchin"], Nivel : ["14/88", "9/11"], ImageLink: "/assets/button.jpg"}
+    result.push(EvaluationPage(option))
     document.querySelector('#app').innerHTML = result;
 }

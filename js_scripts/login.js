@@ -51,17 +51,18 @@ const SubmitFeedbackResult = function(option = {}){
 }
 const Footer = function(option= {}){
     return `<footer class="footer footerT" >
-    <p>SoftVision@2017</p>
+    <p>${option}</p>
 </footer>
     `
 }
 
 const LoginPage = function(option = {}){
-    return `${loginHeader()}${SubmitFeedbackSection()}${SubmitFeedbackResult()}${Footer()}`
+    return `${loginHeader()}${SubmitFeedbackSection()}${SubmitFeedbackResult()}${Footer(option.Footer)}`
 }
 
 window.onload = function(){
     const result = [];
-    result.push(LoginPage({}))
+    options = {Footer: "SoftVision@2017"}
+    result.push(LoginPage(options))
     document.querySelector('#app').innerHTML = result;
 }
