@@ -5,7 +5,7 @@ const NAV = function (option = {}){
             <img class= "main-logo" src="/assets/logo-v2.jpg">
         </li>
         <li class="header-elements">
-            <a class = "header-elements-link header-elements-linkT " href="Evaluation.html"> Evaluations</a>
+            <a class = "header-elements-link header-elements-linkT " href="Evaluationv2.html"> Evaluations</a>
         </li>
             <li class="header-elements">
                 <a class="header-elements-link header-elements-linkT active-page" href="NewEvaluationv2.html">New Evaluation</a>

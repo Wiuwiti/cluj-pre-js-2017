@@ -8,7 +8,7 @@ const loginHeader = function(options= {}){
 }
 
 const loginForm = function(option = {}){
-    return `<form class="login-box login-boxT" action="Evaluation.html">
+    return `<form class="login-box login-boxT" action="Evaluationv2.html">
     <h2 class="login-box-header login-box-headerT">
             Interview Feedback
     </h2>
