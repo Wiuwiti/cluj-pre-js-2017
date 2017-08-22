@@ -17,32 +17,21 @@ const NAV = function (option = {}){
 }
 
 const tableRows = function (option = {}){
-    return `<tr>
-    <td></td>
-    <td>${option.Nume}</td>
-    <td>${option.Technology}</td>
-    <td>${option.Nivel}</td>
-    <td class="detail-button">Detail</td>
-    <td>
-    <img src="${option.ImageLink}" alt="More Deatails">
-    </td>
-    </tr>
-    `
-
+    return `
+    <tr>
+        <td></td>
+        <td>${option.Nume}</td>
+        <td>${option.Technology}</td>
+        <td>${option.Nivel}</td>
+        <td class="detail-button">Detail</td>
+        <td>
+            <img src="${option.ImageLink}" alt="More Deatails">
+        </td>
+    </tr>`
 }
 
-const contructT = function (option = {}){
-    const result = []
-    for (var i=0;i<option.Nume.length;i++){
-         result.push(tableRows({Nume: option.Nume[i], Technology: option.Technology[i], Nivel: option.Nivel[i], ImageLink: option.ImageLink} ))
-    }
-    return result.join('')
-}
-
-
-
-const tableBody = function(option = {}){
-    return `<table cellspacing="0" cellpadding= "0" class = "tableBlock" >
+const tableHeader = function(option = {}){
+    return `
     <colgroup>
         <col class="table-button">
         <col span="4" >
@@ -55,54 +44,48 @@ const tableBody = function(option = {}){
         <th>Nivel</th>
         <th> </th>
         <th> </th>
-    </tr>
-    ${contructT(option)}
-    <tr class="border-bottom">
-        <td></td>
-        <td>Dragan Roxana</td>
-        <td>PHP</td>
-        <td>Mid 1</td>
-        <td class="detail-button">Detail</td>
-        <td >
-            <img src="/assets/button.jpg" alt="More Deatails">
-        </td>
-    </tr>
-    <tr class="border-bottom">
-        <td></td>
-        <td>Florescu Mihai</td>
-        <td>Javascript</td>
-        <td>Junior 3</td>
-        <td class="detail-button">Detail</td>
-        <td >
-            <img src="/assets/button.jpg" alt="More Deatails">
-        </td>
-    </tr>
-    <tr class="border-bottom">
-        <td></td>
-        <td>Gheorghe Andrei</td>
-        <td>Ruby</td>
-        <td>Senior 1</td>
-        <td class="detail-button">Detali</td>
-        <td >
-            <img src="/assets/button.jpg" alt="More Deatails">
-        </td>
-    </tr>
-</table>`
+    </tr>`
+}
+
+const tableConstructor = function (option = {}){
+    const result = []
+    result.push(tableHeader({}))
+    for (var i=0;i<option.Nume.length;i++){
+         result.push(tableRows({Nume: option.Nume[i], Technology: option.Technology[i], Nivel: option.Nivel[i], ImageLink: option.ImageLink} ))
+    }
+    return result.join('')
+}
+
+
+
+const tableBody = function(option = {}){
+    return `
+    <table cellspacing="0" cellpadding= "0" class = "tableBlock" >
+        ${tableConstructor(option)}
+    </table>
+    `
 }
 
 
 const Footer = function(option = {}){
-    return `	<footer class="footer footerT" >
-    <p>SoftVision@2017</p>
-</footer>`
+    return `	
+    <footer class="footer footerT" >
+        <p>${option.Footer}</p>
+    </footer>`
 }
 const EvaluationPage = function(option ={}){
-    return `${NAV()}${tableBody(option)}${Footer()}`
+    
+    return `${NAV()}${tableBody(option.tContent)}${Footer(option.fContent)}`
 }
 
 window.onload = function(){
     const result = [];
-    option = {Nume : ["Jew jew", "Margarita"] ,Technology : ["Lewd", "munchin"], Nivel : ["14/88", "9/11"], ImageLink: "/assets/button.jpg"}
+    tableContent = {Nume : ["Popescu Adrian", "Dragan Roxana" , "Florescu Mihai", "Gheorghe Andrei"], 
+                    Technology : ["Javascript", "PHP" , "Javascript", "Ruby"],
+                    Nivel : ["Mid 2", "Mid 1", "Junior 3", "Senior 1"], 
+                    ImageLink: "/assets/button.jpg"}
+    footerContent = {Footer : "SoftVision@2017"}
+    option = {tContent : tableContent, fContent : footerContent}
     result.push(EvaluationPage(option))
     document.querySelector('#app').innerHTML = result;
 }
