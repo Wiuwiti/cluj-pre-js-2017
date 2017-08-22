@@ -38,13 +38,26 @@ const constructNav = function(option = {}){
     return result.join('')
 }
 
+const candidateLine = function(option = {}){
+    return `
+    <input class="input-candidate" type="${option.DataType}" name="${option.InputName}" autocomplete="on" placeholder="${option.PlaceHolder}" required />
+    `
+}
+const constructDetailsForm = function(option = {}){
+    const result = [];
+    for(var i=0;i<option.DataType.length;i++){
+        result.push(candidateLine({DataType : option.DataType[i],
+                                InputName: option.InputName[i],
+                                PlaceHolder: option.PlaceHolder[i]}))
+    }
+    return result.join('')
+}
+
 
 const candidateDetailsForm = function (option = {}){
     return `<form class = "candidate-input-box">
-    <input class="input-candidate" type="text" name="Candidate" autocomplete="on" placeholder="Candidate" required />
-    <input class="input-candidate" type="text" name="Interviewer" autocomplete="on" placeholder="Interviewer" required />
-    <input class="input-candidate" type="date" name="Date" placeholder="dd/mm/yyyy" required/>
-</form>`
+    ${constructDetailsForm(option)}
+    </form>`
 }
 
 
@@ -685,14 +698,15 @@ const Footer = function(option = {}){
 
 const PageGrid = function (option = {}){
     return `	<div class = "mainBlock">
-    ${candidateDetailsForm()}${technicalLevelPicker()}
+    ${candidateDetailsForm(option.cContent)}
+    ${technicalLevelPicker()}
     ${textArea()}${newEvaluationForm()}${submitButton()}
     </div>
     `
 }
 const NewEvaluationPage = function(option = {}){
     return `${NAV(option.hContent)}
-    ${PageGrid()}
+    ${PageGrid(option)}
     ${Footer({})}`
 }
 
@@ -702,7 +716,11 @@ window.onload = function(){
     headerContent = {Logo : "/assets/logo-v2.jpg",
                     Link: ["Evaluationv2.html", "NewEvaluationv2.html", "Loginv2.html"],
                     Text: ["Evaluation", "New Evaluation", "Logout"]}
-    option = {hContent : headerContent}
+    candidateContent = {InputName :["Candidate", "Interviewer", "Date"],
+                        PlaceHolder: ["Candidate", "Interviewer", "dd/mm/yyyy"],
+                        DataType :["text", "text", "date"]
+                    }
+    option = {hContent : headerContent, cContent : candidateContent}
     result.push(NewEvaluationPage(option))
     document.querySelector('#app').innerHTML = result;
 }
