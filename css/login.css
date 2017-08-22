@@ -13,7 +13,7 @@
 /*------------------ Header --------------------*/
 
 .pageHeaderT{
-  background: url(feedback-banner.jpg) center center no-repeat;
+  background: url(/assets/feedback-banner.jpg) center center no-repeat;
   background-size: cover;
 }
 .pageHeader{
@@ -31,12 +31,12 @@
   box-shadow: 5px 5px 5px #000000;
 }
 
-.info-box-headerT{
+.login-box-headerT{
   font-weight: 400;
   background-color: #03a8f3;
   color: #ffffff;
 }
-.info-box-header{
+.login-box-header{
   line-height: 3em;
   text-align: center;
   margin: 0;
