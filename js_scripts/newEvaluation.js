@@ -60,23 +60,30 @@ const candidateDetailsForm = function (option = {}){
     </form>`
 }
 
+const technicalLevelPickerHeader = function(option = {}){
+    return ` <h3>
+        ${option}
+    </h3>`
+}
 
-const technicalLevelPicker = function (option = {}){
-    return `<div class="radio-boxes">
-    <h3>
-        Technical level
-    </h3>
-    <ul class="top-list-radio" >
+
+const technicalLevelPickerTop = function(option = {}){
+    const result = []
+    for(var i=0;i<option.length;i++){
+        result.push(`<li class="R2" >${option[i]}</li>`)
+    }    
+    const Nresult = result.join('')
+    return `<ul class="top-list-radio" >
         <li id="placeHolder"></li>
         <li id="R1" >Trainee</li>
-        <li class="R2" >Junior</li>
-        <li class="R2" >Middle</li>
-        <li class="R2" >Senior</li>
+        ${Nresult}
         <li id="extra"></li>
         <div class="clearfix"></div>
-    </ul>
-    
+    </ul>`
+}
 
+const technicalLevelPickerBottom = function (option = {}){
+    return ` 
     <ul class="down-list-radio">
         <li id= "RR1">
             <input type="radio" name="level" value = "T">
@@ -109,27 +116,38 @@ const technicalLevelPicker = function (option = {}){
             <input type="radio" name="level" value = "S3">
         </li>
         <div class="clearfix"></div>
-    </ul>
+    </ul>`
+}
+
+const constructorTechnicalLevelPicker = function(option = {}){
+    return `${technicalLevelPickerHeader(option.HeaderTitle)}
+    ${technicalLevelPickerTop(option.Titles)}
+    ${technicalLevelPickerBottom({})}
+    `
+}
+
+const technicalLevelPicker = function (option = {}){
+    return `<div class="radio-boxes">
+   ${constructorTechnicalLevelPicker(option)}
     <br>			
-</div>
+    </div>
 `
 } 
 
-const textArea = function (option = {}){
+const textAreaBox = function(option = {}){
     return `<div class="user-textarea">
-    <h3>Should the candidate be hired?</h3>
-    <textarea placeholder="The type of project that is suitable for the candidate &#13;&#10;Is guidance requiredd for the candidate"></textarea>
-</div>
+    <h3>${option.HeaderTitle}</h3>
+    <textarea placeholder="${option.Placeholder}"required></textarea>
+    </div>`
+}
 
-<div class="user-textarea">
-    <h3>General Impression</h3>
-    <textarea placeholder="*required" required></textarea>
-</div>
 
-<div class="user-textarea">
-    <h3>Workflow, Leadership &#38; Soft Skills</h3>
-    <textarea placeholder="Describe the enviroment in which the candidate works. &#13;&#10;Describe ani guidance or management experience."></textarea>
-</div>`
+const textArea = function (option = {}){
+    const result = []
+    for(var i=0;i<option.HeaderTitle.length;i++){
+        result.push(textAreaBox({HeaderTitle: option.HeaderTitle[i], Placeholder: option.Placeholder[i]}))
+    }
+    return result.join('')
 }
 
 const newEvaluationForm = function (option = {}){
@@ -697,10 +715,11 @@ const Footer = function(option = {}){
 }
 
 const PageGrid = function (option = {}){
+    console.log(option.taContent)
     return `	<div class = "mainBlock">
     ${candidateDetailsForm(option.cContent)}
-    ${technicalLevelPicker()}
-    ${textArea()}${newEvaluationForm()}${submitButton()}
+    ${technicalLevelPicker(option.tlContent)}
+    ${textArea(option.taContent)}${newEvaluationForm()}${submitButton()}
     </div>
     `
 }
@@ -720,7 +739,20 @@ window.onload = function(){
                         PlaceHolder: ["Candidate", "Interviewer", "dd/mm/yyyy"],
                         DataType :["text", "text", "date"]
                     }
-    option = {hContent : headerContent, cContent : candidateContent}
+    technicalLevelContent = {HeaderTitle : "Technical Level",
+                            Titles : ["Junior", "Middle", "Senior"]
+    }
+    textAreaContent = {HeaderTitle: ["Should the candidate be hired?",
+                                    "General Impression",
+                                    "Workflow, Leadership &#38; Soft Skills"],
+                    Placeholder : ["The type of project that is suitable for the candidate &#13;&#10;Is guidance requiredd for the candidate",
+                                "*required", 
+                                "Describe the enviroment in which the candidate works. &#13;&#10;Describe ani guidance or management experience."]}
+
+    option = {hContent : headerContent, 
+        cContent : candidateContent,
+        tlContent : technicalLevelContent,
+        taContent: textAreaContent}
     result.push(NewEvaluationPage(option))
     document.querySelector('#app').innerHTML = result;
 }
