@@ -1,19 +1,41 @@
 const NAV = function (option = {}){
     return `
     <ul class="header headerT">
-        <li class="header-elements">
-            <img class= "main-logo" src="/assets/logo-v2.jpg">
-        </li>
-        <li class="header-elements">
-            <a class = "header-elements-link header-elements-linkT " href="Evaluationv2.html"> Evaluations</a>
-        </li>
-            <li class="header-elements">
-                <a class="header-elements-link header-elements-linkT active-page" href="NewEvaluationv2.html">New Evaluation</a>
-            </li>
-        <li class="header-elements right-button">
-            <a class= "header-elements-link header-elements-linkT" href="Loginv2.html">Logout</a>
-        </li>
+        ${logoButton(option.Logo)}
+        ${constructNav(option)}
     </ul>`
+}
+
+const logoButton = function(option = {}){
+    return `<li class="header-elements">
+        <img class= "main-logo" src="${option}">
+    </li>`
+}
+
+const buttonNav = function(option={}, active="" , specialPlacement = ""){
+    return `
+    <li class="header-elements ${specialPlacement}">
+        <a class = "header-elements-link header-elements-linkT ${active} " href="${option.Link}"> ${option.Text}</a>
+    </li>
+    `
+}
+
+
+const constructNav = function(option = {}){
+    const currentPage = "Evaluationv2.html", result =[], specialPlacement = "Loginv2.html";
+    for(var i=0;i<option.Link.length;i++){
+        if(option.Link[i] === currentPage){
+            result.push(buttonNav({Link: option.Link[i], Text: option.Text[i]}, "active-page"))
+        }else{ 
+            if(option.Link[i] === specialPlacement){
+                result.push(buttonNav({Link: option.Link[i], Text: option.Text[i]}, "", "right-button"))
+            }else{
+                result.push(buttonNav({Link: option.Link[i], Text: option.Text[i]}))
+            }
+        }
+        
+    }
+    return result.join('')
 }
 
 const tableRows = function (option = {}){
@@ -56,8 +78,6 @@ const tableConstructor = function (option = {}){
     return result.join('')
 }
 
-
-
 const tableBody = function(option = {}){
     return `
     <table cellspacing="0" cellpadding= "0" class = "tableBlock" >
@@ -65,7 +85,6 @@ const tableBody = function(option = {}){
     </table>
     `
 }
-
 
 const Footer = function(option = {}){
     return `	
@@ -75,7 +94,7 @@ const Footer = function(option = {}){
 }
 const EvaluationPage = function(option ={}){
     
-    return `${NAV()}${tableBody(option.tContent)}${Footer(option.fContent)}`
+    return `${NAV(option.hContent)}${tableBody(option.tContent)}${Footer(option.fContent)}`
 }
 
 window.onload = function(){
@@ -85,7 +104,10 @@ window.onload = function(){
                     Nivel : ["Mid 2", "Mid 1", "Junior 3", "Senior 1"], 
                     ImageLink: "/assets/button.jpg"}
     footerContent = {Footer : "SoftVision@2017"}
-    option = {tContent : tableContent, fContent : footerContent}
+    headerContent = {Logo : "/assets/logo-v2.jpg",
+                    Link: ["Evaluationv2.html", "NewEvaluationv2.html", "Loginv2.html"],
+                    Text: ["Evaluation", "New Evaluation", "Logout"]}
+    option = {tContent : tableContent, fContent : footerContent, hContent : headerContent}
     result.push(EvaluationPage(option))
     document.querySelector('#app').innerHTML = result;
 }
