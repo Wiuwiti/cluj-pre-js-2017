@@ -187,261 +187,7 @@ const newEvaluationForm = function (option = {}){
         </fieldset>
     </form>`)
     }
-    const Nresult = result.join('')
-
-
-    return `${Nresult}
-
-
-
-
-
-
-<form  class="legend-box" id="DesignPaterns">
-    <fieldset>
-        <legend>Javascript</legend>
-        <ul class="legend-box-list">
-            <li class="legend-box-drop">
-                <label for="Date types" >Date types &#38; variables </label>
-                <select name="Date types" >
-                    <option selected disabled hidden>Evaluation</option>
-                    <option value = "0"> 0</option>
-                    <option value = "1"> 1</option>
-                    <option value = "2"> 2</option>
-                    <option value = "3"> 3</option>
-                </select>
-            </li>
-
-            <li class="legend-box-drop">
-                <label for="Object manipulation" >Object manipulation</label>
-                <select name="Object manipulation" >
-                    <option selected disabled hidden>Evaluation</option>
-                    <option value = "0"> 0</option>
-                    <option value = "1"> 1</option>
-                    <option value = "2"> 2</option>
-                    <option value = "3"> 3</option>
-                </select>
-            </li>
-
-            <li class="legend-box-drop">
-                <label for="DOM manipulation" >DOM manipulation</label>
-                <select name="DOM manipulation" >
-                    <option selected disabled hidden>Evaluation</option>
-                    <option value = "0"> 0</option>
-                    <option value = "1"> 1</option>
-                    <option value = "2"> 2</option>
-                    <option value = "3"> 3</option>
-                </select>
-            </li>
-
-            <li class="legend-box-drop">
-                <label for="Functions" >Functions</label>
-                <select name="Functions" >
-                    <option selected disabled hidden>Evaluation</option>
-                    <option value = "0"> 0</option>
-                    <option value = "1"> 1</option>
-                    <option value = "2"> 2</option>
-                    <option value = "3"> 3</option>
-                </select>
-            </li>
-
-            <li class="legend-box-drop">
-                <label for="Templating" >Templating</label>
-                <select name="Templating" >
-                    <option selected disabled hidden>Evaluation</option>
-                    <option value = "0"> 0</option>
-                    <option value = "1"> 1</option>
-                    <option value = "2"> 2</option>
-                    <option value = "3"> 3</option>
-                </select>
-            </li>
-
-            <li class="legend-box-drop">
-                <label for="Issue Tracking" >Issue Tracking</label>
-                <select name="Issue Tracking" >
-                    <option selected disabled hidden>Evaluation</option>
-                    <option value = "0"> 0</option>
-                    <option value = "1"> 1</option>
-                    <option value = "2"> 2</option>
-                    <option value = "3"> 3</option>
-                </select>
-            </li>
-
-            <li class="legend-box-drop">
-                <label for="Polymorphism" >Event Hnadling</label>
-                <select name="Polymorphism" >
-                    <option selected disabled hidden>Evaluation</option>
-                    <option value = "0"> 0</option>
-                    <option value = "1"> 1</option>
-                    <option value = "2"> 2</option>
-                    <option value = "3"> 3</option>
-                </select>
-            </li>
-
-            <li class="legend-box-drop">
-                <label for="Prototype" >Prototype &#38; OOP</label>
-                <select name="Prototype" >
-                    <option selected disabled hidden>Evaluation</option>
-                    <option value = "0"> 0</option>
-                    <option value = "1"> 1</option>
-                    <option value = "2"> 2</option>
-                    <option value = "3"> 3</option>
-                </select>
-            </li>
-
-            <li class="legend-box-drop">
-                <label for="Testing" >Testing(unit, E2E)</label>
-                <select name="Testing" >
-                    <option selected disabled hidden>Evaluation</option>
-                    <option value = "0"> 0</option>
-                    <option value = "1"> 1</option>
-                    <option value = "2"> 2</option>
-                    <option value = "3"> 3</option>
-                </select>
-            </li>
-
-            <li class="legend-box-drop">
-                <label for="AJAX" >AJAX</label>
-                <select name="AJAX" >
-                    <option selected disabled hidden>Evaluation</option>
-                    <option value = "0"> 0</option>
-                    <option value = "1"> 1</option>
-                    <option value = "2"> 2</option>
-                    <option value = "3"> 3</option>
-                </select>
-            </li>
-
-            <li class="legend-box-drop">
-                <label for="Dubugging" >Dubugging</label>
-                <select name="Dubugging" >
-                    <option selected disabled hidden>Evaluation</option>
-                    <option value = "0"> 0</option>
-                    <option value = "1"> 1</option>
-                    <option value = "2"> 2</option>
-                    <option value = "3"> 3</option>
-                </select>
-            </li>
-
-            <li class="legend-box-drop">
-                <label for="Websockets" >Websockets</label>
-                <select name="Websockets" >
-                    <option selected disabled hidden>Evaluation</option>
-                    <option value = "0"> 0</option>
-                    <option value = "1"> 1</option>
-                    <option value = "2"> 2</option>
-                    <option value = "3"> 3</option>
-                </select>
-            </li>
-
-            <li class="legend-box-drop">
-                <label for="Tooling" >Tooling</label>
-                <select name="Tooling" >
-                    <option selected disabled hidden>Evaluation</option>
-                    <option value = "0"> 0</option>
-                    <option value = "1"> 1</option>
-                    <option value = "2"> 2</option>
-                    <option value = "3"> 3</option>
-                </select>
-            </li>
-
-            <li class="legend-box-drop">
-                <label for="Libraries" >Libraries</label>
-                <select name="Libraries" >
-                    <option selected disabled hidden>Evaluation</option>
-                    <option value = "0"> 0</option>
-                    <option value = "1"> 1</option>
-                    <option value = "2"> 2</option>
-                    <option value = "3"> 3</option>
-                </select>
-            </li>
-
-            <li class="legend-box-drop">
-                <label for="Promisses" >Promisses</label>
-                <select name="Promisses" >
-                    <option selected disabled hidden>Evaluation</option>
-                    <option value = "0"> 0</option>
-                    <option value = "1"> 1</option>
-                    <option value = "2"> 2</option>
-                    <option value = "3"> 3</option>
-                </select>
-            </li>
-
-            <li class="legend-box-drop">
-                <label for="Browser Engines" >Browser Engines</label>
-                <select name="Browser Engines" >
-                    <option selected disabled hidden>Evaluation</option>
-                    <option value = "0"> 0</option>
-                    <option value = "1"> 1</option>
-                    <option value = "2"> 2</option>
-                    <option value = "3"> 3</option>
-                </select>
-            </li>
-
-            <li class="legend-box-drop">
-                <label for="Frameworks" >Frameworks</label>
-                <select name="Frameworks" >
-                    <option selected disabled hidden>Evaluation</option>
-                    <option value = "0"> 0</option>
-                    <option value = "1"> 1</option>
-                    <option value = "2"> 2</option>
-                    <option value = "3"> 3</option>
-                </select>
-            </li>
-        </ul>
-    </fieldset>
-</form>
-
-
-<form  class="legend-box" id="HTML">
-    <fieldset>
-        <legend>NodeJS</legend>
-        <ul class="legend-box-list">
-            <li class="legend-box-drop">
-                <label for="Backend frameworks" >Backend frameworks</label>
-                <select name="Backend frameworks" >
-                    <option selected hidden>Evaluation</option>
-                    <option value = "0"> 0</option>
-                    <option value = "1"> 1</option>
-                    <option value = "2"> 2</option>
-                    <option value = "3"> 3</option>
-                </select>
-            </li>
-
-            <li class="legend-box-drop">
-                <label for="Templating" >Templating</label>
-                <select name="Templating" >
-                    <option selected hidden>Evaluation</option>
-                    <option value = "0"> 0</option>
-                    <option value = "1"> 1</option>
-                    <option value = "2"> 2</option>
-                    <option value = "3"> 3</option>
-                </select>
-            </li>
-
-            <li class="legend-box-drop">
-                <label for="DOM Manipulation" >DOM Manipulation</label>
-                <select name="DOM Manipulation" >
-                    <option selected hidden>Evaluation</option>
-                    <option value = "0"> 0</option>
-                    <option value = "1"> 1</option>
-                    <option value = "2"> 2</option>
-                    <option value = "3"> 3</option>
-                </select>
-            </li>
-
-            <li class="legend-box-drop">
-                <label for="Unit Testing" >Unit Testing</label>
-                <select name="Unit Testing" >
-                    <option selected hidden>Evaluation</option>
-                    <option value = "0"> 0</option>
-                    <option value = "1"> 1</option>
-                    <option value = "2"> 2</option>
-                    <option value = "3"> 3</option>
-                </select>
-            </li>
-        </ul>
-    </fieldset>
-</form>`
+    return result.join('')
 }
 
 const dropDownSelector = function (option = {}){
@@ -457,9 +203,10 @@ const submitButton =function (option = {}){
 }
 
 const Footer = function(option = {}){
-    return `<footer class="footer footerT" >
-    <p>SoftVision@2017</p>
-</footer>`
+    return `	
+    <footer class="footer footerT" >
+        <p>${option.Footer}</p>
+    </footer>`
 }
 
 const PageGrid = function (option = {}){
@@ -475,7 +222,7 @@ const PageGrid = function (option = {}){
 const NewEvaluationPage = function(option = {}){
     return `${NAV(option.hContent)}
     ${PageGrid(option)}
-    ${Footer({})}`
+    ${Footer(option.fContent)}`
 }
 
 
@@ -497,13 +244,15 @@ window.onload = function(){
                     Placeholder : ["The type of project that is suitable for the candidate &#13;&#10;Is guidance requiredd for the candidate",
                                 "*required", 
                                 "Describe the enviroment in which the candidate works. &#13;&#10;Describe ani guidance or management experience."]}
-    selectContent = {Values: ["0", "1", "2", "3"]
-    }
-    dropDownContent = {Data: [{sContent : selectContent,
-                    selectName : ["Classes", "Exception handling", "Version Control", "Access modifiers",
-                                "Design Patterns", "Issue Tracking", "Polymorphism", "RegEx"],
-                    labelTitle : ["Classes", "Exception handling", "Version Control", "Access modifiers",
-                                "Design Patterns", "Issue Tracking", "Polymorphism", "RegEx"]},
+    selectContent = {Values: ["0", "1", "2", "3"]}
+    dropDownContent = {Data: [
+                        {
+                            sContent : selectContent,
+                            selectName : ["Classes", "Exception handling", "Version Control", "Access modifiers",
+                                        "Design Patterns", "Issue Tracking", "Polymorphism", "RegEx"],
+                            labelTitle : ["Classes", "Exception handling", "Version Control", "Access modifiers",
+                                    "Design Patterns", "Issue Tracking", "Polymorphism", "RegEx"]
+                        },
                         {
                             sContent: selectContent,
                             selectName :["Protocol","Response codes","REST","Headers","Request methods", "Issue Tracking",
@@ -520,15 +269,32 @@ window.onload = function(){
                             sContent:selectContent,
                             selectName:["Usage","Box Modeling","CSS 3.0","Selectors","Styling","Dynamic Stylesheets"],
                             labelTitle:["Usage","Box Modeling","CSS 3.0","Selectors","Styling","Dynamic Stylesheets"]
+                        },
+                        {
+                            sContent:selectContent,
+                            selectName:["Date types","Object manipulation","DOM manipulation","Functions","Templating",
+                                        "Issue Tracking","Event Handling","Prototype","Testing","AJAX","Dubugging","Websockets"
+                                        ,"Tooling","Libraries","Promisses","Browser Engines","Frameworks"],
+                            labelTitle:["Date types &#38; variables","Object manipulation","DOM manipulation","Functions","Templating",
+                                        "Issue Tracking","Event Handling","Prototype &#38; OOP","Testing(unit, E2E)","AJAX","Dubugging",
+                                        "Websockets","Tooling","Libraries","Promisses","Browser Engines","Frameworks"]
+                        },
+                        {
+                            sContent:selectContent,
+                            selectName:["Backend frameworks","Templating","DOM Manipulation","Unit Testing"],
+                            labelTitle:["Backend frameworks","Templating","DOM Manipulation","Unit Testing"]
                         }
                 ],
-                    Title : ["OOP, Design Patterns", "HTTP","HTML","CSS"],
-                    boxID : ["OOP", "HTTP", "HTML","CSS"]}
-    option = {hContent : headerContent, 
+                    Title : ["OOP, Design Patterns", "HTTP","HTML","CSS","Javascript","NodeJS"],
+                    boxID : ["OOP", "HTTP", "HTML","CSS","Javascript","NodeJS"]}
+    
+        footerContent = {Footer : "SoftVision@2017"}
+        option = {hContent : headerContent, 
         cContent : candidateContent,
         tlContent : technicalLevelContent,
         taContent: textAreaContent,
-        sContent : dropDownContent}
+        sContent : dropDownContent,
+        fContent: footerContent}
     result.push(NewEvaluationPage(option))
     document.querySelector('#app').innerHTML = result;
 }
