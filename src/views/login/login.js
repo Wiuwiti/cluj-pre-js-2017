@@ -61,8 +61,8 @@ const LoginPage = function(option = {}){
 }
 
 window.onload = function(){
-    const result = [];
-    options = {Footer: "SoftVision@2017"}
+    const result = [],
+    options = {Footer: "SoftVision@2017"};
     result.push(LoginPage(options))
     document.querySelector('#app').innerHTML = result;
 }

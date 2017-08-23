@@ -101,7 +101,7 @@ const textAreaBox = function(option = {}){
 }
 const textArea = function (option = {}){
     const result = []
-    for(var i=0;i<option.length;i++){
+    for(var i = 0 ; i < option.length; i++){
         result.push(textAreaBox(option[i]))
     }
     return result.join('')
@@ -111,7 +111,7 @@ const textArea = function (option = {}){
 const selectConstructor = function(option= {}){
     const result = []
     result.push(`<option selected disabled hidden>Evaluation</option>`)
-    for (var i=0;i<option.length;i++){
+    for (var i = 0; i < option.length; i++){
         result.push(`<option value = "0"> ${option[i]}</option>`)
     }
     return result.join('')
@@ -119,7 +119,7 @@ const selectConstructor = function(option= {}){
 
 const dropDownConstructor = function (option={}, selectContent = {}){
     const result = []
-    for (var i=0;i<option.length;i++){
+    for (var i = 0; i < option.length; i++){
         result.push(`
         <li class="legend-box-drop">
             <label for="${option[i].selectName}"> ${option[i].labelTitle}</label>
@@ -134,7 +134,7 @@ const dropDownConstructor = function (option={}, selectContent = {}){
 
 const newEvaluationForm = function (option = {}){
     var result = []
-    for(var i=0;i<option.length;i++){
+    for(var i = 0;i < option.length; i++){
         result.push(`<form class="legend-box" id="${option[i].boxID}">
         <fieldset>
             <legend>${option[i].Title}</legend>
@@ -177,7 +177,7 @@ const NewEvaluationPage = function(option = {}){
 
 
 window.onload = function(){
-    const result = [];
+    const result = [],
     __headerContent = [{
                             link: "Evaluationv2.html",
                             text: "Evaluation",
@@ -195,10 +195,10 @@ window.onload = function(){
                             text: "Logout",
                             activePage: "",
                             rightSidedButton: "right-button"
-                        }]
+                        }],
 
     __logoContent = {link : "assets/logo-v2.jpg",
-                    alt: "Company logo"}
+                    alt: "Company logo"},
 
     
     __candidateContent= [{
@@ -215,7 +215,7 @@ window.onload = function(){
                             inputName: "Date",
                             placeHolder: "dd/mm/yyyy",
                             dataType: "date"
-                        }]
+                        }],
 
     __textAreaContent = [{
                             headerTitle : "Should the candidate be hired?",
@@ -228,13 +228,13 @@ window.onload = function(){
                         {
                             headerTitle : "Workflow, Leadership &#38; Soft Skills",
                             placeHolder : "Describe the enviroment in which the candidate works. &#13;&#10;Describe ani guidance or management experience."
-                        }]
+                        }],
 
 
     __technicalLevelContent = {HeaderTitle : "Technical Level",
                             Titles : ["Junior", "Middle", "Senior"]
-    }
-    __selectContent = {Values: ["0", "1", "2", "3"]}
+    },
+    __selectContent = {Values: ["0", "1", "2", "3"]},
     __dropDownContent = [
                         {
                             selectContent: __selectContent,
@@ -448,17 +448,17 @@ window.onload = function(){
                             Title:"NodeJS",
                             boxID:"NodeJS"
                         }
-                        ]
+                        ],
                    
     
-    __footerContent = {Footer : "SoftVision@2017"}
+    __footerContent = {Footer : "SoftVision@2017"},
     options={headerContent : __headerContent,
             logoContent: __logoContent, 
             candidateContent : __candidateContent,
             technicalLevelContent : __technicalLevelContent,
             textAreaContent: __textAreaContent,
             dropDownContent : __dropDownContent,
-            footerContent: __footerContent}
+            footerContent: __footerContent};
     result.push(NewEvaluationPage(options))
     document.querySelector('#app').innerHTML = result;
 }

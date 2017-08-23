@@ -62,7 +62,7 @@ const EvaluationPage = function(option ={}){
 }
 
 window.onload = function(){
-    const result = [];
+    const result = [],
     __headerContent = [{
                             link: "Evaluationv2.html",
                             text: "Evaluation",
@@ -80,13 +80,13 @@ window.onload = function(){
                             text: "Logout",
                             activePage: "",
                             rightSidedButton: "right-button"
-                        }]
+                        }],
 
     __logoContent = {link : "assets/logo-v2.jpg",
-                    alt: "Company logo"}
+                    alt: "Company logo"},
 
    
-    __tableHeader = ["Nume", "Technologie", "Nivel"]
+    __tableHeader = ["Nume", "Technologie", "Nivel"],
     __tableContent = [
         {
             nume: "Popescu Adrian",
@@ -112,13 +112,13 @@ window.onload = function(){
             nivel:"Senior 1",
             buttonIMG : "/assets/button.jpg"
         }
-    ]
-    __footerContent = {Footer : "SoftVision@2017"}
+    ],
+    __footerContent = {Footer : "SoftVision@2017"},
     option = {tableContent : __tableContent,
             tableHeader:__tableHeader, 
             footerContent : __footerContent, 
             headerContent : __headerContent,
-            logoContent: __logoContent }
+            logoContent: __logoContent };
     result.push(EvaluationPage(option))
     document.querySelector('#app').innerHTML = result;
 }
