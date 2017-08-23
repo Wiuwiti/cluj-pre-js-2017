@@ -178,7 +178,7 @@ const NewEvaluationPage = function(option = {}){
 
 window.onload = function(){
     const result = [],
-    __headerContent = [{
+    headerContent = [{
                             link: "Evaluationv2.html",
                             text: "Evaluation",
                             activePage: "",
@@ -197,11 +197,11 @@ window.onload = function(){
                             rightSidedButton: "right-button"
                         }],
 
-    __logoContent = {link : "assets/logo-v2.jpg",
+    logoContent = {link : "assets/logo-v2.jpg",
                     alt: "Company logo"},
 
     
-    __candidateContent= [{
+    candidateContent= [{
                             inputName : "Candidate",
                             placeHolder : "Candidate",
                             dataType : "text"
@@ -217,7 +217,7 @@ window.onload = function(){
                             dataType: "date"
                         }],
 
-    __textAreaContent = [{
+    textAreaContent = [{
                             headerTitle : "Should the candidate be hired?",
                             placeHolder : "The type of project that is suitable for the candidate &#13;&#10;Is guidance requiredd for the candidate"
                         },
@@ -231,13 +231,13 @@ window.onload = function(){
                         }],
 
 
-    __technicalLevelContent = {HeaderTitle : "Technical Level",
+    technicalLevelContent = {HeaderTitle : "Technical Level",
                             Titles : ["Junior", "Middle", "Senior"]
     },
-    __selectContent = {Values: ["0", "1", "2", "3"]},
-    __dropDownContent = [
+    selectContent = {Values: ["0", "1", "2", "3"]},
+    dropDownContent = [
                         {
-                            selectContent: __selectContent,
+                            selectContent,
                             selectBox:[{
                                             selectName:"Classes",
                                             labelTitle:"Classes"
@@ -274,7 +274,7 @@ window.onload = function(){
                             boxID: "OOP"
                         },
                         {
-                            selectContent: __selectContent,
+                            selectContent,
                             selectBox:[{
                                             selectName:"Protocol",
                                             labelTitle:"Protocol"
@@ -303,7 +303,7 @@ window.onload = function(){
                             boxID: "HTTP"
                         },
                         {
-                            selectContent: __selectContent,
+                            selectContent,
                             selectBox:[{
                                             selectName:"Doctype",
                                             labelTitle:"Doctype"
@@ -325,7 +325,7 @@ window.onload = function(){
                         },
 
                         {
-                            selectContent: __selectContent,
+                            selectContent,
                             selectBox:[{
                                             selectName:"Usage",
                                             labelTitle:"Protocol"
@@ -354,7 +354,7 @@ window.onload = function(){
                             boxID: "CSS"
                         },
                         {
-                            selectContent: __selectContent,
+                            selectContent,
                             selectBox:[{
                                             selectName:"Date types",
                                             labelTitle:"Date types"
@@ -428,7 +428,7 @@ window.onload = function(){
                             boxID: "OOP"
                         },
                         {
-                            selectContent: __selectContent,
+                            selectContent,
                             selectBox:[{
                                             selectName:"Backend frameworks",
                                             labelTitle:"Backend frameworks"
@@ -451,14 +451,14 @@ window.onload = function(){
                         ],
                    
     
-    __footerContent = {Footer : "SoftVision@2017"},
-    options={headerContent : __headerContent,
-            logoContent: __logoContent, 
-            candidateContent : __candidateContent,
-            technicalLevelContent : __technicalLevelContent,
-            textAreaContent: __textAreaContent,
-            dropDownContent : __dropDownContent,
-            footerContent: __footerContent};
+    footerContent = {Footer : "SoftVision@2017"},
+    options={headerContent ,
+            logoContent, 
+            candidateContent,
+            technicalLevelContent,
+            textAreaContent,
+            dropDownContent,
+            footerContent};
     result.push(NewEvaluationPage(options))
     document.querySelector('#app').innerHTML = result;
 }
