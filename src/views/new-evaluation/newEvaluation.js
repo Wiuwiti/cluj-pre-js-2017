@@ -19,9 +19,6 @@ const candidateDetailsForm = function (option = {}){
 }
 
 
-
-
-
 const technicalLevelPickerHeader = function(option = {}){
     return ` <h3>
         ${option}
