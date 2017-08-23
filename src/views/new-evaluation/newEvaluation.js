@@ -7,36 +7,25 @@ const NAV = function (option = {}, logo = {}){
 }
 
 const logoButton = function(option = {}){
-    console.log(option.Link)
     return `
     <li class="header-elements">
-        <img class= "main-logo" src="${option.Link}" alt="${option.Alt}">
+        <img class= "main-logo" src="${option.link}" alt="${option.alt}">
     </li>`
 }
 
-const buttonNav = function(option={}, active="" , specialPlacement = ""){
+const buttonNav = function(option={}){
     return `
-    <li class="header-elements ${specialPlacement}">
-        <a class = "header-elements-link header-elements-linkT ${active} " href="${option.Link}"> ${option.Text}</a>
+    <li class="header-elements ${option.rightSidedButton}">
+        <a class = "header-elements-link header-elements-linkT ${option.activePage} " href="${option.link}"> ${option.text}</a>
     </li>
     `
 }
 
 
 const constructNav = function(option = {}){
-    const   currentPage = "NewEvaluationv2.html", 
-            specialPlacement = "Loginv2.html",
-            result =[];
+    const result =[];
     for(var i=0;i<option.length;i++){
-        if(option[i].Link === currentPage){
-            result.push(buttonNav(option[i], "active-page"))
-        }else{ 
-            if(option[i].Link === specialPlacement){
-                result.push(buttonNav(option[i], "", "right-button"))
-            }else{
-                result.push(buttonNav(option[i]))
-            }
-        }
+        result.push(buttonNav(option[i]))
     }
     return result.join('')
 }
@@ -147,7 +136,6 @@ const textAreaBox = function(option = {}){
 }
 const textArea = function (option = {}){
     const result = []
-    console.log(option)
     for(var i=0;i<option.length;i++){
         result.push(textAreaBox(option[i]))
     }
@@ -159,7 +147,7 @@ const selectConstructor = function(option= {}){
     const result = []
     result.push(`<option selected disabled hidden>Evaluation</option>`)
     for (var i=0;i<option.length;i++){
-        result.push(`<option value = "0"> ${option.Values[i]}</option>`)
+        result.push(`<option value = "0"> ${option[i]}</option>`)
     }
     return result.join('')
 }
@@ -171,7 +159,7 @@ const dropDownConstructor = function (option={}, selectContent = {}){
         <li class="legend-box-drop">
             <label for="${option[i].selectName}"> ${option[i].labelTitle}</label>
             <select name="${option[i].selectName}">
-            ${selectConstructor(selectContent[i])}
+            ${selectConstructor(selectContent.Values)}
             </select>
         </li>
         `)
@@ -234,20 +222,26 @@ const NewEvaluationPage = function(option = {}){
 window.onload = function(){
     const result = [];
     __headerContent = [{
-                            Link: "Evaluationv2.html",
-                            Text: "Evaluation"
+                            link: "Evaluationv2.html",
+                            text: "Evaluation",
+                            activePage: "",
+                            rightSidedButton: ""
                         },
                         {
-                            Link: "NewEvaluationv2.html",
-                            Text: "New Evaluation"
+                            link: "NewEvaluationv2.html",
+                            text: "New Evaluation",
+                            activePage: "active-page",
+                            rightSidedButton: ""
                         },
                         {
-                            Link: "Loginv2.html",
-                            Text: "Logout"
+                            link: "Loginv2.html",
+                            text: "Logout",
+                            activePage: "",
+                            rightSidedButton: "right-button"
                         }]
 
-    __logoContent = {Link : "assets/logo-v2.jpg",
-                    Alt: "Company logo"}
+    __logoContent = {link : "assets/logo-v2.jpg",
+                    alt: "Company logo"}
 
     
     __candidateContent= [{
