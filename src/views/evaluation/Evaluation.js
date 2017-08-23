@@ -53,7 +53,16 @@ const tableRows = function (option = {}){
     </tr>`
 }
 
+const insertHeader = function(option = {}){
+    const result = []
+    for(var i=0;i<option.length;i++){
+        result.push(`<th>${option[i]}</th>`)
+    }
+    return result.join('')
+}
+
 const tableHeader = function(option = {}){
+    console.log(option)
     return `
     <colgroup>
         <col class="table-button">
@@ -62,9 +71,7 @@ const tableHeader = function(option = {}){
     </colgroup>
     <tr>
         <th></th>
-        <th>Nume</th>
-        <th>Tehnologie</th>
-        <th>Nivel</th>
+        ${insertHeader(option)}
         <th> </th>
         <th> </th>
     </tr>`
@@ -72,7 +79,7 @@ const tableHeader = function(option = {}){
 
 const tableConstructor = function (option = {}){
     const result = []
-    result.push(tableHeader({}))
+    result.push(tableHeader(option.tHeader))
     for (var i=0;i<option.Nume.length;i++){
          result.push(tableRows({Nume: option.Nume[i], Technology: option.Technology[i], Nivel: option.Nivel[i], ImageLink: option.ImageLink} ))
     }
@@ -94,7 +101,6 @@ const Footer = function(option = {}){
     </footer>`
 }
 const EvaluationPage = function(option ={}){
-    
     return `${NAV(option.hContent)}${tableBody(option.tContent)}${Footer(option.fContent)}`
 }
 
@@ -103,7 +109,9 @@ window.onload = function(){
     tableContent = {Nume : ["Popescu Adrian", "Dragan Roxana" , "Florescu Mihai", "Gheorghe Andrei"], 
                     Technology : ["Javascript", "PHP" , "Javascript", "Ruby"],
                     Nivel : ["Mid 2", "Mid 1", "Junior 3", "Senior 1"], 
-                    ImageLink: "/assets/button.jpg"}
+                    tHeader : ["Nume", "Tehnologie", "Nivel"],
+                    ImageLink: "/assets/button.jpg",
+                    }
     footerContent = {Footer : "SoftVision@2017"}
     headerContent = {Logo : "/assets/logo-v2.jpg",
                     Link: ["Evaluationv2.html", "NewEvaluationv2.html", "Loginv2.html"],
