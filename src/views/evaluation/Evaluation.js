@@ -9,38 +9,26 @@ const NAV = function (option = {}, logo = {}){
 const logoButton = function(option = {}){
     return `
     <li class="header-elements">
-        <img class= "main-logo" src="${option.Link}" alt="${option.Alt}">
+        <img class= "main-logo" src="${option.link}" alt="${option.alt}">
     </li>`
 }
 
-const buttonNav = function(option={}, active="" , specialPlacement = ""){
+const buttonNav = function(option={}){
     return `
-    <li class="header-elements ${specialPlacement}">
-        <a class = "header-elements-link header-elements-linkT ${active} " href="${option.Link}"> ${option.Text}</a>
+    <li class="header-elements ${option.rightSidedButton}">
+        <a class = "header-elements-link header-elements-linkT ${option.activePage} " href="${option.link}"> ${option.text}</a>
     </li>
     `
 }
 
 
 const constructNav = function(option = {}){
-    const   currentPage = "NewEvaluationv2.html", 
-            specialPlacement = "Loginv2.html",
-            result =[];
+    const result =[];
     for(var i=0;i<option.length;i++){
-        if(option[i].Link === currentPage){
-            result.push(buttonNav(option[i], "active-page"))
-        }else{ 
-            if(option[i].Link === specialPlacement){
-                result.push(buttonNav(option[i], "", "right-button"))
-            }else{
-                result.push(buttonNav(option[i]))
-            }
-        }
+        result.push(buttonNav(option[i]))
     }
     return result.join('')
 }
-
-
 
 
 const insertHeader = function(option = {}){
@@ -66,20 +54,35 @@ const tableHeader = function(option = {}){
     </tr>`
 }
 
+const tableRows = function(option = {}){
+    return `
+    <tr class="border-bottom">
+        <td></td>
+        <td>${option.nume}</td>
+        <td>${option.technologie}</td>
+        <td>${option.nivel}</td>
+        <td class="detail-button">Detail</td>
+        <td>
+            <img src="${option.buttonIMG}" alt="More Deatails">
+        </td>
+    </tr>
+    `
+}
 
-const tableConstructor = function (option = {}){
+
+const tableConstructor = function (option ={} , Header ={} ){
     const result = []
-    result.push(tableHeader(option.tHeader))
-    for (var i=0;i<option.Nume.length;i++){
-         result.push(tableRows({Nume: option.Nume[i], Technology: option.Technology[i], Nivel: option.Nivel[i], ImageLink: option.ImageLink} ))
+    result.push(tableHeader(Header))
+    for (var i=0;i<option.length;i++){
+         result.push(tableRows(option[i]))
     }
     return result.join('')
 }
 
-const tableBody = function(option = {}){
+const tableBody = function(option = {}, tableHeader = {}){
     return `
     <table cellspacing="0" cellpadding= "0" class = "tableBlock" >
-        ${tableConstructor(option)}
+        ${tableConstructor(option, tableHeader)}
     </table>
     `
 }
@@ -91,37 +94,69 @@ const Footer = function(option = {}){
     </footer>`
 }
 const EvaluationPage = function(option ={}){
-    return `${NAV(option.headerContent, option.logoContent)}${tableBody(option.tContent)}${Footer(option.footerContent)}`
+    return `${NAV(option.headerContent, option.logoContent)}
+    ${tableBody(option.tableContent, option.tableHeader)}
+    ${Footer(option.footerContent)}`
 }
 
 window.onload = function(){
     const result = [];
-    tableContent = {Nume : ["Popescu Adrian", "Dragan Roxana" , "Florescu Mihai", "Gheorghe Andrei"], 
-                    Technology : ["Javascript", "PHP" , "Javascript", "Ruby"],
-                    Nivel : ["Mid 2", "Mid 1", "Junior 3", "Senior 1"], 
-                    tHeader : ["Nume", "Tehnologie", "Nivel"],
-                    ImageLink: "/assets/button.jpg",
-                    }
-    __footerContent = {Footer : "SoftVision@2017"}
-
     __headerContent = [{
-        Link: "Evaluationv2.html",
-        Text: "Evaluation"
-    },
-    {
-        Link: "NewEvaluationv2.html",
-        Text: "New Evaluation"
-    },
-    {
-        Link: "Loginv2.html",
-        Text: "Logout"
-    }]
+                            link: "Evaluationv2.html",
+                            text: "Evaluation",
+                            activePage: "active-page",
+                            rightSidedButton: ""
+                        },
+                        {
+                            link: "NewEvaluationv2.html",
+                            text: "New Evaluation",
+                            activePage: "",
+                            rightSidedButton: ""
+                        },
+                        {
+                            link: "Loginv2.html",
+                            text: "Logout",
+                            activePage: "",
+                            rightSidedButton: "right-button"
+                        }]
 
+    __logoContent = {link : "assets/logo-v2.jpg",
+                    alt: "Company logo"}
 
-    __logoContent = {Link : "assets/logo-v2.jpg",
-    Alt: "Company logo"}
-
-    option = {tContent : tableContent, footerContent : __footerContent, logoContent : __logoContent, headerContent : __headerContent}
+   
+    __tableHeader = ["Nume", "Technologie", "Nivel"]
+    __tableContent = [
+        {
+            nume: "Popescu Adrian",
+            technologie: "Javascript",
+            nivel: "Mid 2",
+            buttonIMG : "/assets/button.jpg"
+        },
+        {
+            nume: "Dragan Roxana",
+            technologie: "PHP",
+            nivel:"Mid 1",
+            buttonIMG : "/assets/button.jpg"
+        },
+        {
+            nume:"Florescu Mihai",
+            technologie: "Javascript",
+            nivel:"Junior 3",
+            buttonIMG: "/assets/button.jpg"
+        },
+        {
+            nume:"Gheorghe Andrei",
+            technologie: "Ruby",
+            nivel:"Senior 1",
+            buttonIMG : "/assets/button.jpg"
+        }
+    ]
+    __footerContent = {Footer : "SoftVision@2017"}
+    option = {tableContent : __tableContent,
+            tableHeader:__tableHeader, 
+            footerContent : __footerContent, 
+            headerContent : __headerContent,
+            logoContent: __logoContent }
     result.push(EvaluationPage(option))
     document.querySelector('#app').innerHTML = result;
 }
