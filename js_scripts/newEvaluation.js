@@ -7,7 +7,8 @@ const NAV = function (option = {}){
 }
 
 const logoButton = function(option = {}){
-    return `<li class="header-elements">
+    return `
+    <li class="header-elements">
         <img class= "main-logo" src="${option}">
     </li>`
 }
@@ -136,8 +137,8 @@ const technicalLevelPicker = function (option = {}){
 
 const textAreaBox = function(option = {}){
     return `<div class="user-textarea">
-    <h3>${option.HeaderTitle}</h3>
-    <textarea placeholder="${option.Placeholder}"required></textarea>
+        <h3>${option.HeaderTitle}</h3>
+        <textarea placeholder="${option.Placeholder}"required></textarea>
     </div>`
 }
 
@@ -195,11 +196,12 @@ const dropDownSelector = function (option = {}){
 }
 
 const submitButton =function (option = {}){
-    return `<div class= "submit-button">
-    <form action="Evaluation.html">
-        <input  type="submit" name="button" value="Submit">
-    </form>
-</div>`
+    return `
+    <div class= "submit-button">
+        <form action="Evaluation.html">
+            <input  type="submit" name="button" value="Submit">
+        </form>
+    </div>`
 }
 
 const Footer = function(option = {}){
