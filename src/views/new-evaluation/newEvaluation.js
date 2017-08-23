@@ -87,7 +87,7 @@ const constructorTechnicalLevelPicker = function(option = {}){
 const technicalLevelPicker = function (option = {}){
     return `<div class="radio-boxes">
         ${constructorTechnicalLevelPicker(option)}
-    <br>			
+    			
     </div>
 `
 } 
