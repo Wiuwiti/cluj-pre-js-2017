@@ -113,19 +113,3 @@
 }
 
 
-/*-----------------   Footer -----------------*/
-
-.footer{
-  bottom:0;
-  position:fixed;
-  z-index:150;
-  height:35px;
-  width:100%;  
-  padding-bottom: 1em;
-  color:#828384;
-}
-.footerT{
-  background-color: #dfdfdf;
-  text-align: center; 
-  vertical-align: middle;
-}
