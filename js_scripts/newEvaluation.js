@@ -150,303 +150,51 @@ const textArea = function (option = {}){
     return result.join('')
 }
 
+
+const selectConstructor = function(option= {}){
+    const result = []
+    result.push(`<option selected disabled hidden>Evaluation</option>`)
+    for (var i=0;i<option.Values.length;i++){
+        result.push(`<option value = "0"> ${option.Values[i]}</option>`)
+    }
+    return result.join('')
+}
+
+const dropDownConstructor = function (option={}){
+    const result = []
+    for (var i=0;i<option.selectName.length;i++){
+        result.push(`
+        <li class="legend-box-drop">
+            <label for="${option.selectName[i]}"> ${option.labelTitle[i]}</label>
+            <select name="${option.selectName[i]}">
+            ${selectConstructor(option.sContent)}
+            </select>
+        </li>
+        `)
+    }
+    return result.join('')
+}
+
 const newEvaluationForm = function (option = {}){
-    return `<form class="legend-box">
-    <fieldset>
-        <legend>OOP, Design Patterns</legend>
-        <ul class="legend-box-list">
-            <li class="legend-box-drop">
-                <label for="Classes" >Classes</label>
-                <select name="Classes" >
-                    <option selected disabled hidden>Evaluation</option>
-                    <option value = "0"> 0</option>
-                    <option value = "1"> 1</option>
-                    <option value = "2"> 2</option>
-                    <option value = "3"> 3</option>
-                </select>
-            </li>
+    var result = []
+    for(var i=0;i<option.Data.length;i++){
+        result.push(`<form class="legend-box" id="${option.boxID[i]}">
+        <fieldset>
+            <legend>${option.Title[i]}</legend>
+            <ul class="legend-box-list">
+                ${dropDownConstructor(option.Data[i])}
+            </ul>
+        </fieldset>
+    </form>`)
+    }
+    const Nresult = result.join('')
 
-            <li class="legend-box-drop">
-            <label for="Exception handling" >Exception handling</label>
-                <select name="Exception handling" >
-                    <option selected disabled hidden>Evaluation</option>
-                    <option value = "0"> 0</option>
-                    <option value = "1"> 1</option>
-                    <option value = "2"> 2</option>
-                    <option value = "3"> 3</option>
-                </select>
-            </li>
 
-            <li class="legend-box-drop">
-                <label for="Version Control" >Version Control</label>
-                <select name="Version Control" >
-                    <option selected disabled hidden>Evaluation</option>
-                    <option value = "0"> 0</option>
-                    <option value = "1"> 1</option>
-                    <option value = "2"> 2</option>
-                    <option value = "3"> 3</option>
-                </select>
-            </li>
-
-            <li class="legend-box-drop">
-                <label for="Access modifiers" >Access modifiers</label>
-                <select name="Access modifiers" >
-                    <option selected disabled hidden>Evaluation</option>
-                    <option value = "0"> 0</option>
-                    <option value = "1"> 1</option>
-                    <option value = "2"> 2</option>
-                    <option value = "3"> 3</option>
-                </select>
-            </li>
-
-            <li class="legend-box-drop">
-                <label for="Design Patterns" >Design Patterns</label>
-                <select name="Design Patterns" >
-                    <option selected disabled hidden>Evaluation</option>
-                    <option value = "0"> 0</option>
-                    <option value = "1"> 1</option>
-                    <option value = "2"> 2</option>
-                    <option value = "3"> 3</option>
-                </select>
-            </li>
-
-            <li class="legend-box-drop">
-                <label for="Issue Tracking" >Issue Tracking</label>
-                <select name="Issue Tracking" >
-                    <option selected disabled hidden>Evaluation</option>
-                    <option value = "0"> 0</option>
-                    <option value = "1"> 1</option>
-                    <option value = "2"> 2</option>
-                    <option value = "3"> 3</option>
-                </select>
-            </li>
-
-            <li class="legend-box-drop">
-                <label for="Polymorphism" >Polymorphism</label>
-                <select name="Polymorphism" >
-                    <option selected disabled hidden>Evaluation</option>
-                    <option value = "0"> 0</option>
-                    <option value = "1"> 1</option>
-                    <option value = "2"> 2</option>
-                    <option value = "3"> 3</option>
-                </select>
-            </li>
-
-            <li class="legend-box-drop">
-                <label for="RegEx" >RegEx</label>
-                <select name="RegEx" >
-                    <option selected disabled hidden>Evaluation</option>
-                    <option value = "0"> 0</option>
-                    <option value = "1"> 1</option>
-                    <option value = "2"> 2</option>
-                    <option value = "3"> 3</option>
-                </select>
-            </li>
-        </ul>
-    </fieldset>
-</form>
-
-<form  class="legend-box" id="HTTP">
-    <fieldset>
-        <legend>HTTP</legend>
-        <ul class = "legend-box-list">
-            <li class="legend-box-drop">
-                <label for="Protocol" >Protocol</label>
-                <select name="Protocol" >
-                    <option selected hidden>Evaluation</option>
-                    <option value = "0"> 0</option>
-                    <option value = "1"> 1</option>
-                    <option value = "2"> 2</option>
-                    <option value = "3"> 3</option>
-                </select>
-            </li>
-
-            <li class="legend-box-drop">
-                <label for="Response codes" >Response codes</label>
-                <select name="Response codes" >
-                    <option selected hidden>Evaluation</option>
-                    <option value = "0"> 0</option>
-                    <option value = "1"> 1</option>
-                    <option value = "2"> 2</option>
-                    <option value = "3"> 3</option>
-                </select>
-            </li>
-
-            <li class="legend-box-drop">
-                <label for="REST" >REST</label>
-                <select name="REST" >
-                    <option selected hidden>Evaluation</option>
-                    <option value = "0"> 0</option>
-                    <option value = "1"> 1</option>
-                    <option value = "2"> 2</option>
-                    <option value = "3"> 3</option>
-                </select>
-            </li>
-
-            <li class="legend-box-drop">
-                <label for="Headers" >Headers</label>
-                <select name="Headers" >
-                    <option selected hidden>Evaluation</option>
-                    <option value = "0"> 0</option>
-                    <option value = "1"> 1</option>
-                    <option value = "2"> 2</option>
-                    <option value = "3"> 3</option>
-                </select>
-            </li>
-
-            <li class="legend-box-drop">
-                <label for="Request methods" >Request methods</label>
-                <select name="Request methods" >
-                    <option selected hidden>Evaluation</option>
-                    <option value = "0"> 0</option>
-                    <option value = "1"> 1</option>
-                    <option value = "2"> 2</option>
-                    <option value = "3"> 3</option>
-                </select>
-            </li>
-
-            <li class="legend-box-drop">
-                <label for="Issue Tracking" >Sessions &#38; Cookies</label>
-                <select name="Issue Tracking" >
-                    <option selected hidden>Evaluation</option>
-                    <option value = "0"> 0</option>
-                    <option value = "1"> 1</option>
-                    <option value = "2"> 2</option>
-                    <option value = "3"> 3</option>
-                </select>
-            </li>
+    return `${Nresult}
 
 
 
 
-        </ul>
-    </fieldset>
-</form>
-
-<form  class="legend-box" id="HTML">
-    <fieldset>
-        <legend>HTML</legend>
-        <ul class="legend-box-list">
-            <li class="legend-box-drop">
-                <label for="Doctype" >Doctype</label>
-                <select name="Doctype" >
-                    <option selected hidden>Evaluation</option>
-                    <option value = "0"> 0</option>
-                    <option value = "1"> 1</option>
-                    <option value = "2"> 2</option>
-                    <option value = "3"> 3</option>
-                </select>
-            </li>
-
-            <li class="legend-box-drop">
-                <label for="Tags" >Tags</label>
-                <select name="Tags" >
-                    <option selected hidden>Evaluation</option>
-                    <option value = "0"> 0</option>
-                    <option value = "1"> 1</option>
-                    <option value = "2"> 2</option>
-                    <option value = "3"> 3</option>
-                </select>
-            </li>
-
-            <li class="legend-box-drop">
-                <label for="Basic SEO" >Basic SEO</label>
-                <select name="Basic SEO" >
-                    <option selected hidden>Evaluation</option>
-                    <option value = "0"> 0</option>
-                    <option value = "1"> 1</option>
-                    <option value = "2"> 2</option>
-                    <option value = "3"> 3</option>
-                </select>
-            </li>
-
-            <li class="legend-box-drop">
-                <label for="Syntax rules" >Syntax rules</label>
-                <select name="Syntax rules" >
-                    <option selected hidden>Evaluation</option>
-                    <option value = "0"> 0</option>
-                    <option value = "1"> 1</option>
-                    <option value = "2"> 2</option>
-                    <option value = "3"> 3</option>
-                </select>
-            </li>
-        </ul>
-    </fieldset>
-</form>
-
-
-<form  class="legend-box" id="CSS">
-    <fieldset>
-        <legend>CSS</legend>
-        <ul class="legend-box-list">
-            <li class="legend-box-drop">
-                <label for="Usage" >Usage</label>
-                <select name="Usage" >
-                    <option selected hidden>Evaluation</option>
-                    <option value = "0"> 0</option>
-                    <option value = "1"> 1</option>
-                    <option value = "2"> 2</option>
-                    <option value = "3"> 3</option>
-                </select>
-            </li>
-
-            <li class="legend-box-drop">
-                <label for="Box Modeling" >Box Modeling</label>
-                <select name="Box Modeling" >
-                    <option selected hidden>Evaluation</option>
-                    <option value = "0"> 0</option>
-                    <option value = "1"> 1</option>
-                    <option value = "2"> 2</option>
-                    <option value = "3"> 3</option>
-                </select>
-            </li>
-
-            <li class="legend-box-drop">
-                <label for="CSS 3.0" >CSS 3.0</label>
-                <select name="CSS 3.0" >
-                    <option selected hidden>Evaluation</option>
-                    <option value = "0"> 0</option>
-                    <option value = "1"> 1</option>
-                    <option value = "2"> 2</option>
-                    <option value = "3"> 3</option>
-                </select>
-            </li>
-
-            <li class="legend-box-drop">
-                <label for="Selectors" >Selectors</label>
-                <select name="Selectors" >
-                    <option selected hidden>Evaluation</option>
-                    <option value = "0"> 0</option>
-                    <option value = "1"> 1</option>
-                    <option value = "2"> 2</option>
-                    <option value = "3"> 3</option>
-                </select>
-            </li>
-
-            <li class="legend-box-drop">
-                <label for="Styling" >Styling</label>
-                <select name="Styling" >
-                    <option selected hidden>Evaluation</option>
-                    <option value = "0"> 0</option>
-                    <option value = "1"> 1</option>
-                    <option value = "2"> 2</option>
-                    <option value = "3"> 3</option>
-                </select>
-            </li>
-
-            <li class="legend-box-drop">
-                <label for="Dynamic Stylesheets" >Dynamic Stylesheets</label>
-                <select name="Dynamic Stylesheets" >
-                    <option selected hidden>Evaluation</option>
-                    <option value = "0"> 0</option>
-                    <option value = "1"> 1</option>
-                    <option value = "2"> 2</option>
-                    <option value = "3"> 3</option>
-                </select>
-            </li>
-        </ul>
-    </fieldset>
-</form>
 
 
 <form  class="legend-box" id="DesignPaterns">
@@ -715,11 +463,12 @@ const Footer = function(option = {}){
 }
 
 const PageGrid = function (option = {}){
-    console.log(option.taContent)
     return `	<div class = "mainBlock">
     ${candidateDetailsForm(option.cContent)}
     ${technicalLevelPicker(option.tlContent)}
-    ${textArea(option.taContent)}${newEvaluationForm()}${submitButton()}
+    ${textArea(option.taContent)}
+    ${newEvaluationForm(option.sContent)}
+    ${submitButton()}
     </div>
     `
 }
@@ -748,11 +497,38 @@ window.onload = function(){
                     Placeholder : ["The type of project that is suitable for the candidate &#13;&#10;Is guidance requiredd for the candidate",
                                 "*required", 
                                 "Describe the enviroment in which the candidate works. &#13;&#10;Describe ani guidance or management experience."]}
-
+    selectContent = {Values: ["0", "1", "2", "3"]
+    }
+    dropDownContent = {Data: [{sContent : selectContent,
+                    selectName : ["Classes", "Exception handling", "Version Control", "Access modifiers",
+                                "Design Patterns", "Issue Tracking", "Polymorphism", "RegEx"],
+                    labelTitle : ["Classes", "Exception handling", "Version Control", "Access modifiers",
+                                "Design Patterns", "Issue Tracking", "Polymorphism", "RegEx"]},
+                        {
+                            sContent: selectContent,
+                            selectName :["Protocol","Response codes","REST","Headers","Request methods", "Issue Tracking",
+                                        ],
+                            labelTitle :["Protocol","Response codes","REST","Headers","Request methods", "Sessions &#38; Cookies",
+                                        ]
+                        },
+                        {
+                            sContent:selectContent,
+                            selectName:["Doctype","Tags","Basic SEO","Syntax rules"],
+                            labelTitle:["Doctype","Tags","Basic SEO","Syntax rules"]
+                        },
+                        {
+                            sContent:selectContent,
+                            selectName:["Usage","Box Modeling","CSS 3.0","Selectors","Styling","Dynamic Stylesheets"],
+                            labelTitle:["Usage","Box Modeling","CSS 3.0","Selectors","Styling","Dynamic Stylesheets"]
+                        }
+                ],
+                    Title : ["OOP, Design Patterns", "HTTP","HTML","CSS"],
+                    boxID : ["OOP", "HTTP", "HTML","CSS"]}
     option = {hContent : headerContent, 
         cContent : candidateContent,
         tlContent : technicalLevelContent,
-        taContent: textAreaContent}
+        taContent: textAreaContent,
+        sContent : dropDownContent}
     result.push(NewEvaluationPage(option))
     document.querySelector('#app').innerHTML = result;
 }
