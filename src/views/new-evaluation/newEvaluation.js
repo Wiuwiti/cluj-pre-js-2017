@@ -1,15 +1,16 @@
-const NAV = function (option = {}){
+const NAV = function (option = {}, logo = {}){
     return `
     <ul class="header headerT">
-        ${logoButton(option.Logo)}
+        ${logoButton(logo)}
         ${constructNav(option)}
     </ul>`
 }
 
 const logoButton = function(option = {}){
+    console.log(option.Link)
     return `
     <li class="header-elements">
-        <img class= "main-logo" src="${option}">
+        <img class= "main-logo" src="${option.Link}" alt="${option.Alt}">
     </li>`
 }
 
@@ -23,33 +24,32 @@ const buttonNav = function(option={}, active="" , specialPlacement = ""){
 
 
 const constructNav = function(option = {}){
-    const currentPage = "NewEvaluationv2.html", result =[], specialPlacement = "Loginv2.html";
-    for(var i=0;i<option.Link.length;i++){
-        if(option.Link[i] === currentPage){
-            result.push(buttonNav({Link: option.Link[i], Text: option.Text[i]}, "active-page"))
+    const   currentPage = "NewEvaluationv2.html", 
+            specialPlacement = "Loginv2.html",
+            result =[];
+    for(var i=0;i<option.length;i++){
+        if(option[i].Link === currentPage){
+            result.push(buttonNav(option[i], "active-page"))
         }else{ 
-            if(option.Link[i] === specialPlacement){
-                result.push(buttonNav({Link: option.Link[i], Text: option.Text[i]}, "", "right-button"))
+            if(option[i].Link === specialPlacement){
+                result.push(buttonNav(option[i], "", "right-button"))
             }else{
-                result.push(buttonNav({Link: option.Link[i], Text: option.Text[i]}))
+                result.push(buttonNav(option[i]))
             }
         }
-        
     }
     return result.join('')
 }
 
 const candidateLine = function(option = {}){
     return `
-    <input class="input-candidate" type="${option.DataType}" name="${option.InputName}" autocomplete="on" placeholder="${option.PlaceHolder}" required />
+    <input class="input-candidate" type="${option.dataType}" name="${option.inputName}" autocomplete="on" placeholder="${option.placeHolder}" required />
     `
 }
 const constructDetailsForm = function(option = {}){
     const result = [];
-    for(var i=0;i<option.DataType.length;i++){
-        result.push(candidateLine({DataType : option.DataType[i],
-                                InputName: option.InputName[i],
-                                PlaceHolder: option.PlaceHolder[i]}))
+    for(var i=0;i<option.length;i++){
+        result.push(candidateLine(option[i]))
     }
     return result.join('')
 }
@@ -60,6 +60,10 @@ const candidateDetailsForm = function (option = {}){
     ${constructDetailsForm(option)}
     </form>`
 }
+
+
+
+
 
 const technicalLevelPickerHeader = function(option = {}){
     return ` <h3>
@@ -126,27 +130,26 @@ const constructorTechnicalLevelPicker = function(option = {}){
     ${technicalLevelPickerBottom({})}
     `
 }
-
 const technicalLevelPicker = function (option = {}){
     return `<div class="radio-boxes">
-   ${constructorTechnicalLevelPicker(option)}
+        ${constructorTechnicalLevelPicker(option)}
     <br>			
     </div>
 `
 } 
 
+
 const textAreaBox = function(option = {}){
     return `<div class="user-textarea">
-        <h3>${option.HeaderTitle}</h3>
-        <textarea placeholder="${option.Placeholder}"required></textarea>
+        <h3>${option.headerTitle}</h3>
+        <textarea placeholder="${option.placeHolder}"required></textarea>
     </div>`
 }
-
-
 const textArea = function (option = {}){
     const result = []
-    for(var i=0;i<option.HeaderTitle.length;i++){
-        result.push(textAreaBox({HeaderTitle: option.HeaderTitle[i], Placeholder: option.Placeholder[i]}))
+    console.log(option)
+    for(var i=0;i<option.length;i++){
+        result.push(textAreaBox(option[i]))
     }
     return result.join('')
 }
@@ -155,20 +158,20 @@ const textArea = function (option = {}){
 const selectConstructor = function(option= {}){
     const result = []
     result.push(`<option selected disabled hidden>Evaluation</option>`)
-    for (var i=0;i<option.Values.length;i++){
+    for (var i=0;i<option.length;i++){
         result.push(`<option value = "0"> ${option.Values[i]}</option>`)
     }
     return result.join('')
 }
 
-const dropDownConstructor = function (option={}){
+const dropDownConstructor = function (option={}, selectContent = {}){
     const result = []
-    for (var i=0;i<option.selectName.length;i++){
+    for (var i=0;i<option.length;i++){
         result.push(`
         <li class="legend-box-drop">
-            <label for="${option.selectName[i]}"> ${option.labelTitle[i]}</label>
-            <select name="${option.selectName[i]}">
-            ${selectConstructor(option.sContent)}
+            <label for="${option[i].selectName}"> ${option[i].labelTitle}</label>
+            <select name="${option[i].selectName}">
+            ${selectConstructor(selectContent[i])}
             </select>
         </li>
         `)
@@ -178,12 +181,12 @@ const dropDownConstructor = function (option={}){
 
 const newEvaluationForm = function (option = {}){
     var result = []
-    for(var i=0;i<option.Data.length;i++){
-        result.push(`<form class="legend-box" id="${option.boxID[i]}">
+    for(var i=0;i<option.length;i++){
+        result.push(`<form class="legend-box" id="${option[i].boxID}">
         <fieldset>
-            <legend>${option.Title[i]}</legend>
+            <legend>${option[i].Title}</legend>
             <ul class="legend-box-list">
-                ${dropDownConstructor(option.Data[i])}
+                ${dropDownConstructor(option[i].selectBox, option[i].selectContent)}
             </ul>
         </fieldset>
     </form>`)
@@ -213,90 +216,298 @@ const Footer = function(option = {}){
 
 const PageGrid = function (option = {}){
     return `	<div class = "mainBlock">
-    ${candidateDetailsForm(option.cContent)}
-    ${technicalLevelPicker(option.tlContent)}
-    ${textArea(option.taContent)}
-    ${newEvaluationForm(option.sContent)}
+    ${candidateDetailsForm(option.candidateContent)}
+    ${technicalLevelPicker(option.technicalLevelContent)}
+    ${textArea(option.textAreaContent)}
+    ${newEvaluationForm(option.dropDownContent)}
     ${submitButton()}
     </div>
     `
 }
 const NewEvaluationPage = function(option = {}){
-    return `${NAV(option.hContent)}
+    return `${NAV(option.headerContent, option.logoContent)}
     ${PageGrid(option)}
-    ${Footer(option.fContent)}`
+    ${Footer(option.footerContent)}`
 }
 
 
 window.onload = function(){
     const result = [];
-    headerContent = {Logo : "/assets/logo-v2.jpg",
-                    Link: ["Evaluationv2.html", "NewEvaluationv2.html", "Loginv2.html"],
-                    Text: ["Evaluation", "New Evaluation", "Logout"]}
-    candidateContent = {InputName :["Candidate", "Interviewer", "Date"],
-                        PlaceHolder: ["Candidate", "Interviewer", "dd/mm/yyyy"],
-                        DataType :["text", "text", "date"]
-                    }
-    technicalLevelContent = {HeaderTitle : "Technical Level",
+    __headerContent = [{
+                            Link: "Evaluationv2.html",
+                            Text: "Evaluation"
+                        },
+                        {
+                            Link: "NewEvaluationv2.html",
+                            Text: "New Evaluation"
+                        },
+                        {
+                            Link: "Loginv2.html",
+                            Text: "Logout"
+                        }]
+
+    __logoContent = {Link : "assets/logo-v2.jpg",
+                    Alt: "Company logo"}
+
+    
+    __candidateContent= [{
+                            inputName : "Candidate",
+                            placeHolder : "Candidate",
+                            dataType : "text"
+                        },
+                        {
+                            inputName: "Interviewer",
+                            placeHolder: "Interviewer",
+                            dataType: "text"
+                        },
+                        {
+                            inputName: "Date",
+                            placeHolder: "dd/mm/yyyy",
+                            dataType: "date"
+                        }]
+
+    __textAreaContent = [{
+                            headerTitle : "Should the candidate be hired?",
+                            placeHolder : "The type of project that is suitable for the candidate &#13;&#10;Is guidance requiredd for the candidate"
+                        },
+                        {
+                            headerTitle : "General Impression",
+                            placeHolder : "*required"
+                        },
+                        {
+                            headerTitle : "Workflow, Leadership &#38; Soft Skills",
+                            placeHolder : "Describe the enviroment in which the candidate works. &#13;&#10;Describe ani guidance or management experience."
+                        }]
+
+
+    __technicalLevelContent = {HeaderTitle : "Technical Level",
                             Titles : ["Junior", "Middle", "Senior"]
     }
-    textAreaContent = {HeaderTitle: ["Should the candidate be hired?",
-                                    "General Impression",
-                                    "Workflow, Leadership &#38; Soft Skills"],
-                    Placeholder : ["The type of project that is suitable for the candidate &#13;&#10;Is guidance requiredd for the candidate",
-                                "*required", 
-                                "Describe the enviroment in which the candidate works. &#13;&#10;Describe ani guidance or management experience."]}
-    selectContent = {Values: ["0", "1", "2", "3"]}
-    dropDownContent = {Data: [
+    __selectContent = {Values: ["0", "1", "2", "3"]}
+    __dropDownContent = [
                         {
-                            sContent : selectContent,
-                            selectName : ["Classes", "Exception handling", "Version Control", "Access modifiers",
-                                        "Design Patterns", "Issue Tracking", "Polymorphism", "RegEx"],
-                            labelTitle : ["Classes", "Exception handling", "Version Control", "Access modifiers",
-                                    "Design Patterns", "Issue Tracking", "Polymorphism", "RegEx"]
+                            selectContent: __selectContent,
+                            selectBox:[{
+                                            selectName:"Classes",
+                                            labelTitle:"Classes"
+                                        },
+                                        {
+                                            selectName:"Exception handling",
+                                            labelTitle:"Exception handling"
+                                        },
+                                        {
+                                            selectName:"Version Control",
+                                            labelTitle:"Version Control"
+                                        },
+                                        {
+                                            selectName:"Access modifiers",
+                                            labelTitle:"Access modifiers"
+                                        },
+                                        {
+                                            selectName:"Design Patterns",
+                                            labelTitle:"Design Patterns"
+                                        },
+                                        {
+                                            selectName:"Issue Tracking",
+                                            labelTitle:"Issue Tracking"
+                                        },
+                                        {
+                                            selectName:"Polymorphism",
+                                            labelTitle:"Polymorphism"
+                                        },
+                                        {
+                                            selectName:"RegEx",
+                                            labelTitle:"RegEx"
+                                        }],
+                            Title:"OOP, Design Patterns",
+                            boxID: "OOP"
                         },
                         {
-                            sContent: selectContent,
-                            selectName :["Protocol","Response codes","REST","Headers","Request methods", "Issue Tracking",
-                                        ],
-                            labelTitle :["Protocol","Response codes","REST","Headers","Request methods", "Sessions &#38; Cookies",
-                                        ]
+                            selectContent: __selectContent,
+                            selectBox:[{
+                                            selectName:"Protocol",
+                                            labelTitle:"Protocol"
+                                        },
+                                        {
+                                            selectName:"Response codes",
+                                            labelTitle:"Response codes"
+                                        },
+                                        {
+                                            selectName:"REST",
+                                            labelTitle:"REST"
+                                        },
+                                        {
+                                            selectName:"Headers",
+                                            labelTitle:"Headers"
+                                        },
+                                        {
+                                            selectName:"Request methods",
+                                            labelTitle:"Request methods"
+                                        },
+                                        {
+                                            selectName:"Issue Tracking",
+                                            labelTitle:"Sessions &#38; Cookies"
+                                        }],
+                            Title: "HTTP",
+                            boxID: "HTTP"
                         },
                         {
-                            sContent:selectContent,
-                            selectName:["Doctype","Tags","Basic SEO","Syntax rules"],
-                            labelTitle:["Doctype","Tags","Basic SEO","Syntax rules"]
+                            selectContent: __selectContent,
+                            selectBox:[{
+                                            selectName:"Doctype",
+                                            labelTitle:"Doctype"
+                                        },
+                                        {
+                                            selectName:"Tags",
+                                            labelTitle:"Tags"
+                                        },
+                                        {
+                                            selectName:"Basic SEO",
+                                            labelTitle:"Basic SEO"
+                                        },
+                                        {
+                                            selectName:"Syntax Rules",
+                                            labelTitle:"Syntax Rules"
+                                        }],
+                            Title: "HTML",
+                            boxID: "HTML"
+                        },
+
+                        {
+                            selectContent: __selectContent,
+                            selectBox:[{
+                                            selectName:"Usage",
+                                            labelTitle:"Protocol"
+                                        },
+                                        {
+                                            selectName:"Box Modeling",
+                                            labelTitle:"Box Modeling"
+                                        },
+                                        {
+                                            selectName:"CSS 3.0",
+                                            labelTitle:"CSS 3.0"
+                                        },
+                                        {
+                                            selectName:"Selectors",
+                                            labelTitle:"Selectors"
+                                        },
+                                        {
+                                            selectName:"Styling",
+                                            labelTitle:"Styling"
+                                        },
+                                        {
+                                            selectName:"Dynamic Stylesheets",
+                                            labelTitle:"Dynamic Stylesheets"
+                                        }],
+                            Title: "CSS",
+                            boxID: "CSS"
                         },
                         {
-                            sContent:selectContent,
-                            selectName:["Usage","Box Modeling","CSS 3.0","Selectors","Styling","Dynamic Stylesheets"],
-                            labelTitle:["Usage","Box Modeling","CSS 3.0","Selectors","Styling","Dynamic Stylesheets"]
+                            selectContent: __selectContent,
+                            selectBox:[{
+                                            selectName:"Date types",
+                                            labelTitle:"Date types"
+                                        },
+                                        {
+                                            selectName:"Object manipulation",
+                                            labelTitle:"Object manipulation"
+                                        },
+                                        {
+                                            selectName:"DOM manipulation",
+                                            labelTitle:"DOM manipulation"
+                                        },
+                                        {
+                                            selectName:"Functions",
+                                            labelTitle:"Functions"
+                                        },
+                                        {
+                                            selectName:"Templating",
+                                            labelTitle:"Templating"
+                                        },
+                                        {
+                                            selectName:"Issue Tracking",
+                                            labelTitle:"Issue Tracking"
+                                        },
+                                        {
+                                            selectName:"Event Handling",
+                                            labelTitle:"Event Handling"
+                                        },
+                                        {
+                                            selectName:"Prototype",
+                                            labelTitle:"Prototype &#38; OOP"
+                                        },
+                                        {
+                                            selectName:"Testing",
+                                            labelTitle:"Testing(unit, E2E)"
+                                        },
+                                        {
+                                            selectName:"AJAX",
+                                            labelTitle:"AJAX"
+                                        },
+                                        {
+                                            selectName:"Debugging",
+                                            labelTitle:"Debugging"
+                                        },
+                                        {
+                                            selectName:"Websockets",
+                                            labelTitle:"Websockets"
+                                        },
+                                        {
+                                            selectName:"Tooling",
+                                            labelTitle:"Tooling"
+                                        },
+                                        {
+                                            selectName:"Libraries",
+                                            labelTitle:"Libraries"
+                                        },
+                                        {
+                                            selectName:"Promisses",
+                                            labelTitle:"Promisses"
+                                        },
+                                        {
+                                            selectName:"Browser Engines",
+                                            labelTitle:"Browser Engines"
+                                        },
+                                        {
+                                            selectName:"Frameworks",
+                                            labelTitle:"Frameworks"
+                                        }
+                                    ],
+                            Title:"OOP, Design Patterns",
+                            boxID: "OOP"
                         },
                         {
-                            sContent:selectContent,
-                            selectName:["Date types","Object manipulation","DOM manipulation","Functions","Templating",
-                                        "Issue Tracking","Event Handling","Prototype","Testing","AJAX","Dubugging","Websockets"
-                                        ,"Tooling","Libraries","Promisses","Browser Engines","Frameworks"],
-                            labelTitle:["Date types &#38; variables","Object manipulation","DOM manipulation","Functions","Templating",
-                                        "Issue Tracking","Event Handling","Prototype &#38; OOP","Testing(unit, E2E)","AJAX","Dubugging",
-                                        "Websockets","Tooling","Libraries","Promisses","Browser Engines","Frameworks"]
-                        },
-                        {
-                            sContent:selectContent,
-                            selectName:["Backend frameworks","Templating","DOM Manipulation","Unit Testing"],
-                            labelTitle:["Backend frameworks","Templating","DOM Manipulation","Unit Testing"]
+                            selectContent: __selectContent,
+                            selectBox:[{
+                                            selectName:"Backend frameworks",
+                                            labelTitle:"Backend frameworks"
+                                        },
+                                        {
+                                            selectName:"Templating",
+                                            labelTitle:"Templating"
+                                        },
+                                        {
+                                            selectName:"DOM Manipulation",
+                                            labelTitle:"DOM Manipulation"
+                                        },
+                                        {
+                                            selectName:"Unit Testing",
+                                            labelTitle:"Unit Testing"
+                                        }],
+                            Title:"NodeJS",
+                            boxID:"NodeJS"
                         }
-                ],
-                    Title : ["OOP, Design Patterns", "HTTP","HTML","CSS","Javascript","NodeJS"],
-                    boxID : ["OOP", "HTTP", "HTML","CSS","Javascript","NodeJS"]}
+                        ]
+                   
     
-        footerContent = {Footer : "SoftVision@2017"}
-        option = {hContent : headerContent, 
-        cContent : candidateContent,
-        tlContent : technicalLevelContent,
-        taContent: textAreaContent,
-        sContent : dropDownContent,
-        fContent: footerContent}
-    result.push(NewEvaluationPage(option))
+    __footerContent = {Footer : "SoftVision@2017"}
+    options={headerContent : __headerContent,
+            logoContent: __logoContent, 
+            candidateContent : __candidateContent,
+            technicalLevelContent : __technicalLevelContent,
+            textAreaContent: __textAreaContent,
+            dropDownContent : __dropDownContent,
+            footerContent: __footerContent}
+    result.push(NewEvaluationPage(options))
     document.querySelector('#app').innerHTML = result;
 }

@@ -39,19 +39,7 @@ const constructNav = function(option = {}){
     return result.join('')
 }
 
-const tableRows = function (option = {}){
-    return `
-    <tr>
-        <td></td>
-        <td>${option.Nume}</td>
-        <td>${option.Technology}</td>
-        <td>${option.Nivel}</td>
-        <td class="detail-button">Detail</td>
-        <td>
-            <img src="${option.ImageLink}" alt="More Deatails">
-        </td>
-    </tr>`
-}
+
 
 const insertHeader = function(option = {}){
     const result = []
@@ -62,7 +50,6 @@ const insertHeader = function(option = {}){
 }
 
 const tableHeader = function(option = {}){
-    console.log(option)
     return `
     <colgroup>
         <col class="table-button">
@@ -76,6 +63,7 @@ const tableHeader = function(option = {}){
         <th> </th>
     </tr>`
 }
+
 
 const tableConstructor = function (option = {}){
     const result = []

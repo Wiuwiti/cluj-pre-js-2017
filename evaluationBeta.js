@@ -84,3 +84,9 @@ window.onload = function(){
     const appEl = document.querySelector("#app");
     appEl.innerHTML = Evaluation();
 }
+
+
+
+const towsElements= options.items.map(function(rowObj)){
+    
+}_
