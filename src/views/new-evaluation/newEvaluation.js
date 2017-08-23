@@ -5,7 +5,7 @@ const candidateLine = function(option = {}){
 }
 const constructDetailsForm = function(option = {}){
     const result = [];
-    for(var i=0;i<option.length;i++){
+    for(var i = 0; i < option.length; i++){
         result.push(candidateLine(option[i]))
     }
     return result.join('')
@@ -28,7 +28,7 @@ const technicalLevelPickerHeader = function(option = {}){
 
 const technicalLevelPickerTop = function(option = {}){
     const result = []
-    for(var i=0;i<option.length;i++){
+    for(var i = 0; i < option.length; i++){
         result.push(`<li class="R2" >${option[i]}</li>`)
     }    
     const Nresult = result.join('')
@@ -134,7 +134,7 @@ const dropDownConstructor = function (option={}, selectContent = {}){
 
 const newEvaluationForm = function (option = {}){
     var result = []
-    for(var i = 0;i < option.length; i++){
+    for(var i = 0; i < option.length; i++){
         result.push(`<form class="legend-box" id="${option[i].boxID}">
         <fieldset>
             <legend>${option[i].Title}</legend>

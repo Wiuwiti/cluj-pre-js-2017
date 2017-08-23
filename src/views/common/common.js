@@ -32,7 +32,7 @@ const buttonNav = function(option={}){
 
 const constructNav = function(option = {}){
     const result =[];
-    for(var i=0;i<option.length;i++){
+    for(var i = 0; i < option.length; i++){
         result.push(buttonNav(option[i]))
     }
     return result.join('')

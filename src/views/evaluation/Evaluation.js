@@ -1,6 +1,6 @@
 const insertHeader = function(option = {}){
     const result = []
-    for(var i=0;i<option.length;i++){
+    for(var i = 0;i < option.length; i++){
         result.push(`<th>${option[i]}</th>`)
     }
     return result.join('')
@@ -40,7 +40,7 @@ const tableRows = function(option = {}){
 const tableConstructor = function (option ={} , Header ={} ){
     const result = []
     result.push(tableHeader(Header))
-    for (var i=0;i<option.length;i++){
+    for (var i = 0; i < option.length; i++){
          result.push(tableRows(option[i]))
     }
     return result.join('')
