@@ -4,10 +4,7 @@ const CandidateLine = (option = {}) =>
     `
 
 const ConstructDetailsForm = function(option = {}){
-    const result = option.map(function (element){
-        return CandidateLine(element)
-    })
-    return result.join('')
+    return option.map((element) => CandidateLine(element)).join('')
 }
 
 
@@ -29,34 +26,28 @@ const TechnicalLevelPickerHeader = function(option = {}){
 
 
 const TechnicalLevelPickerTop = function(option = {}){
-    const result = []
-    for(var i = 0; i < option.headers.length; i++){
-        result.push(`<li class="${option.classes[i]}" id="${option.ID[i]}">${option.headers[i]}</li>`)
-    }    
+    const result = option.headers.map((element, i) => `<li class="${option.classes[i]}" id="${option.ID[i]}">${element}</li>`).join('') 
     return `<ul class="top-list-radio" >
         <li id="placeHolder"></li>
-            ${result.join('')}
+            ${result}
         <li id="extra"></li>
         <div class="clearfix"></div>
     </ul>`
 }
 
 const TechnicalLevelPickerBottomSection = function (option = {}){
-    const result = option.inputLevel.map(function (element , i ){
-        return `
-        <li class = "${option.classes[i]}" id ="${option.ID[i]}">
-            <input type="radio" name="level" value = "${option.inputLevel[i]}">
-        </li>`
-    }).join('')
-    return result
+    return option.inputLevel.map((element , i ) => `
+    <li class = "${option.classes[i]}" id ="${option.ID[i]}">
+        <input type="radio" name="level" value = "${element}">
+    </li>`).join('')
 }
 
 
 const TechnicalLevelPickerBottom = function (option = {}){
-    let result = option.map(function(element){return TechnicalLevelPickerBottomSection(element)})
+    const result = option.map((element) => TechnicalLevelPickerBottomSection(element)).join('')
     return ` 
     <ul class="down-list-radio">
-        ${result.join('')}
+        ${result}
         <div class="clearfix"></div>
     </ul>`
 }
@@ -82,52 +73,38 @@ const TextAreaBox = function(option = {}){
     </div>`
 }
 const TextArea = function (option = {}){
-    const result = []
-    for(var i = 0 ; i < option.length; i++){
-        result.push(TextAreaBox(option[i]))
-    }
-    return result.join('')
+    return option.map((element) => TextAreaBox(element)).join('')
 }
 
 
 const SelectConstructor = function(option= {}){
     const result = []
     result.push(`<option selected disabled hidden>Evaluation</option>`)
-    for (var i = 0; i < option.length; i++){
-        result.push(`<option value = "0"> ${option[i]}</option>`)
-    }
+    result.push(option.map((element) =>  `<option value = "0"> ${element}</option>`).join(''))
     return result.join('')
 }
 
 
 const DropDownConstructor = function (option={}, selectContent = {}){
-    const result = []
-    for (var i = 0; i < option.length; i++){
-        result.push(`
-        <li class="legend-box-drop">
-            <label for="${option[i].selectName}"> ${option[i].labelTitle}</label>
-            <select name="${option[i].selectName}">
-            ${SelectConstructor(selectContent.Values)}
-            </select>
-        </li>
-        `)
-    }
-    return result.join('')
+    return option.map( (element, i) => `
+    <li class="legend-box-drop">
+        <label for="${element.selectName}"> ${element.labelTitle}</label>
+        <select name="${element.selectName}">
+        ${SelectConstructor(selectContent.Values)}
+        </select>
+    </li>`).join('')
 }
 
 const NewEvaluationForm = function (option = {}){
-    var result = []
-    for(var i = 0; i < option.length; i++){
-        result.push(`<form class="legend-box" id="${option[i].boxID}">
+    return option.map((element) =>
+        `<form class="legend-box" id="${element.boxID}">
         <fieldset>
-            <legend>${option[i].Title}</legend>
+            <legend>${element.Title}</legend>
             <ul class="legend-box-list">
-                ${DropDownConstructor(option[i].selectBox, option[i].selectContent)}
+                ${DropDownConstructor(element.selectBox, element.selectContent)}
             </ul>
         </fieldset>
-    </form>`)
-    }
-    return result.join('')
+    </form>`).join('')
 }
 
 
