@@ -112,7 +112,7 @@ window.onload = function(){
             nivel:"Senior 1",
             buttonIMG : "/assets/button.jpg"
         }
-    ],
+    ];
     const footerContent = {Footer : "SoftVision@2017"};
     const option = {tableContent,
             tableHeader, 
