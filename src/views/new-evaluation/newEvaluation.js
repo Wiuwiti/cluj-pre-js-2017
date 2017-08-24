@@ -33,25 +33,31 @@ const technicalLevelPickerTop = function(option = {}){
     }    
     return `<ul class="top-list-radio" >
         <li id="placeHolder"></li>
-        ${result.join('')}
+            ${result.join('')}
         <li id="extra"></li>
         <div class="clearfix"></div>
     </ul>`
 }
 
-const technicalLevelPickerBottom = function (option = {}){
-    const result = []
+const technicalLevelPickerBottomSection = function (option = {}){
+    const result = option.inputLevel.map(function (element , i ){
+        return `
+        <li class = "${option.classes[i]}" id ="${option.ID[i]}">
+            <input type="radio" name="level" value = "${option.inputLevel[i]}">
+        </li>`
+    }).join('')
 
-    for (var i = 0; i < option.length; i++){
-        for( var j = 0; j < option[i].inputLevel.length; j++){
-            result.push(`<li class = "${option[i].classes[j]}" id= "${option[i].ID[j]}">
-            <input type="radio" name="level" value = "${option[i].inputLevel[j]}">
-        </li>`)
-        }
-    }
+    
+    return result
+}
+
+
+const technicalLevelPickerBottom = function (option = {}){
+    let result = option.map(function(element){return technicalLevelPickerBottomSection(element)})
+    
     return ` 
     <ul class="down-list-radio">
-       ${result.join('')}
+        ${result.join('')}
         <div class="clearfix"></div>
     </ul>`
 }
@@ -212,7 +218,8 @@ window.onload = function(){
                         }];
 
 
-    const technicalLevelContent = {HeaderTitle : "Technical Level",
+    const technicalLevelContent = {
+                            HeaderTitle : "Technical Level",
                             headers: ["Trainee", "Junior", "Middle", "Senior"],
                             ID: ["R1", "", "", ""],
                             classes : ["", "R2", "R2", "R2"],
