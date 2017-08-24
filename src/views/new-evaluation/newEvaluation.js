@@ -28,60 +28,38 @@ const technicalLevelPickerHeader = function(option = {}){
 
 const technicalLevelPickerTop = function(option = {}){
     const result = []
-    for(var i = 0; i < option.length; i++){
-        result.push(`<li class="R2" >${option[i]}</li>`)
+    for(var i = 0; i < option.headers.length; i++){
+        result.push(`<li class="${option.classes[i]}" id="${option.ID[i]}">${option.headers[i]}</li>`)
     }    
-    const Nresult = result.join('')
     return `<ul class="top-list-radio" >
         <li id="placeHolder"></li>
-        <li id="R1" >Trainee</li>
-        ${Nresult}
+        ${result.join('')}
         <li id="extra"></li>
         <div class="clearfix"></div>
     </ul>`
 }
 
 const technicalLevelPickerBottom = function (option = {}){
+    const result = []
+
+    for (var i = 0; i < option.length; i++){
+        for( var j = 0; j < option[i].inputLevel.length; j++){
+            result.push(`<li class = "${option[i].classes[j]}" id= "${option[i].ID[j]}">
+            <input type="radio" name="level" value = "${option[i].inputLevel[j]}">
+        </li>`)
+        }
+    }
     return ` 
     <ul class="down-list-radio">
-        <li id= "RR1">
-            <input type="radio" name="level" value = "T">
-        </li>
-        <li >
-            <input type="radio" name="level" value = "J1">
-        </li>
-        <li >
-            <input type="radio" name="level" value = "J2">
-        </li>
-        <li class="spacer">
-            <input type="radio" name="level" value = "J3">
-        </li>
-        <li >
-            <input type="radio" name="level" value = "M1">
-        </li>
-        <li >
-            <input type="radio" name="level" value = "M2">
-        </li>
-        <li class="spacer">
-            <input type="radio" name="level" value = "M3">
-        </li>
-        <li >
-            <input type="radio" name="level" value = "S1">
-        </li>
-        <li >
-            <input type="radio" name="level" value = "S2">
-        </li>
-        <li >
-            <input type="radio" name="level" value = "S3">
-        </li>
+       ${result.join('')}
         <div class="clearfix"></div>
     </ul>`
 }
 
 const constructorTechnicalLevelPicker = function(option = {}){
     return `${technicalLevelPickerHeader(option.HeaderTitle)}
-    ${technicalLevelPickerTop(option.Titles)}
-    ${technicalLevelPickerBottom({})}
+    ${technicalLevelPickerTop(option)}
+    ${technicalLevelPickerBottom(option.columnData)}
     `
 }
 const technicalLevelPicker = function (option = {}){
@@ -116,6 +94,7 @@ const selectConstructor = function(option= {}){
     }
     return result.join('')
 }
+
 
 const dropDownConstructor = function (option={}, selectContent = {}){
     const result = []
@@ -232,7 +211,31 @@ window.onload = function(){
 
 
     technicalLevelContent = {HeaderTitle : "Technical Level",
-                            Titles : ["Junior", "Middle", "Senior"]
+                            headers: ["Trainee", "Junior", "Middle", "Senior"],
+                            ID: ["R1", "", "", ""],
+                            classes : ["", "R2", "R2", "R2"],
+                            columnData: [{
+                                            inputLevel : ["T"],
+                                            ID: ["RR1"],
+                                            classes: [""]
+                                        },
+                                        {
+                                            inputLevel :["J1", "J2", "J3"],
+                                            ID: ["", "", ""],
+                                            classes: ["", "", "spacer"]
+                                        },
+                                        {
+                                            inputLevel :["M1", "M2", "M3"],
+                                            ID: ["","",""],
+                                            classes: ["", "", "spacer"]
+                                        },
+                                        {
+                                            inputLevel :["S1", "S2", "S3"],
+                                            ID:["","",""],
+                                            classes: ["","",""]
+                                        }                                        
+                            ]
+                        
     },
     selectContent = {Values: ["0", "1", "2", "3"]},
     dropDownContent = [
