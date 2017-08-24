@@ -1,13 +1,12 @@
-const CandidateLine = function(option = {}){
-    return `
+const CandidateLine = (option = {}) =>
+    `
     <input class="input-candidate" type="${option.dataType}" name="${option.inputName}" autocomplete="on" placeholder="${option.placeHolder}" required />
     `
-}
+
 const ConstructDetailsForm = function(option = {}){
-    const result = [];
-    for(var i = 0; i < option.length; i++){
-        result.push(CandidateLine(option[i]))
-    }
+    const result = option.map(function (element){
+        return CandidateLine(element)
+    })
     return result.join('')
 }
 

@@ -40,9 +40,10 @@ const TableRows = function(option = {}){
 const TableConstructor = function (option ={} , Header ={} ){
     const result = []
     result.push(TableHeader(Header))
-    for (var i = 0; i < option.length; i++){
-         result.push(TableRows(option[i]))
-    }
+    const result2 = option.map(function(element){
+        return `${TableRows(element)}`
+    }).join('')
+    result.push(result2)
     return result.join('')
 }
 

@@ -31,9 +31,6 @@ const ButtonNav = function(option={}){
 
 
 const ConstructNav = function(option = {}){
-    const result =[];
-    for(var i = 0; i < option.length; i++){
-        result.push(ButtonNav(option[i]))
-    }
+    const result = option.map((element) => ButtonNav(element));
     return result.join('')
 }
