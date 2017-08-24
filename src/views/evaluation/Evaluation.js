@@ -62,8 +62,8 @@ const EvaluationPage = function(option ={}){
 }
 
 window.onload = function(){
-    const result = [],
-    headerContent = [{
+    const result = [];
+    const headerContent = [{
                             link: "Evaluationv2.html",
                             text: "Evaluation",
                             activePage: "active-page",
@@ -80,13 +80,13 @@ window.onload = function(){
                             text: "Logout",
                             activePage: "",
                             rightSidedButton: "right-button"
-                        }],
+                        }];
 
-    logoContent = {link : "assets/logo-v2.jpg",
-                    alt: "Company logo"},
+    const logoContent = {link : "assets/logo-v2.jpg",
+                    alt: "Company logo"};
 
    
-    tableHeader = ["Nume", "Technologie", "Nivel"],
+    const tableHeader = ["Nume", "Technologie", "Nivel"];
     tableContent = [
         {
             nume: "Popescu Adrian",
@@ -113,8 +113,8 @@ window.onload = function(){
             buttonIMG : "/assets/button.jpg"
         }
     ],
-    footerContent = {Footer : "SoftVision@2017"},
-    option = {tableContent,
+    const footerContent = {Footer : "SoftVision@2017"};
+    const option = {tableContent,
             tableHeader, 
             footerContent, 
             headerContent,

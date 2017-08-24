@@ -156,8 +156,9 @@ const NewEvaluationPage = function(option = {}){
 
 
 window.onload = function(){
-    const result = [],
-    headerContent = [{
+    const result = [];
+
+    const headerContent = [{
                             link: "Evaluationv2.html",
                             text: "Evaluation",
                             activePage: "",
@@ -174,13 +175,14 @@ window.onload = function(){
                             text: "Logout",
                             activePage: "",
                             rightSidedButton: "right-button"
-                        }],
+                        }];
+    
 
-    logoContent = {link : "assets/logo-v2.jpg",
-                    alt: "Company logo"},
+    const logoContent = {link : "assets/logo-v2.jpg",
+                    alt: "Company logo"};
 
     
-    candidateContent= [{
+    const candidateContent= [{
                             inputName : "Candidate",
                             placeHolder : "Candidate",
                             dataType : "text"
@@ -194,9 +196,9 @@ window.onload = function(){
                             inputName: "Date",
                             placeHolder: "dd/mm/yyyy",
                             dataType: "date"
-                        }],
+                        }];
 
-    textAreaContent = [{
+    const textAreaContent = [{
                             headerTitle : "Should the candidate be hired?",
                             placeHolder : "The type of project that is suitable for the candidate &#13;&#10;Is guidance requiredd for the candidate"
                         },
@@ -207,10 +209,10 @@ window.onload = function(){
                         {
                             headerTitle : "Workflow, Leadership &#38; Soft Skills",
                             placeHolder : "Describe the enviroment in which the candidate works. &#13;&#10;Describe ani guidance or management experience."
-                        }],
+                        }];
 
 
-    technicalLevelContent = {HeaderTitle : "Technical Level",
+    const technicalLevelContent = {HeaderTitle : "Technical Level",
                             headers: ["Trainee", "Junior", "Middle", "Senior"],
                             ID: ["R1", "", "", ""],
                             classes : ["", "R2", "R2", "R2"],
@@ -236,9 +238,10 @@ window.onload = function(){
                                         }                                        
                             ]
                         
-    },
-    selectContent = {Values: ["0", "1", "2", "3"]},
-    dropDownContent = [
+    };
+    const selectContent = {Values: ["0", "1", "2", "3"]};
+
+    const dropDownContent = [
                         {
                             selectContent,
                             selectBox:[{
@@ -451,11 +454,11 @@ window.onload = function(){
                             Title:"NodeJS",
                             boxID:"NodeJS"
                         }
-                        ],
+                        ];
                    
     
-    footerContent = {Footer : "SoftVision@2017"},
-    options={headerContent ,
+    const footerContent = {Footer : "SoftVision@2017"};
+    const options={headerContent ,
             logoContent, 
             candidateContent,
             technicalLevelContent,
