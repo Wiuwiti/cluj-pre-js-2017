@@ -36,10 +36,7 @@ const TableRows = function(option = {}){
 const TableConstructor = function (option ={} , Header ={} ){
     const result = []
     result.push(TableHeader(Header))
-    const result2 = option.map(function(element){
-        return `${TableRows(element)}`
-    }).join('')
-    result.push(result2)
+    result.push(option.map((element) => TableRows(element)).join(''))
     return result.join('')
 }
 
