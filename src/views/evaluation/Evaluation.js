@@ -1,9 +1,5 @@
 const InsertHeader = function(option = {}){
-    const result = []
-    for(var i = 0;i < option.length; i++){
-        result.push(`<th>${option[i]}</th>`)
-    }
-    return result.join('')
+     return option.map((element) => `<th>${element}</th>`).join('')
 }
 
 const TableHeader = function(option = {}){
