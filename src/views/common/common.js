@@ -9,31 +9,31 @@ const Footer = function(option = {}){
 const NAV = function (option = {}, logo = {}){
     return `
     <ul class="header headerT">
-        ${logoButton(logo)}
-        ${constructNav(option)}
+        ${LogoButton(logo)}
+        ${ConstructNav(option)}
     </ul>`
 }
 
-const logoButton = function(option = {}){
+const LogoButton = function(option = {}){
     return `
     <li class="header-elements">
         <img class= "main-logo" src="${option.link}" alt="${option.alt}">
     </li>`
 }
 
-const buttonNav = function(option={}){
+const ButtonNav = function(option={}){
     return `
-    <li class="header-elements ${option.rightSidedButton}">
-        <a class = "header-elements-link header-elements-linkT ${option.activePage}" href="${option.link}"> ${option.text}</a>
+    <li class="header-elements ${option.rightSidedButton || "" }">
+        <a class = "header-elements-link header-elements-linkT ${option.activePage || "" }" href="${option.link}"> ${option.text}</a>
     </li>
     `
 }
 
 
-const constructNav = function(option = {}){
+const ConstructNav = function(option = {}){
     const result =[];
     for(var i = 0; i < option.length; i++){
-        result.push(buttonNav(option[i]))
+        result.push(ButtonNav(option[i]))
     }
     return result.join('')
 }

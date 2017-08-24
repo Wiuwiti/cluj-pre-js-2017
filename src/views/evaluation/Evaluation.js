@@ -1,4 +1,4 @@
-const insertHeader = function(option = {}){
+const InsertHeader = function(option = {}){
     const result = []
     for(var i = 0;i < option.length; i++){
         result.push(`<th>${option[i]}</th>`)
@@ -6,7 +6,7 @@ const insertHeader = function(option = {}){
     return result.join('')
 }
 
-const tableHeader = function(option = {}){
+const TableHeader = function(option = {}){
     return `
     <colgroup>
         <col class="table-button">
@@ -15,13 +15,13 @@ const tableHeader = function(option = {}){
     </colgroup>
     <tr>
         <th></th>
-        ${insertHeader(option)}
+        ${InsertHeader(option)}
         <th> </th>
         <th> </th>
     </tr>`
 }
 
-const tableRows = function(option = {}){
+const TableRows = function(option = {}){
     return `
     <tr class="border-bottom">
         <td></td>
@@ -37,19 +37,19 @@ const tableRows = function(option = {}){
 }
 
 
-const tableConstructor = function (option ={} , Header ={} ){
+const TableConstructor = function (option ={} , Header ={} ){
     const result = []
-    result.push(tableHeader(Header))
+    result.push(TableHeader(Header))
     for (var i = 0; i < option.length; i++){
-         result.push(tableRows(option[i]))
+         result.push(TableRows(option[i]))
     }
     return result.join('')
 }
 
-const tableBody = function(option = {}, tableHeader = {}){
+const TableBody = function(option = {}, tableHeader = {}){
     return `
     <table cellspacing="0" cellpadding= "0" class = "tableBlock" >
-        ${tableConstructor(option, tableHeader)}
+        ${TableConstructor(option, tableHeader)}
     </table>
     `
 }
@@ -57,7 +57,7 @@ const tableBody = function(option = {}, tableHeader = {}){
 
 const EvaluationPage = function(option ={}){
     return `${NAV(option.headerContent, option.logoContent)}
-    ${tableBody(option.tableContent, option.tableHeader)}
+    ${TableBody(option.tableContent, option.tableHeader)}
     ${Footer(option.footerContent)}`
 }
 
@@ -66,19 +66,15 @@ window.onload = function(){
     const headerContent = [{
                             link: "Evaluationv2.html",
                             text: "Evaluation",
-                            activePage: "active-page",
-                            rightSidedButton: ""
+                            activePage: "active-page"
                         },
                         {
                             link: "NewEvaluationv2.html",
-                            text: "New Evaluation",
-                            activePage: "",
-                            rightSidedButton: ""
+                            text: "New Evaluation"
                         },
                         {
                             link: "Loginv2.html",
                             text: "Logout",
-                            activePage: "",
                             rightSidedButton: "right-button"
                         }];
 

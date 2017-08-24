@@ -1,32 +1,35 @@
-const candidateLine = function(option = {}){
+const CandidateLine = function(option = {}){
     return `
     <input class="input-candidate" type="${option.dataType}" name="${option.inputName}" autocomplete="on" placeholder="${option.placeHolder}" required />
     `
 }
-const constructDetailsForm = function(option = {}){
+const ConstructDetailsForm = function(option = {}){
     const result = [];
     for(var i = 0; i < option.length; i++){
-        result.push(candidateLine(option[i]))
+        result.push(CandidateLine(option[i]))
     }
     return result.join('')
 }
 
 
-const candidateDetailsForm = function (option = {}){
+const CandidateDetailsForm = function (option = {}){
     return `<form class = "candidate-input-box">
-    ${constructDetailsForm(option)}
+    ${ConstructDetailsForm(option)}
     </form>`
 }
 
-
-const technicalLevelPickerHeader = function(option = {}){
+/**
+ * 
+ * @param {Object} option  Thre op
+ */
+const TechnicalLevelPickerHeader = function(option = {}){
     return ` <h3>
         ${option}
     </h3>`
 }
 
 
-const technicalLevelPickerTop = function(option = {}){
+const TechnicalLevelPickerTop = function(option = {}){
     const result = []
     for(var i = 0; i < option.headers.length; i++){
         result.push(`<li class="${option.classes[i]}" id="${option.ID[i]}">${option.headers[i]}</li>`)
@@ -39,22 +42,19 @@ const technicalLevelPickerTop = function(option = {}){
     </ul>`
 }
 
-const technicalLevelPickerBottomSection = function (option = {}){
+const TechnicalLevelPickerBottomSection = function (option = {}){
     const result = option.inputLevel.map(function (element , i ){
         return `
         <li class = "${option.classes[i]}" id ="${option.ID[i]}">
             <input type="radio" name="level" value = "${option.inputLevel[i]}">
         </li>`
     }).join('')
-
-    
     return result
 }
 
 
-const technicalLevelPickerBottom = function (option = {}){
-    let result = option.map(function(element){return technicalLevelPickerBottomSection(element)})
-    
+const TechnicalLevelPickerBottom = function (option = {}){
+    let result = option.map(function(element){return TechnicalLevelPickerBottomSection(element)})
     return ` 
     <ul class="down-list-radio">
         ${result.join('')}
@@ -62,37 +62,36 @@ const technicalLevelPickerBottom = function (option = {}){
     </ul>`
 }
 
-const constructorTechnicalLevelPicker = function(option = {}){
-    return `${technicalLevelPickerHeader(option.HeaderTitle)}
-    ${technicalLevelPickerTop(option)}
-    ${technicalLevelPickerBottom(option.columnData)}
+const ConstructorTechnicalLevelPicker = function(option = {}){
+    return `${TechnicalLevelPickerHeader(option.HeaderTitle)}
+    ${TechnicalLevelPickerTop(option)}
+    ${TechnicalLevelPickerBottom(option.columnData)}
     `
 }
-const technicalLevelPicker = function (option = {}){
+const TechnicalLevelPicker = function (option = {}){
     return `<div class="radio-boxes">
-        ${constructorTechnicalLevelPicker(option)}
-    			
+        ${ConstructorTechnicalLevelPicker(option)}
     </div>
 `
 } 
 
 
-const textAreaBox = function(option = {}){
+const TextAreaBox = function(option = {}){
     return `<div class="user-textarea">
         <h3>${option.headerTitle}</h3>
         <textarea placeholder="${option.placeHolder}"required></textarea>
     </div>`
 }
-const textArea = function (option = {}){
+const TextArea = function (option = {}){
     const result = []
     for(var i = 0 ; i < option.length; i++){
-        result.push(textAreaBox(option[i]))
+        result.push(TextAreaBox(option[i]))
     }
     return result.join('')
 }
 
 
-const selectConstructor = function(option= {}){
+const SelectConstructor = function(option= {}){
     const result = []
     result.push(`<option selected disabled hidden>Evaluation</option>`)
     for (var i = 0; i < option.length; i++){
@@ -102,14 +101,14 @@ const selectConstructor = function(option= {}){
 }
 
 
-const dropDownConstructor = function (option={}, selectContent = {}){
+const DropDownConstructor = function (option={}, selectContent = {}){
     const result = []
     for (var i = 0; i < option.length; i++){
         result.push(`
         <li class="legend-box-drop">
             <label for="${option[i].selectName}"> ${option[i].labelTitle}</label>
             <select name="${option[i].selectName}">
-            ${selectConstructor(selectContent.Values)}
+            ${SelectConstructor(selectContent.Values)}
             </select>
         </li>
         `)
@@ -117,14 +116,14 @@ const dropDownConstructor = function (option={}, selectContent = {}){
     return result.join('')
 }
 
-const newEvaluationForm = function (option = {}){
+const NewEvaluationForm = function (option = {}){
     var result = []
     for(var i = 0; i < option.length; i++){
         result.push(`<form class="legend-box" id="${option[i].boxID}">
         <fieldset>
             <legend>${option[i].Title}</legend>
             <ul class="legend-box-list">
-                ${dropDownConstructor(option[i].selectBox, option[i].selectContent)}
+                ${DropDownConstructor(option[i].selectBox, option[i].selectContent)}
             </ul>
         </fieldset>
     </form>`)
@@ -133,7 +132,7 @@ const newEvaluationForm = function (option = {}){
 }
 
 
-const submitButton =function (option = {}){
+const SubmitButton =function (option = {}){
     return `
     <div class= "submit-button">
         <form action="Evaluation.html">
@@ -146,11 +145,11 @@ const submitButton =function (option = {}){
 
 const PageGrid = function (option = {}){
     return `	<div class = "mainBlock">
-    ${candidateDetailsForm(option.candidateContent)}
-    ${technicalLevelPicker(option.technicalLevelContent)}
-    ${textArea(option.textAreaContent)}
-    ${newEvaluationForm(option.dropDownContent)}
-    ${submitButton()}
+    ${CandidateDetailsForm(option.candidateContent)}
+    ${TechnicalLevelPicker(option.technicalLevelContent)}
+    ${TextArea(option.textAreaContent)}
+    ${NewEvaluationForm(option.dropDownContent)}
+    ${SubmitButton()}
     </div>
     `
 }
@@ -164,28 +163,28 @@ const NewEvaluationPage = function(option = {}){
 window.onload = function(){
     const result = [];
 
-    const headerContent = [{
+    const headerContent = 
+    [
+        {
                             link: "Evaluationv2.html",
-                            text: "Evaluation",
-                            activePage: "",
-                            rightSidedButton: ""
+                            text: "Evaluation"
                         },
                         {
                             link: "NewEvaluationv2.html",
                             text: "New Evaluation",
-                            activePage: "active-page",
-                            rightSidedButton: ""
+                            activePage: "active-page"
                         },
                         {
                             link: "Loginv2.html",
                             text: "Logout",
-                            activePage: "",
                             rightSidedButton: "right-button"
                         }];
     
 
-    const logoContent = {link : "assets/logo-v2.jpg",
-                    alt: "Company logo"};
+    const logoContent = {
+        link : "assets/logo-v2.jpg",
+        alt: "Company logo"
+    };
 
     
     const candidateContent= [{
