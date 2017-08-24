@@ -1,0 +1,46 @@
+body{
+	font-family: "Arial", sans-serif;
+	position: relative;
+  	margin: 0;
+  	padding-bottom: 6rem;
+ 	min-height: 100%;
+
+}
+
+
+
+
+
+
+/*-----------------------   Main Table   -----------------------*/
+
+
+.tableBlock{
+	border-collapse: collapse;
+	border: 0px solid;
+	width: 1200px;
+	top:0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	margin: 25vh auto;
+	color: #414141;
+}
+
+
+.table-button{
+	width: 46px;
+}
+
+
+.tableBlock td{
+	font-size: 18px;
+	vertical-align: center;
+}
+
+
+
+.detail-button{
+	text-align: right;
+}
+
