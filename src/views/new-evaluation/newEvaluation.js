@@ -73,7 +73,7 @@ const TextAreaBox = function(option = {}){
     </div>`
 }
 const TextArea = function (option = {}){
-    return option.map((element) => TextAreaBox(element)).join('')
+    return option.map(TextAreaBox).join('')
 }
 
 
