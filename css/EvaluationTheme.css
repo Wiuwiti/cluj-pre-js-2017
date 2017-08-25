@@ -1,7 +1,11 @@
 
 /*-----------------------   Main Table   -----------------------*/
 
-.tableBlock  th{
+.evaluation-table-theme{
+	color: #414141;
+}
+
+.evaluation-table th{
 	font-size: 22px;
 	background-color: #03a8f3;
 	color: #ffffff;
@@ -10,7 +14,7 @@
 	text-align: left;
 }
 
-td{
+.td-theme{
     border-bottom:1px solid black;
 }
 

@@ -20,12 +20,12 @@ const TableHeader = function(option = {}){
 const TableRows = function(option = {}){
     return `
     <tr class="border-bottom">
-        <td></td>
-        <td>${option.nume}</td>
-        <td>${option.technologie}</td>
-        <td>${option.nivel}</td>
-        <td class="detail-button">Detail</td>
-        <td>
+        <td class= "td-theme"></td>
+        <td class= "td-theme">${option.nume}</td>
+        <td class= "td-theme">${option.technologie}</td>
+        <td class= "td-theme">${option.nivel}</td>
+        <td class="detail-button td-theme">Detail</td>
+        <td class= "td-theme">
             <img src="${option.buttonIMG}" alt="More Deatails">
         </td>
     </tr>
@@ -42,7 +42,7 @@ const TableConstructor = function (option ={} , Header ={} ){
 
 const TableBody = function(option = {}, tableHeader = {}){
     return `
-    <table cellspacing="0" cellpadding= "0" class = "tableBlock" >
+    <table cellspacing="0" cellpadding= "0" class = "evaluation-table evaluation-table-theme" >
         ${TableConstructor(option, tableHeader)}
     </table>
     `

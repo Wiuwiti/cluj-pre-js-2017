@@ -1,21 +1,8 @@
-body{
-	font-family: "Arial", sans-serif;
-	position: relative;
-  	margin: 0;
-  	padding-bottom: 6rem;
- 	min-height: 100%;
-
-}
-
-
-
-
-
 
 /*-----------------------   Main Table   -----------------------*/
 
 
-.tableBlock{
+.evaluation-table{
 	border-collapse: collapse;
 	border: 0px solid;
 	width: 1200px;
@@ -24,21 +11,15 @@ body{
 	left: 0;
 	right: 0;
 	margin: 25vh auto;
-	color: #414141;
 }
-
-
-.table-button{
-	width: 46px;
-}
-
-
-.tableBlock td{
+.evaluation-table td{
 	font-size: 18px;
 	vertical-align: center;
 }
 
-
+.table-button{
+	width: 46px;
+}
 
 .detail-button{
 	text-align: right;
