@@ -1,7 +1,7 @@
-const Footer = function(option = {}){
+const FooterConstructor = function(option = {}){
     return `	
-    <footer class="footer footerT" >
-        <p>${option.Footer}</p>
+    <footer class="pageFooter pageFooterTheme" >
+        <p>${option.footerText}</p>
     </footer>`
 }
 

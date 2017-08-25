@@ -49,24 +49,18 @@ const SubmitFeedbackResult = function(option = {}){
 </div>
     `
 }
-const Footer = function(option= {}){
-    return `<footer class="footer footerT" >
-    <p>${option}</p>
-</footer>
-    `
-}
 
 const LoginPage = function(option = {}){
     return `${LoginHeader()}
     ${SubmitFeedbackSection()}
     ${SubmitFeedbackResult()}
-    ${Footer(option.Footer)}`
+    ${FooterConstructor(option.footerContent)}`
 }
 
 window.onload = function(){
     const result = [];
-
-    options = {Footer: "SoftVision@2017"};
+    const footerContent = {footerText : "SoftVision@2017"};
+    options = {footerContent};
     result.push(LoginPage(options))
     document.querySelector('#app').innerHTML = result;
 }

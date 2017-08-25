@@ -52,7 +52,7 @@ const TableBody = function(option = {}, tableHeader = {}){
 const EvaluationPage = function(option ={}){
     return `${NAV(option.headerContent, option.logoContent)}
     ${TableBody(option.tableContent, option.tableHeader)}
-    ${Footer(option.footerContent)}`
+    ${FooterConstructor(option.footerContent)}`
 }
 
 window.onload = function(){
@@ -103,7 +103,7 @@ window.onload = function(){
             buttonIMG : "/assets/button.jpg"
         }
     ];
-    const footerContent = {Footer : "SoftVision@2017"};
+    const footerContent = {footerText : "SoftVision@2017"};
     const option = {tableContent,
             tableHeader, 
             footerContent, 

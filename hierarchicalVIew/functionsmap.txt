@@ -1,0 +1,6 @@
+{
+    Footer : {
+        Functions : [FooterConstructor]
+        Parameter/s : [option.footerText]
+    }
+}

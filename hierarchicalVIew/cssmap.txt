@@ -1,0 +1,6 @@
+{
+    Footer: {
+        StyleCSS : [pageFooterTheme]
+        StructuralCSS : [pageFooter]
+    }
+}

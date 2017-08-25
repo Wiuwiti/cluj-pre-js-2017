@@ -132,7 +132,7 @@ const PageGrid = function (option = {}){
 const NewEvaluationPage = function(option = {}){
     return `${NAV(option.headerContent, option.logoContent)}
     ${PageGrid(option)}
-    ${Footer(option.footerContent)}`
+    ${FooterConstructor(option.footerContent)}`
 }
 
 
@@ -439,7 +439,7 @@ window.onload = function(){
                         ];
                    
     
-    const footerContent = {Footer : "SoftVision@2017"};
+    const footerContent = {footerText : "SoftVision@2017"};
     const options={headerContent ,
             logoContent, 
             candidateContent,
