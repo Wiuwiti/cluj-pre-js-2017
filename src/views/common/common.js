@@ -31,5 +31,5 @@ const ButtonNav = function(option={}){
 
 
 const ConstructNav = function(option = {}){
-    return option.map((element) => ButtonNav(element));
+    return option.map(ButtonNav).join('');
 }
