@@ -1,21 +1,24 @@
 /*------- Header Theme ---------*/
 
-.headerT{
+.navigation-bar-theme{
 	box-shadow: 0px 2px 2px #888888;
 	font-weight: 400;
 	font-size: 24px;
 }
 
-.header-elements-linkT{
+.navigation-bar-element-link-theme{
 	color: #414141;
 	text-align: center;
 	text-decoration: none;
 }
 
+.navigation-bar-active-page-theme{
+	border-color: #03a8f3;
+}
 
 /*-----------------   Footer -----------------*/
 
-.pageFooterTheme{
+.page-footer-theme{
 	color:#828384;
 	background-color: #dfdfdf;
 	text-align: center; 

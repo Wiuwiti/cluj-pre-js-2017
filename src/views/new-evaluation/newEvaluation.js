@@ -130,7 +130,7 @@ const PageGrid = function (option = {}){
     `
 }
 const NewEvaluationPage = function(option = {}){
-    return `${NAV(option.headerContent, option.logoContent)}
+    return `${NavigationBar(option.headerContent, option.logoContent)}
     ${PageGrid(option)}
     ${FooterConstructor(option.footerContent)}`
 }
@@ -148,12 +148,12 @@ window.onload = function(){
                         {
                             link: "NewEvaluationv2.html",
                             text: "New Evaluation",
-                            activePage: "active-page"
+                            activePage: "navigation-bar-active-page navigation-bar-active-page-theme"
                         },
                         {
                             link: "Loginv2.html",
                             text: "Logout",
-                            rightSidedButton: "right-button"
+                            rightSidedButton: "float-right-element"
                         }];
     
 

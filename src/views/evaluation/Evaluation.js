@@ -50,7 +50,7 @@ const TableBody = function(option = {}, tableHeader = {}){
 
 
 const EvaluationPage = function(option ={}){
-    return `${NAV(option.headerContent, option.logoContent)}
+    return `${NavigationBar(option.headerContent, option.logoContent)}
     ${TableBody(option.tableContent, option.tableHeader)}
     ${FooterConstructor(option.footerContent)}`
 }
@@ -60,7 +60,7 @@ window.onload = function(){
     const headerContent = [{
                             link: "Evaluationv2.html",
                             text: "Evaluation",
-                            activePage: "active-page"
+                            activePage: "navigation-bar-active-page navigation-bar-active-page-theme"
                         },
                         {
                             link: "NewEvaluationv2.html",
@@ -69,7 +69,7 @@ window.onload = function(){
                         {
                             link: "Loginv2.html",
                             text: "Logout",
-                            rightSidedButton: "right-button"
+                            rightSidedButton: "float-right-element"
                         }];
 
     const logoContent = {link : "assets/logo-v2.jpg",
