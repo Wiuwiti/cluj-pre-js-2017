@@ -1,13 +1,13 @@
-const loginHeader = function(options= {}){
+const LoginHeader = function(options= {}){
     return `<header class="pageHeader pageHeaderT">
     <div class= "grid"> 
-    ${loginForm({})}
+    ${LoginForm({})}
     </div>	
 	</header>
     `
 }
 
-const loginForm = function(option = {}){
+const LoginForm = function(option = {}){
     return `<form class="login-box login-boxT" action="Evaluationv2.html">
     <h2 class="login-box-header login-box-headerT">
             Interview Feedback
@@ -57,7 +57,10 @@ const Footer = function(option= {}){
 }
 
 const LoginPage = function(option = {}){
-    return `${loginHeader()}${SubmitFeedbackSection()}${SubmitFeedbackResult()}${Footer(option.Footer)}`
+    return `${LoginHeader()}
+    ${SubmitFeedbackSection()}
+    ${SubmitFeedbackResult()}
+    ${Footer(option.Footer)}`
 }
 
 window.onload = function(){

@@ -1,133 +1,114 @@
-const candidateLine = function(option = {}){
-    return `
+const CandidateLine = (option = {}) =>
+    `
     <input class="input-candidate" type="${option.dataType}" name="${option.inputName}" autocomplete="on" placeholder="${option.placeHolder}" required />
     `
-}
-const constructDetailsForm = function(option = {}){
-    const result = [];
-    for(var i = 0; i < option.length; i++){
-        result.push(candidateLine(option[i]))
-    }
-    return result.join('')
+
+const ConstructDetailsForm = function(option = {}){
+    return option.map((element) => CandidateLine(element)).join('')
 }
 
 
-const candidateDetailsForm = function (option = {}){
+const CandidateDetailsForm = function (option = {}){
     return `<form class = "candidate-input-box">
-    ${constructDetailsForm(option)}
+    ${ConstructDetailsForm(option)}
     </form>`
 }
 
-
-const technicalLevelPickerHeader = function(option = {}){
+/**
+ * 
+ * @param {Object} option  Thre op
+ */
+const TechnicalLevelPickerHeader = function(option = {}){
     return ` <h3>
         ${option}
     </h3>`
 }
 
 
-const technicalLevelPickerTop = function(option = {}){
-    const result = []
-    for(var i = 0; i < option.headers.length; i++){
-        result.push(`<li class="${option.classes[i]}" id="${option.ID[i]}">${option.headers[i]}</li>`)
-    }    
+const TechnicalLevelPickerTop = function(option = {}){
+    const result = option.headers.map((element, i) => `<li class="${option.classes[i]}" id="${option.ID[i]}">${element}</li>`).join('') 
     return `<ul class="top-list-radio" >
         <li id="placeHolder"></li>
-        ${result.join('')}
+            ${result}
         <li id="extra"></li>
         <div class="clearfix"></div>
     </ul>`
 }
 
-const technicalLevelPickerBottom = function (option = {}){
-    const result = []
+const TechnicalLevelPickerBottomSection = function (option = {}){
+    return option.inputLevel.map((element , i ) => `
+    <li class = "${option.classes[i]}" id ="${option.ID[i]}">
+        <input type="radio" name="level" value = "${element}">
+    </li>`).join('')
+}
 
-    for (var i = 0; i < option.length; i++){
-        for( var j = 0; j < option[i].inputLevel.length; j++){
-            result.push(`<li class = "${option[i].classes[j]}" id= "${option[i].ID[j]}">
-            <input type="radio" name="level" value = "${option[i].inputLevel[j]}">
-        </li>`)
-        }
-    }
+
+const TechnicalLevelPickerBottom = function (option = {}){
+    const result = option.map((element) => TechnicalLevelPickerBottomSection(element)).join('')
     return ` 
     <ul class="down-list-radio">
-       ${result.join('')}
+        ${result}
         <div class="clearfix"></div>
     </ul>`
 }
 
-const constructorTechnicalLevelPicker = function(option = {}){
-    return `${technicalLevelPickerHeader(option.HeaderTitle)}
-    ${technicalLevelPickerTop(option)}
-    ${technicalLevelPickerBottom(option.columnData)}
+const ConstructorTechnicalLevelPicker = function(option = {}){
+    return `${TechnicalLevelPickerHeader(option.HeaderTitle)}
+    ${TechnicalLevelPickerTop(option)}
+    ${TechnicalLevelPickerBottom(option.columnData)}
     `
 }
-const technicalLevelPicker = function (option = {}){
+const TechnicalLevelPicker = function (option = {}){
     return `<div class="radio-boxes">
-        ${constructorTechnicalLevelPicker(option)}
-    			
+        ${ConstructorTechnicalLevelPicker(option)}
     </div>
 `
 } 
 
 
-const textAreaBox = function(option = {}){
+const TextAreaBox = function(option = {}){
     return `<div class="user-textarea">
         <h3>${option.headerTitle}</h3>
         <textarea placeholder="${option.placeHolder}"required></textarea>
     </div>`
 }
-const textArea = function (option = {}){
-    const result = []
-    for(var i = 0 ; i < option.length; i++){
-        result.push(textAreaBox(option[i]))
-    }
-    return result.join('')
+const TextArea = function (option = {}){
+    return option.map((element) => TextAreaBox(element)).join('')
 }
 
 
-const selectConstructor = function(option= {}){
+const SelectConstructor = function(option= {}){
     const result = []
     result.push(`<option selected disabled hidden>Evaluation</option>`)
-    for (var i = 0; i < option.length; i++){
-        result.push(`<option value = "0"> ${option[i]}</option>`)
-    }
+    result.push(option.map((element) =>  `<option value = "0"> ${element}</option>`).join(''))
     return result.join('')
 }
 
 
-const dropDownConstructor = function (option={}, selectContent = {}){
-    const result = []
-    for (var i = 0; i < option.length; i++){
-        result.push(`
-        <li class="legend-box-drop">
-            <label for="${option[i].selectName}"> ${option[i].labelTitle}</label>
-            <select name="${option[i].selectName}">
-            ${selectConstructor(selectContent.Values)}
-            </select>
-        </li>
-        `)
-    }
-    return result.join('')
+const DropDownConstructor = function (option={}, selectContent = {}){
+    return option.map( (element, i) => `
+    <li class="legend-box-drop">
+        <label for="${element.selectName}"> ${element.labelTitle}</label>
+        <select name="${element.selectName}">
+        ${SelectConstructor(selectContent.Values)}
+        </select>
+    </li>`).join('')
 }
 
-const newEvaluationForm = function (option = {}){
-    var result = []
-    for(var i = 0; i < option.length; i++){
-        result.push(`<form class="legend-box" id="${option[i].boxID}">
+const NewEvaluationForm = function (option = {}){
+    return option.map((element) =>
+        `<form class="legend-box" id="${element.boxID}">
         <fieldset>
-            <legend>${option[i].Title}</legend>
+            <legend>${element.Title}</legend>
             <ul class="legend-box-list">
-                ${dropDownConstructor(option[i].selectBox, option[i].selectContent)}
+                ${DropDownConstructor(element.selectBox, element.selectContent)}
             </ul>
         </fieldset>
-    </form>`)
-    }
-    return result.join('')
+    </form>`).join('')
 }
 
 
-const submitButton =function (option = {}){
+const SubmitButton =function (option = {}){
     return `
     <div class= "submit-button">
         <form action="Evaluation.html">
@@ -140,11 +121,11 @@ const submitButton =function (option = {}){
 
 const PageGrid = function (option = {}){
     return `	<div class = "mainBlock">
-    ${candidateDetailsForm(option.candidateContent)}
-    ${technicalLevelPicker(option.technicalLevelContent)}
-    ${textArea(option.textAreaContent)}
-    ${newEvaluationForm(option.dropDownContent)}
-    ${submitButton()}
+    ${CandidateDetailsForm(option.candidateContent)}
+    ${TechnicalLevelPicker(option.technicalLevelContent)}
+    ${TextArea(option.textAreaContent)}
+    ${NewEvaluationForm(option.dropDownContent)}
+    ${SubmitButton()}
     </div>
     `
 }
@@ -158,28 +139,28 @@ const NewEvaluationPage = function(option = {}){
 window.onload = function(){
     const result = [];
 
-    const headerContent = [{
+    const headerContent = 
+    [
+        {
                             link: "Evaluationv2.html",
-                            text: "Evaluation",
-                            activePage: "",
-                            rightSidedButton: ""
+                            text: "Evaluation"
                         },
                         {
                             link: "NewEvaluationv2.html",
                             text: "New Evaluation",
-                            activePage: "active-page",
-                            rightSidedButton: ""
+                            activePage: "active-page"
                         },
                         {
                             link: "Loginv2.html",
                             text: "Logout",
-                            activePage: "",
                             rightSidedButton: "right-button"
                         }];
     
 
-    const logoContent = {link : "assets/logo-v2.jpg",
-                    alt: "Company logo"};
+    const logoContent = {
+        link : "assets/logo-v2.jpg",
+        alt: "Company logo"
+    };
 
     
     const candidateContent= [{
@@ -212,7 +193,8 @@ window.onload = function(){
                         }];
 
 
-    const technicalLevelContent = {HeaderTitle : "Technical Level",
+    const technicalLevelContent = {
+                            HeaderTitle : "Technical Level",
                             headers: ["Trainee", "Junior", "Middle", "Senior"],
                             ID: ["R1", "", "", ""],
                             classes : ["", "R2", "R2", "R2"],
