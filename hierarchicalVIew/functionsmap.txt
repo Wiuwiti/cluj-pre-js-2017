@@ -2,5 +2,12 @@
     Footer : {
         Functions : [FooterConstructor]
         Parameter/s : [option.footerText]
+    },
+    NavigationBar : {
+        Functions : [
+            NavigationBar (option, logo),
+            LogoButton (option),
+            NavigationButton(option),
+            NavationContructor(option)]
     }
 }

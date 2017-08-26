@@ -10,7 +10,7 @@
          navigation-bar-element-link, float-right-element,navigation-bar-logo]
     }
     Evaluation : {
-        StyleCSS : [evaluation-table-theme],
-        StructuralCSS : [evaluation-table]
+        StyleCSS : [evaluation-table-theme, evaluation-table th, td-theme],
+        StructuralCSS : [evaluation-table, evaluation-table td, table-button, detail-button]
     }
 }

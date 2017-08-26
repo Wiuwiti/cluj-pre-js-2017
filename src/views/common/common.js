@@ -1,35 +1,35 @@
-const FooterConstructor = function(option = {}){
+const FooterConstructor = function(footerContent = {}){
     return `	
     <footer class="page-footer page-footer-theme" >
-        <p>${option.footerText}</p>
+        <p>${footerContent.footerText}</p>
     </footer>`
 }
 
 
-const NavigationBar = function (option = {}, logo = {}){
+const NavigationBar = function (headerContent = {}, logoContent = {}){
     return `
     <ul class="navigation-bar navigation-bar-theme">
-        ${LogoButton(logo)}
-        ${NavationContructor(option)}
+        ${LogoButton(logoContent)}
+        ${NavationContructor(headerContent)}
     </ul>`
 }
 
-const LogoButton = function(option = {}){
+const LogoButton = function(logoContent = {}){
     return `
     <li class="navigation-bar-element">
-        <img class= "navigation-bar-logo" src="${option.link}" alt="${option.alt}">
+        <img class= "navigation-bar-logo" src="${logoContent.link}" alt="${logoContent.alt}">
     </li>`
 }
 
-const NavigationButton = function(option={}){
+const NavigationButton = function(headerContent={}){
     return `
-    <li class="navigation-bar-element ${option.rightSidedButton || "" }">
-        <a class = "navigation-bar-element-link navigation-bar-element-link-theme ${option.activePage || "" }" href="${option.link}"> ${option.text}</a>
+    <li class="navigation-bar-element ${headerContent.rightSidedButton || "" }">
+        <a class = "navigation-bar-element-link navigation-bar-element-link-theme ${headerContent.activePage || "" }" href="${headerContent.link}"> ${headerContent.text}</a>
     </li>
     `
 }
 
 
-const NavationContructor = function(option = {}){
-    return option.map(NavigationButton).join('');
+const NavationContructor = function(headerContent = {}){
+    return headerContent.map(NavigationButton).join('');
 }
