@@ -77,16 +77,16 @@ const TextArea = function (option = {}){
 }
 
 
-const SelectConstructor = function(option= {}){
+const SelectConstructor = function(selectContent = {}){
     const result = []
     result.push(`<option selected disabled hidden>Evaluation</option>`)
-    result.push(option.map((element) =>  `<option value = "0"> ${element}</option>`).join(''))
+    result.push(selectContent.map((element) =>  `<option value = "0"> ${element}</option>`).join(''))
     return result.join('')
 }
 
 
-const DropDownConstructor = function (option={}, selectContent = {}){
-    return option.map( (element, i) => `
+const DropDownConstructor = function (selectBoxContent = {}, selectContent = {}){
+    return selectBoxContent.map( (element) => `
     <li class="legend-box-drop">
         <label for="${element.selectName}"> ${element.labelTitle}</label>
         <select name="${element.selectName}">
@@ -95,8 +95,8 @@ const DropDownConstructor = function (option={}, selectContent = {}){
     </li>`).join('')
 }
 
-const NewEvaluationForm = function (option = {}){
-    return option.map((element) =>
+const NewEvaluationForm = function (options = {}){
+    return options.map((element) =>
         `<form class="legend-box" id="${element.boxID}">
         <fieldset>
             <legend>${element.Title}</legend>
@@ -120,19 +120,20 @@ const SubmitButton =function (option = {}){
 
 
 const PageGrid = function (option = {}){
-    return `	<div class = "mainBlock">
-    ${CandidateDetailsForm(option.newEvaluationCandidateContent)}
-    ${TechnicalLevelPicker(option.newEvaluationTechnicalLevelContent)}
-    ${TextArea(option.newEvaluationTextAreaContent)}
-    ${NewEvaluationForm(option.newEvaluationDropDownContent)}
-    ${SubmitButton()}
+    return `	
+    <div class = "mainBlock">
+        ${CandidateDetailsForm(option.newEvaluationCandidateContent)}
+        ${TechnicalLevelPicker(option.newEvaluationTechnicalLevelContent)}
+        ${TextArea(option.newEvaluationTextAreaContent)}
+        ${NewEvaluationForm(option.newEvaluationDropDownContent)}
+        ${SubmitButton()}
     </div>
     `
 }
-const NewEvaluationPage = function(option = {}){
-    return `${NavigationBar(option.newEvaluationHeaderContent, option.newEvaluationLogoContent)}
-    ${PageGrid(option)}
-    ${FooterConstructor(option.newEvaluationFooterContent)}`
+const NewEvaluationPage = function(options = {}){
+    return `${NavigationBar(options.newEvaluationHeaderContent, options.newEvaluationLogoContent)}
+    ${PageGrid(options)}
+    ${FooterConstructor(options.newEvaluationFooterContent)}`
 }
 
 
@@ -455,7 +456,7 @@ window.onload = function(){
                    
     
     const newEvaluationFooterContent = {footerText : "SoftVision@2017"};
-    const options={
+    const newEvaluationOptions={
         newEvaluationHeaderContent,
         newEvaluationLogoContent, 
         newEvaluationCandidateContent,
@@ -463,6 +464,6 @@ window.onload = function(){
         newEvaluationTextAreaContent,
         newEvaluationDropDownContent,
         newEvaluationFooterContent};
-    newEvaluationResult.push(NewEvaluationPage(options))
+    newEvaluationResult.push(NewEvaluationPage(newEvaluationOptions))
     document.querySelector('#app').innerHTML = newEvaluationResult;
 }
