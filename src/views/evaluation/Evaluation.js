@@ -113,13 +113,14 @@ window.onload = function(){
         footerText : "SoftVision@2017"
     };
 
-    const options = {
+    const evaluationOptions = {
         evaluationTableContent,
         evaluationTableHeader, 
         evaluationFooterContent, 
         evaluationHeaderContent,
         evaluationLogoContent
     };
-    evaluationPage.push(EvaluationPage(options))
+    
+    evaluationPage.push(EvaluationPage(evaluationOptions))
     document.querySelector('#app').innerHTML = evaluationPage;
 }
