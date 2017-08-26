@@ -1,16 +1,16 @@
-const CandidateLine = (option = {}) =>
+const CandidateLine = (candidateContent = {}) =>
     `
-    <input class="input-candidate" type="${option.dataType}" name="${option.inputName}" autocomplete="on" placeholder="${option.placeHolder}" required />
+    <input class="input-candidate" type="${candidateContent.dataType}" name="${candidateContent.inputName}" autocomplete="on" placeholder="${candidateContent.placeHolder}" required />
     `
 
-const ConstructDetailsForm = function(option = {}){
-    return option.map((element) => CandidateLine(element)).join('')
+const ConstructDetailsForm = function(candidateContent = {}){
+    return candidateContent.map((element) => CandidateLine(element)).join('')
 }
 
 
-const CandidateDetailsForm = function (option = {}){
+const CandidateDetailsForm = function (candidateContent = {}){
     return `<form class = "candidate-input-box">
-    ${ConstructDetailsForm(option)}
+    ${ConstructDetailsForm(candidateContent)}
     </form>`
 }
 
@@ -18,15 +18,15 @@ const CandidateDetailsForm = function (option = {}){
  * 
  * @param {Object} option  Thre op
  */
-const TechnicalLevelPickerHeader = function(option = {}){
+const TechnicalLevelPickerHeader = function(headerTitle = {}){
     return ` <h3>
-        ${option}
+        ${headerTitle}
     </h3>`
 }
 
 
-const TechnicalLevelPickerTop = function(option = {}){
-    const result = option.headers.map((element, i) => `<li class="${option.classes[i]}" id="${option.ID[i]}">${element}</li>`).join('') 
+const TechnicalLevelPickerTop = function(technicalContent = {}){
+    const result = technicalContent.headers.map((element, i) => `<li class="${technicalContent.classes[i]}" id="${technicalContent.ID[i]}">${element}</li>`).join('') 
     return `<ul class="top-list-radio" >
         <li id="placeHolder"></li>
             ${result}
@@ -43,8 +43,8 @@ const TechnicalLevelPickerBottomSection = function (option = {}){
 }
 
 
-const TechnicalLevelPickerBottom = function (option = {}){
-    const result = option.map((element) => TechnicalLevelPickerBottomSection(element)).join('')
+const TechnicalLevelPickerBottom = function (columnData = {}){
+    const result = columnData.map((element) => TechnicalLevelPickerBottomSection(element)).join('')
     return ` 
     <ul class="down-list-radio">
         ${result}
@@ -52,28 +52,28 @@ const TechnicalLevelPickerBottom = function (option = {}){
     </ul>`
 }
 
-const ConstructorTechnicalLevelPicker = function(option = {}){
-    return `${TechnicalLevelPickerHeader(option.HeaderTitle)}
-    ${TechnicalLevelPickerTop(option)}
-    ${TechnicalLevelPickerBottom(option.columnData)}
+const TechnicalLevelPickerConstructor = function(technicalContent = {}){
+    return `${TechnicalLevelPickerHeader(technicalContent.HeaderTitle)}
+    ${TechnicalLevelPickerTop(technicalContent)}
+    ${TechnicalLevelPickerBottom(technicalContent.columnData)}
     `
 }
-const TechnicalLevelPicker = function (option = {}){
+const TechnicalLevelPicker = function (technicalContent = {}){
     return `<div class="radio-boxes">
-        ${ConstructorTechnicalLevelPicker(option)}
+        ${TechnicalLevelPickerConstructor(technicalContent)}
     </div>
 `
 } 
 
 
-const TextAreaBox = function(option = {}){
+const TextAreaBox = function(textAreaContent = {}){
     return `<div class="user-textarea">
-        <h3>${option.headerTitle}</h3>
-        <textarea placeholder="${option.placeHolder}"required></textarea>
+        <h3>${textAreaContent.headerTitle}</h3>
+        <textarea placeholder="${textAreaContent.placeHolder}"required></textarea>
     </div>`
 }
-const TextArea = function (option = {}){
-    return option.map(TextAreaBox).join('')
+const TextArea = function (textAreaContent = {}){
+    return textAreaContent.map(TextAreaBox).join('')
 }
 
 
@@ -86,7 +86,8 @@ const SelectConstructor = function(selectContent = {}){
 
 
 const DropDownConstructor = function (selectBoxContent = {}, selectContent = {}){
-    return selectBoxContent.map( (element) => `
+    return selectBoxContent.map( (element) => 
+    `
     <li class="legend-box-drop">
         <label for="${element.selectName}"> ${element.labelTitle}</label>
         <select name="${element.selectName}">
@@ -95,16 +96,17 @@ const DropDownConstructor = function (selectBoxContent = {}, selectContent = {})
     </li>`).join('')
 }
 
-const NewEvaluationForm = function (options = {}){
-    return options.map((element) =>
-        `<form class="legend-box" id="${element.boxID}">
-        <fieldset>
-            <legend>${element.Title}</legend>
-            <ul class="legend-box-list">
-                ${DropDownConstructor(element.selectBox, element.newEvaluationSelectContent)}
-            </ul>
-        </fieldset>
-    </form>`).join('')
+const NewEvaluationForm = function (dropDownContent = {}){
+    return dropDownContent.map((element) =>
+        `
+        <form class="legend-box" id="${element.boxID}">
+            <fieldset>
+                <legend>${element.Title}</legend>
+                <ul class="legend-box-list">
+                    ${DropDownConstructor(element.selectBox, element.newEvaluationSelectContent)}
+                </ul>
+            </fieldset>
+        </form>`).join('')
 }
 
 
@@ -119,7 +121,7 @@ const SubmitButton =function (option = {}){
 
 
 
-const PageGrid = function (option = {}){
+const NewEvaluationPageGrid = function (option = {}){
     return `	
     <div class = "mainBlock">
         ${CandidateDetailsForm(option.newEvaluationCandidateContent)}
@@ -132,7 +134,7 @@ const PageGrid = function (option = {}){
 }
 const NewEvaluationPage = function(options = {}){
     return `${NavigationBar(options.newEvaluationHeaderContent, options.newEvaluationLogoContent)}
-    ${PageGrid(options)}
+    ${NewEvaluationPageGrid(options)}
     ${FooterConstructor(options.newEvaluationFooterContent)}`
 }
 
