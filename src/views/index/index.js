@@ -447,12 +447,10 @@ window.onload = function(){
         document.querySelector('#app').innerHTML = newEvaluationResult;
         newEval()
     })
-    // document.querySelector('#evaluationPageLink').addEventListener("click", function(){
-    //     document.querySelector('#app').innerHTML = evaluationPage;
-    //     alert("hello")
-    // })
+
     document.querySelector('#loginPageLink').addEventListener("click", function(){
         document.querySelector('#app').innerHTML = loginPage;
+        logPage()
     })
     }
 
@@ -461,7 +459,19 @@ window.onload = function(){
                 document.querySelector('#app').innerHTML = evaluationPage;
                 logged()
             })
+        document.querySelector('#loginPageLink').addEventListener("click", function(){
+            document.querySelector('#app').innerHTML = loginPage;
+            logPage()
+        })
     }
+
+    const logPage = function () {
+        document.querySelector('#submitButton').addEventListener("click", function(){
+            document.querySelector('#app').innerHTML = evaluationPage;
+            logged()
+        })
+    }
+    
 }
 
 
