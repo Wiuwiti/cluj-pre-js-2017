@@ -24,7 +24,7 @@ const LogoButton = function(logoContent = {}){
 const NavigationButton = function(headerContent={}){
     return `
     <li class="navigation-bar-element ${headerContent.rightSidedButton || "" }">
-        <a class = "navigation-bar-element-link navigation-bar-element-link-theme ${headerContent.activePage || "" }" href="${headerContent.link}"> ${headerContent.text}</a>
+        <a class = "navigation-bar-element-link navigation-bar-element-link-theme ${headerContent.activePage || "" }" id="${headerContent.link}" > ${headerContent.text}</a>
     </li>
     `
 }

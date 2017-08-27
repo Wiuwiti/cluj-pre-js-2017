@@ -8,14 +8,14 @@ const LoginHeader = function(options= {}){
 }
 
 const LoginForm = function(option = {}){
-    return `<form class="login-box login-boxT" action="Evaluationv2.html">
+    return `<form class="login-box login-boxT" >
     <h2 class="login-box-header login-box-headerT">
             Interview Feedback
     </h2>
     <div class="credential-box credential-boxT">
         <input class="credential-field credential-fieldT" type ="text"  placeholder="Username" autocomplete="on" name ="uname" required/>
         <input class="credential-field credential-fieldT" type="password" placeholder="Password" autocomplete="off" name="password" required />
-        <button class="credential-login-button credential-login-buttonT" type ="submit" value="Login">Login</button>
+        <button id = "submitButton" class="credential-login-button credential-login-buttonT" type ="submit" value="Login">Login</button>
     </div>
 </form>`
 }
@@ -57,10 +57,3 @@ const LoginPage = function(option = {}){
     ${FooterConstructor(option.footerContent)}`
 }
 
-window.onload = function(){
-    const result = [];
-    const footerContent = {footerText : "SoftVision@2017"};
-    options = {footerContent};
-    result.push(LoginPage(options))
-    document.querySelector('#app').innerHTML = result;
-}
