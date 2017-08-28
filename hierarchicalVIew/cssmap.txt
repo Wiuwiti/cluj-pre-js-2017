@@ -1,0 +1,16 @@
+{
+    Footer: {
+        StyleCSS : [pageFooterTheme],
+        StructuralCSS : [pageFooter]
+    }
+
+    NavigationBar: {
+        StyleCSS : [navigation-bar-theme,navigation-bar-element-link-theme],
+        StructuralCSS : [navigation-bar, navigation-bar-element,
+         navigation-bar-element-link, float-right-element,navigation-bar-logo]
+    }
+    Evaluation : {
+        StyleCSS : [evaluation-table-theme, evaluation-table th, td-theme],
+        StructuralCSS : [evaluation-table, evaluation-table td, table-button, detail-button]
+    }
+}

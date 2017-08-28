@@ -1,5 +1,14 @@
+body{
+	font-family: "Arial", sans-serif;
+	position: relative;
+  	margin: 0;
+  	padding-bottom: 50px;
+  	min-height: 100%;
+}
+
+
 /*----------------  Page header   --------------------*/
-.header{
+.navigation-bar{
 	list-style-type: none;
     margin: 0;
     padding: 0;
@@ -8,12 +17,12 @@
     min-width: 1200px;
 }
 
-.header-elements{
+.navigation-bar-element{
 	display: inline-block;
 }
 
 
-.header-elements-link{
+.navigation-bar-element-link{
 	display: block;	
 	padding: 1vw 3vw;
 }
@@ -21,27 +30,26 @@
 
 
 
-.right-button{
+.float-right-element{
 	float:right;
 }
-.main-logo{
+.navigation-bar-logo{
 	height: 35px; 
 	vertical-align: middle;
 	padding-right: 4vw;
 	padding-left: 2vw;
 }
 
-.active-page{
+.navigation-bar-active-page{
 	border-style: solid;
 	border-width: 0px 0px 5px 0px;
-	border-color: #03a8f3;
 }
 
 
 /*-----------------   Footer -----------------*/
 
 
-.footer{
+.page-footer{
 	bottom:0;
 	position:fixed;
 	z-index:150;
