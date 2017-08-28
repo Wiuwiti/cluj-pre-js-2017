@@ -1,8 +1,41 @@
 window.onload = function(){
 
     
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     const loginPage = [];
-    const footerContent = {footerText : "SoftVision@2017"};
+    const footerContent = {
+        footerText : "SoftVision@2017"
+    };
     options = {footerContent};
     loginPage.push(LoginPage(options))
 
@@ -131,16 +164,19 @@ window.onload = function(){
     
     const newEvaluationCandidateContent= [
         {
+            elementID : "newEvaluationCandidate",
             inputName : "Candidate",
             placeHolder : "Candidate",
             dataType : "text"
         },
         {
+            elementID : "newEvaluationInterviewer",
             inputName: "Interviewer",
             placeHolder: "Interviewer",
             dataType: "text"
         },
         {
+            elementID: "newElementDate",
             inputName: "Date",
             placeHolder: "dd/mm/yyyy",
             dataType: "date"
@@ -429,11 +465,13 @@ window.onload = function(){
         newEvaluationTextAreaContent,
         newEvaluationDropDownContent,
         newEvaluationFooterContent};
+
     newEvaluationResult.push(NewEvaluationPage(newEvaluationOptions))
 
     document.querySelector('#app').innerHTML = loginPage;
 
-
+    
+    
 
     document.querySelector('#submitButton').addEventListener("click", function(){
         document.querySelector('#app').innerHTML = evaluationPage;
@@ -443,18 +481,50 @@ window.onload = function(){
 
 
     const logged = function (){
-    document.querySelector("#newEvaluationPageLink").addEventListener("click", function(){
-        document.querySelector('#app').innerHTML = newEvaluationResult;
-        newEval()
-    })
+        document.querySelector("#newEvaluationPageLink").addEventListener("click", function(){
+            document.querySelector('#app').innerHTML = newEvaluationResult;
+            newEval()
+        })
 
-    document.querySelector('#loginPageLink').addEventListener("click", function(){
-        document.querySelector('#app').innerHTML = loginPage;
-        logPage()
-    })
+        document.querySelector('#loginPageLink').addEventListener("click", function(){
+            document.querySelector('#app').innerHTML = loginPage;
+            logPage()
+        })
     }
 
     const newEval = function (){
+
+        document.querySelector('#newEvalsubmit').addEventListener("click", function(){
+            function Storage(){
+                this.inputCandidate = []
+
+            }
+
+            Storage.prototype = {
+                addCandidate: function(obj){
+                    this.inputCandidate.push(obj)
+                }, 
+                checkInputCandidate: function(){
+                    alert(this.inputCandidate[0].candidate)
+                }
+
+
+            }
+
+            alert(document.getElementsByName("Candidate"))
+            var s = new Storage();
+            s.addCandidate({
+                candidate: document.getElementsByName("Candidate"),
+                interviewer: document.getElementsByName("Interviewer"),
+                date: document.getElementsByName("Date")
+            })
+            
+
+
+
+        
+        })
+
         document.querySelector('#evaluationPageLink').addEventListener("click", function(){
                 document.querySelector('#app').innerHTML = evaluationPage;
                 logged()
@@ -471,6 +541,7 @@ window.onload = function(){
             logged()
         })
     }
+    
     
 }
 
