@@ -93,7 +93,7 @@ window.onload = function(){
                 date: document.getElementById("newElementDate").value
             });
         
-            console.log(newEvaluationPage)
+            //console.log(newEvaluationPage)
         
             GetNewEvaluationPageData().newEvaluationTextAreaContent.map(function(element, i ){
                 s.setTextArea({
@@ -110,6 +110,13 @@ window.onload = function(){
             //console.log(legendVector)
             //console.log(newEvaluationOptions.newEvaluationDropDownContent)
             //onsole.log(s)
+        const aux = []
+        if(localStorage.length !== 0){
+            aux = JSON.parse(localStorage.getItem("evaluation"))
+        }
+        aux.push(s)
+        localStorage.setItem("evaluation",JSON.stringify(aux))
+
             s.setlegendBoxes(legendVector)
             console.log(s)
         });
