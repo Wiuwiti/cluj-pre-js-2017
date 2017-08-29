@@ -3,14 +3,15 @@ window.onload = function(){
     function Storage(){
         this.inputCandidate = [],
         this.radioBox = "",
-        this.textArea = []
+        this.textArea = [],
+        this.legendBoxes = []
 
     }
 
     Storage.prototype = {
         addCandidate: function(obj){
             this.inputCandidate.push(obj)
-            console.log(this.inputCandidate[0])
+            //console.log(this.inputCandidate[0])
         },
         
         setRadioBox(string){
@@ -19,7 +20,12 @@ window.onload = function(){
         
         setTextArea(obj){
             this.textArea.push(obj)
+        },
+        setlegendBoxes: function(arr){
+            this.legendBoxes = arr
         }
+
+        
 
 
     }
@@ -238,34 +244,42 @@ window.onload = function(){
             newEvaluationSelectContent,
             selectBox:[
                 {
+                    idName: "selectorClasses",
                     selectName:"Classes",
                     labelTitle:"Classes"
                 },
                 {
+                    idName: "selectorExceptions",
                     selectName:"Exception handling",
                     labelTitle:"Exception handling"
                 },
                 {
+                    idName: "selectorControl",
                     selectName:"Version Control",
                     labelTitle:"Version Control"
                 },
                 {
+                    idName: "selectorAccess",
                     selectName:"Access modifiers",
                     labelTitle:"Access modifiers"
                 },
                 {
+                    idName: "selectorDesign",
                     selectName:"Design Patterns",
                     labelTitle:"Design Patterns"
                 },
                 {
+                    idName: "selectorIssueTracking",
                     selectName:"Issue Tracking",
                     labelTitle:"Issue Tracking"
                 },
                 {
+                    idName: "selectorPolymorphism",
                     selectName:"Polymorphism",
                     labelTitle:"Polymorphism"
                 },
                 {
+                    idName: "selectorRegEx",
                     selectName:"RegEx",
                     labelTitle:"RegEx"
                 }],
@@ -506,15 +520,25 @@ window.onload = function(){
                 date: document.getElementById("newElementDate").value
             })
             
-            console.log(newEvaluationOptions.newEvaluationTextAreaContent)
+            //console.log(newEvaluationOptions.newEvaluationTextAreaContent)
             
             newEvaluationOptions.newEvaluationTextAreaContent.map(function(element, i ){
                 s.setTextArea({
                     input: document.getElementById(""+element.textAreaID+i).value
                 })
             })
-            console.log(s)
 
+            const legendVector = newEvaluationOptions.newEvaluationDropDownContent.map(function(element){
+                const jew = element.selectBox.map(function(element){
+                    return document.getElementById(element.idName).value                 
+                })
+                return jew
+            })
+            //console.log(legendVector)
+            //console.log(newEvaluationOptions.newEvaluationDropDownContent)
+            //onsole.log(s)
+            s.setlegendBoxes(legendVector)
+            console.log(s)
             element.preventDefault()
         
         })

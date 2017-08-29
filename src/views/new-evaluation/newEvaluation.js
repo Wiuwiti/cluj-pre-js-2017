@@ -83,17 +83,17 @@ const TextArea = function (textAreaContent = {}){
 const SelectConstructor = function(selectContent = {}){
     const result = []
     result.push(`<option selected disabled hidden>Evaluation</option>`)
-    result.push(selectContent.map((element) =>  `<option value = "0"> ${element}</option>`).join(''))
+    result.push(selectContent.map((element) =>  `<option value = "${element }"> ${element}</option>`).join(''))
     return result.join('')
 }
 
 
 const DropDownConstructor = function (selectBoxContent = {}, selectContent = {}){
-    return selectBoxContent.map( (element) => 
+    return selectBoxContent.map( (element,i) => 
     `
     <li class="legend-box-drop">
         <label for="${element.selectName}"> ${element.labelTitle}</label>
-        <select name="${element.selectName}">
+        <select id = "${element.idName}" name="${element.selectName}">
         ${SelectConstructor(selectContent.Values)}
         </select>
     </li>`).join('')
