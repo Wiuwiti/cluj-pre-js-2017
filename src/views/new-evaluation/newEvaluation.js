@@ -68,15 +68,15 @@ const TechnicalLevelPicker = function (technicalContent = {}){
 } 
 
 
-const TextAreaBox = function(textAreaContent = {}){
+const TextAreaBox = function(textAreaContent = {},i){
     return `
     <div class="user-textarea">
         <h3>${textAreaContent.headerTitle}</h3>
-        <textarea placeholder="${textAreaContent.placeHolder}"required></textarea>
+        <textarea id="${textAreaContent.textAreaID}${i}"placeholder="${textAreaContent.placeHolder}"required></textarea>
     </div>`
 }
 const TextArea = function (textAreaContent = {}){
-    return textAreaContent.map(TextAreaBox).join('')
+    return textAreaContent.map((element,i) =>TextAreaBox(element,i)).join('')
 }
 
 

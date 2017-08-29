@@ -1,36 +1,35 @@
 window.onload = function(){
 
+    function Storage(){
+        this.inputCandidate = [],
+        this.radioBox = "",
+        this.textArea = []
+
+    }
+
+    Storage.prototype = {
+        addCandidate: function(obj){
+            this.inputCandidate.push(obj)
+            console.log(this.inputCandidate[0])
+        },
+        
+        setRadioBox(string){
+            this.radioBox = string
+        },
+        
+        setTextArea(obj){
+            this.textArea.push(obj)
+        }
+
+
+    }
+    var s = new Storage();
+    window.addEventListener("click", function(event){
+        if (event.target.type === "radio"){
+            s.setRadioBox(event.target.value)
+        }
+    })
     
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     const loginPage = [];
     const footerContent = {
@@ -185,14 +184,17 @@ window.onload = function(){
 
     const newEvaluationTextAreaContent = [
         {
+            textAreaID: "textArea",
             headerTitle : "Should the candidate be hired?",
             placeHolder : "The type of project that is suitable for the candidate &#13;&#10;Is guidance requiredd for the candidate"
         },
         {
+            textAreaID: "textArea",
             headerTitle : "General Impression",
             placeHolder : "*required"
         },
         {
+            textAreaID: "textArea",
             headerTitle : "Workflow, Leadership &#38; Soft Skills",
             placeHolder : "Describe the enviroment in which the candidate works. &#13;&#10;Describe ani guidance or management experience."
         }
@@ -494,34 +496,26 @@ window.onload = function(){
 
     const newEval = function (){
 
-        document.querySelector('#newEvalsubmit').addEventListener("click", function(){
-            function Storage(){
-                this.inputCandidate = []
-
-            }
-
-            Storage.prototype = {
-                addCandidate: function(obj){
-                    this.inputCandidate.push(obj)
-                }, 
-                checkInputCandidate: function(){
-                    alert(this.inputCandidate[0].candidate)
-                }
-
-
-            }
-
-            alert(document.getElementsByName("Candidate"))
-            var s = new Storage();
-            s.addCandidate({
-                candidate: document.getElementsByName("Candidate"),
-                interviewer: document.getElementsByName("Interviewer"),
-                date: document.getElementsByName("Date")
-            })
+        document.querySelector('#newEvalsubmit').addEventListener("click", function(element){
             
 
+            
+            s.addCandidate({
+                candidate: document.getElementById("newEvaluationCandidate").value,
+                interviewer: document.getElementById("newEvaluationInterviewer").value,
+                date: document.getElementById("newElementDate").value
+            })
+            
+            console.log(newEvaluationOptions.newEvaluationTextAreaContent)
+            
+            newEvaluationOptions.newEvaluationTextAreaContent.map(function(element, i ){
+                s.setTextArea({
+                    input: document.getElementById(""+element.textAreaID+i).value
+                })
+            })
+            console.log(s)
 
-
+            element.preventDefault()
         
         })
 
