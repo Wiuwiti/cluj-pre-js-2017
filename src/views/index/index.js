@@ -36,12 +36,22 @@ window.onload = function(){
 
     const loginPage = [];
     loginPage.push(LoginPage(GetLoginPageData()))
-    const evaluationPage = [];
-    evaluationPage.push(EvaluationPage(GetEvaluationPageData()))
+    let evaluationPage = [];
+    
     const newEvaluationPage = [];
     newEvaluationPage.push(NewEvaluationPage(GetNewEvaluationPageData()))
 
+    let val = JSON.parse(localStorage.getItem("evaluation"))
+    let val2 = val.map(function(element){
+        return {
+            nume:element.inputCandidate[0].candidate,
+            technologie:element.textArea[2].input,
+            nivel: element.radioBox,
+            buttonIMG: "/assets/button.jpg"
+        }
+    })
 
+    evaluationPage.push(EvaluationPage(GetEvaluationPageData(val2)))
 
     document.querySelector('#app').innerHTML = loginPage;
 
@@ -93,8 +103,6 @@ window.onload = function(){
                 date: document.getElementById("newElementDate").value
             });
         
-            //console.log(newEvaluationPage)
-        
             GetNewEvaluationPageData().newEvaluationTextAreaContent.map(function(element, i ){
                 s.setTextArea({
                     input: document.getElementById(""+element.textAreaID+i).value
@@ -102,24 +110,24 @@ window.onload = function(){
             })
 
             const legendVector = GetNewEvaluationPageData().newEvaluationDropDownContent.map(function(element){
-                const jew = element.selectBox.map(function(element){
+                const vl = element.selectBox.map(function(element){
                     return document.getElementById(element.idName).value                 
                 })
-                return jew
+                return vl
             })
-            //console.log(legendVector)
-            //console.log(newEvaluationOptions.newEvaluationDropDownContent)
-            //onsole.log(s)
-        let aux = []
-        if(localStorage.length !== 0){
-            aux = JSON.parse(localStorage.getItem("evaluation"))
-        }
-        aux.push(s)
-        localStorage.setItem("evaluation",JSON.stringify(aux))
+            let aux = []
+            if(localStorage.length !== 0){
+                aux = JSON.parse(localStorage.getItem("evaluation"))
+            }
+            aux.push(s)
+            if(localStorage.getItem("evaluation")===null){
+                console.log(aux)
+            }
+            localStorage.setItem("evaluation",JSON.stringify(aux))
 
-        s.setlegendBoxes(legendVector)
-        console.log(s)
-        });
+            s.setlegendBoxes(legendVector)
+            console.log(s)
+            });
     };    
 }
 

@@ -9,7 +9,7 @@ const GetLoginPageData = function(){
 }
 
 
-const GetEvaluationPageData = function(){
+const GetEvaluationPageData = function(evalTableContent){
     const evaluationHeaderContent = [
         {
             
@@ -35,32 +35,7 @@ const GetEvaluationPageData = function(){
 
     
     const evaluationTableHeader = ["Nume", "Technologie", "Nivel"];
-    const evaluationTableContent = [
-        {
-            nume: "Popescu Adrian",
-            technologie: "Javascript",
-            nivel: "Mid 2",
-            buttonIMG : "/assets/button.jpg"
-        },
-        {
-            nume: "Dragan Roxana",
-            technologie: "PHP",
-            nivel:"Mid 1",
-            buttonIMG : "/assets/button.jpg"
-        },
-        {
-            nume:"Florescu Mihai",
-            technologie: "Javascript",
-            nivel:"Junior 3",
-            buttonIMG: "/assets/button.jpg"
-        },
-        {
-            nume:"Gheorghe Andrei",
-            technologie: "Ruby",
-            nivel:"Senior 1",
-            buttonIMG : "/assets/button.jpg"
-        }
-    ];
+    const evaluationTableContent = evalTableContent
     const evaluationFooterContent = {
         footerText : "SoftVision@2017"
     };
@@ -149,22 +124,22 @@ const GetNewEvaluationPageData = function (){
         classes : ["", "R2", "R2", "R2"],
         columnData: [
             {
-                inputLevel : ["T"],
+                inputLevel : ["Trainee"],
                 ID: ["RR1"],
                 classes: [""]
             },
             {
-                inputLevel :["J1", "J2", "J3"],
+                inputLevel :["Junior 1", "Junior 2", "Junior 3"],
                 ID: ["", "", ""],
                 classes: ["", "", "spacer"]
             },
             {
-                inputLevel :["M1", "M2", "M3"],
+                inputLevel :["Middle 1", "Middle 2", "Middle 3"],
                 ID: ["","",""],
                 classes: ["", "", "spacer"]
             },
             {
-                inputLevel :["S1", "S2", "S3"],
+                inputLevel :["Senior 1", "Senior 2", "Senior 3"],
                 ID:["","",""],
                 classes: ["","",""]
             }                                        
