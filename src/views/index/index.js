@@ -41,7 +41,11 @@ window.onload = function(){
     const newEvaluationPage = [];
     newEvaluationPage.push(NewEvaluationPage(GetNewEvaluationPageData()))
 
-    let val = JSON.parse(localStorage.getItem("evaluation"))
+
+    let val = []
+    if(localStorage.length !== 0){
+        val = JSON.parse(localStorage.getItem("evaluation"))
+    }
     let val2 = val.map(function(element){
         return {
             nume:element.inputCandidate[0].candidate,
@@ -94,7 +98,6 @@ window.onload = function(){
 
     const submitButton = function(){
         document.querySelector('#newEvalsubmit').addEventListener("click", function(event) {
-            alert(1);
             event.preventDefault();
 
             s.addCandidate({
@@ -126,7 +129,22 @@ window.onload = function(){
             localStorage.setItem("evaluation",JSON.stringify(aux))
 
             s.setlegendBoxes(legendVector)
-            console.log(s)
+
+            let val = []
+            if(localStorage !== null){
+                val = JSON.parse(localStorage.getItem("evaluation"))
+            }
+            val = JSON.parse(localStorage.getItem("evaluation"))
+            val2 = val.map(function(element){
+                return {
+                    nume:element.inputCandidate[0].candidate,
+                    technologie:element.textArea[2].input,
+                    nivel: element.radioBox,
+                    buttonIMG: "/assets/button.jpg"
+                }
+            })
+            document.querySelector('#app').innerHTML = EvaluationPage(GetEvaluationPageData(val2));
+            logged()
             });
     };    
 }
