@@ -110,15 +110,15 @@ window.onload = function(){
             //console.log(legendVector)
             //console.log(newEvaluationOptions.newEvaluationDropDownContent)
             //onsole.log(s)
-        const aux = []
+        let aux = []
         if(localStorage.length !== 0){
             aux = JSON.parse(localStorage.getItem("evaluation"))
         }
         aux.push(s)
         localStorage.setItem("evaluation",JSON.stringify(aux))
 
-            s.setlegendBoxes(legendVector)
-            console.log(s)
+        s.setlegendBoxes(legendVector)
+        console.log(s)
         });
     };    
 }
