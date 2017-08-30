@@ -68,32 +68,32 @@ const TechnicalLevelPicker = function (technicalContent = {}){
 } 
 
 
-const TextAreaBox = function(textAreaContent = {}){
+const TextAreaBox = function(textAreaContent = {},i){
     return `
     <div class="user-textarea">
         <h3>${textAreaContent.headerTitle}</h3>
-        <textarea placeholder="${textAreaContent.placeHolder}"required></textarea>
+        <textarea id="${textAreaContent.textAreaID}${i}"placeholder="${textAreaContent.placeHolder}"required></textarea>
     </div>`
 }
 const TextArea = function (textAreaContent = {}){
-    return textAreaContent.map(TextAreaBox).join('')
+    return textAreaContent.map((element,i) =>TextAreaBox(element,i)).join('')
 }
 
 
 const SelectConstructor = function(selectContent = {}){
     const result = []
     result.push(`<option selected disabled hidden>Evaluation</option>`)
-    result.push(selectContent.map((element) =>  `<option value = "0"> ${element}</option>`).join(''))
+    result.push(selectContent.map((element) =>  `<option value = "${element }"> ${element}</option>`).join(''))
     return result.join('')
 }
 
 
 const DropDownConstructor = function (selectBoxContent = {}, selectContent = {}){
-    return selectBoxContent.map( (element) => 
+    return selectBoxContent.map( (element,i) => 
     `
     <li class="legend-box-drop">
         <label for="${element.selectName}"> ${element.labelTitle}</label>
-        <select name="${element.selectName}">
+        <select id = "${element.idName}" name="${element.selectName}">
         ${SelectConstructor(selectContent.Values)}
         </select>
     </li>`).join('')
@@ -143,369 +143,7 @@ const NewEvaluationPage = function(options = {}){
 
 
 window.onload = function(){
-    const newEvaluationResult = [];
     
-        const newEvaluationHeaderContent = [
-            {
-                link: "evaluationPageLink",
-                text: "Evaluation"
-            },
-            {
-                link: "newEvaluationPageLink",
-                text: "New Evaluation",
-                activePage: "navigation-bar-active-page navigation-bar-active-page-theme"
-            },
-            {
-                link: "loginPageLink",
-                text: "Logout",
-                rightSidedButton: "float-right-element"
-            }
-        ];
-        
-    
-        const newEvaluationLogoContent = {
-            link : "assets/logo-v2.jpg",
-            alt: "Company logo"
-        };
-    
-        
-        const newEvaluationCandidateContent= [
-            {
-                elementID : "newEvaluationCandidate",
-                inputName : "Candidate",
-                placeHolder : "Candidate",
-                dataType : "text"
-            },
-            {
-                elementID : "newEvaluationInterviewer",
-                inputName: "Interviewer",
-                placeHolder: "Interviewer",
-                dataType: "text"
-            },
-            {
-                elementID: "newElementDate",
-                inputName: "Date",
-                placeHolder: "dd/mm/yyyy",
-                dataType: "date"
-            }
-        ];
-    
-        const newEvaluationTextAreaContent = [
-            {
-                headerTitle : "Should the candidate be hired?",
-                placeHolder : "The type of project that is suitable for the candidate &#13;&#10;Is guidance requiredd for the candidate"
-            },
-            {
-                headerTitle : "General Impression",
-                placeHolder : "*required"
-            },
-            {
-                headerTitle : "Workflow, Leadership &#38; Soft Skills",
-                placeHolder : "Describe the enviroment in which the candidate works. &#13;&#10;Describe ani guidance or management experience."
-            }
-        ];
-    
-    
-        const newEvaluationTechnicalLevelContent = {
-            HeaderTitle : "Technical Level",
-            headers: ["Trainee", "Junior", "Middle", "Senior"],
-            ID: ["R1", "", "", ""],
-            classes : ["", "R2", "R2", "R2"],
-            columnData: [
-                {
-                    inputLevel : ["T"],
-                    ID: ["RR1"],
-                    classes: [""]
-                },
-                {
-                    inputLevel :["J1", "J2", "J3"],
-                    ID: ["", "", ""],
-                    classes: ["", "", "spacer"]
-                },
-                {
-                    inputLevel :["M1", "M2", "M3"],
-                    ID: ["","",""],
-                    classes: ["", "", "spacer"]
-                },
-                {
-                    inputLevel :["S1", "S2", "S3"],
-                    ID:["","",""],
-                    classes: ["","",""]
-                }                                        
-            ]                   
-        };
-        const newEvaluationSelectContent = {
-            Values: ["0", "1", "2", "3"]
-        };
-    
-        const newEvaluationDropDownContent = [
-            {
-                newEvaluationSelectContent,
-                selectBox:[
-                    {
-                        selectName:"Classes",
-                        labelTitle:"Classes"
-                    },
-                    {
-                        selectName:"Exception handling",
-                        labelTitle:"Exception handling"
-                    },
-                    {
-                        selectName:"Version Control",
-                        labelTitle:"Version Control"
-                    },
-                    {
-                        selectName:"Access modifiers",
-                        labelTitle:"Access modifiers"
-                    },
-                    {
-                        selectName:"Design Patterns",
-                        labelTitle:"Design Patterns"
-                    },
-                    {
-                        selectName:"Issue Tracking",
-                        labelTitle:"Issue Tracking"
-                    },
-                    {
-                        selectName:"Polymorphism",
-                        labelTitle:"Polymorphism"
-                    },
-                    {
-                        selectName:"RegEx",
-                        labelTitle:"RegEx"
-                    }],
-                Title:"OOP, Design Patterns",
-                boxID: "OOP"
-            },
-            {
-                newEvaluationSelectContent,
-                selectBox:[
-                    {
-                        selectName:"Protocol",
-                        labelTitle:"Protocol"
-                    },
-                    {
-                        selectName:"Response codes",
-                        labelTitle:"Response codes"
-                    },
-                    {
-                        selectName:"REST",
-                        labelTitle:"REST"
-                    },
-                    {
-                        selectName:"Headers",
-                        labelTitle:"Headers"
-                    },
-                    {
-                        selectName:"Request methods",
-                        labelTitle:"Request methods"
-                    },
-                    {
-                        selectName:"Issue Tracking",
-                        labelTitle:"Sessions &#38; Cookies"
-                    }
-                ],
-                Title: "HTTP",
-                boxID: "HTTP"
-            },
-            {
-                newEvaluationSelectContent,
-                selectBox:[
-                    {
-                        selectName:"Doctype",
-                        labelTitle:"Doctype"
-                    },
-                    {
-                        selectName:"Tags",
-                        labelTitle:"Tags"
-                    },
-                    {
-                        selectName:"Basic SEO",
-                        labelTitle:"Basic SEO"
-                    },
-                    {
-                        selectName:"Syntax Rules",
-                        labelTitle:"Syntax Rules"
-                    }
-                ],
-                Title: "HTML",
-                boxID: "HTML"
-            },
-            {
-                newEvaluationSelectContent,
-                selectBox:[
-                    {
-                        selectName:"Usage",
-                        labelTitle:"Protocol"
-                    },
-                    {
-                        selectName:"Box Modeling",
-                        labelTitle:"Box Modeling"
-                    },
-                    {
-                        selectName:"CSS 3.0",
-                        labelTitle:"CSS 3.0"
-                    },
-                    {
-                        selectName:"Selectors",
-                        labelTitle:"Selectors"
-                    },
-                    {
-                        selectName:"Styling",
-                        labelTitle:"Styling"
-                    },
-                    {
-                        selectName:"Dynamic Stylesheets",
-                        labelTitle:"Dynamic Stylesheets"
-                    }
-                ],
-                Title: "CSS",
-                boxID: "CSS"
-            },
-            {
-                newEvaluationSelectContent,
-                selectBox:[
-                    {
-                        selectName:"Date types",
-                        labelTitle:"Date types"
-                    },
-                    {
-                        selectName:"Object manipulation",
-                        labelTitle:"Object manipulation"
-                    },
-                    {
-                        selectName:"DOM manipulation",
-                        labelTitle:"DOM manipulation"
-                    },
-                    {
-                        selectName:"Functions",
-                        labelTitle:"Functions"
-                    },
-                    {
-                        selectName:"Templating",
-                        labelTitle:"Templating"
-                    },
-                    {
-                        selectName:"Issue Tracking",
-                        labelTitle:"Issue Tracking"
-                    },
-                    {
-                        selectName:"Event Handling",
-                        labelTitle:"Event Handling"
-                    },
-                    {
-                        selectName:"Prototype",
-                        labelTitle:"Prototype &#38; OOP"
-                    },
-                    {
-                        selectName:"Testing",
-                        labelTitle:"Testing(unit, E2E)"
-                    },
-                    {
-                        selectName:"AJAX",
-                        labelTitle:"AJAX"
-                    },
-                    {
-                        selectName:"Debugging",
-                        labelTitle:"Debugging"
-                    },
-                    {
-                        selectName:"Websockets",
-                        labelTitle:"Websockets"
-                    },
-                    {
-                        selectName:"Tooling",
-                        labelTitle:"Tooling"
-                    },
-                    {
-                        selectName:"Libraries",
-                        labelTitle:"Libraries"
-                    },
-                    {
-                        selectName:"Promisses",
-                        labelTitle:"Promisses"
-                    },
-                    {
-                        selectName:"Browser Engines",
-                        labelTitle:"Browser Engines"
-                    },
-                    {
-                        selectName:"Frameworks",
-                        labelTitle:"Frameworks"
-                    }
-                ],
-                Title:"OOP, Design Patterns",
-                boxID: "OOP"
-            },
-            {
-                newEvaluationSelectContent,
-                selectBox:[
-                    {
-                        selectName:"Backend frameworks",
-                        labelTitle:"Backend frameworks"
-                    },
-                    {
-                        selectName:"Templating",
-                        labelTitle:"Templating"
-                    },
-                    {
-                        selectName:"DOM Manipulation",
-                        labelTitle:"DOM Manipulation"
-                    },
-                    {
-                        selectName:"Unit Testing",
-                        labelTitle:"Unit Testing"
-                    }
-                ],
-                Title:"NodeJS",
-                boxID:"NodeJS"
-            }
-        ];
-                       
-        
-        const newEvaluationFooterContent = {footerText : "SoftVision@2017"};
-        const newEvaluationOptions={
-            newEvaluationHeaderContent,
-            newEvaluationLogoContent, 
-            newEvaluationCandidateContent,
-            newEvaluationTechnicalLevelContent,
-            newEvaluationTextAreaContent,
-            newEvaluationDropDownContent,
-            newEvaluationFooterContent};
-    
-        newEvaluationResult.push(NewEvaluationPage(newEvaluationOptions))
-    
-        document.querySelector('#app').innerHTML = newEvaluationResult;
-
-
-        
-        function Storage(){
-            this.inputCandidate = []
-        }
-        Storage.prototype = {
-            addInputCandidate: function(obj){
-                this.inputCandidate.push(obj)
-            },
-
-            checkInput: function(){
-                alert(this.inputCandidate[0].candidate.value)
-            }
-        }
-        var s = new Storage();
-        
-        s.addInputCandidate({
-            candidate: document.getElementById('newEvaluationCandidate'),
-            interviewer: document.getElementById('newEvaluationInterviewer'),
-            date: document.getElementById('newElementDate')
-        })
-        
-        document.getElementById("newEvalsubmit").addEventListener("click", function(){
-            //console.log(document.getElementById('newEvaluationCandidate').value)
-            s.checkInput()
-        })
-        
-        
-
 }
 
 
