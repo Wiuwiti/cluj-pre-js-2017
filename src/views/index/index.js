@@ -46,16 +46,21 @@ window.onload = function(){
     if(localStorage.length !== 0){
         val = JSON.parse(localStorage.getItem("evaluation"))
     }
+    if(val !== null){
     let val2 = val.map(function(element){
         return {
             nume:element.inputCandidate[0].candidate,
             technologie:element.textArea[2].input,
             nivel: element.radioBox,
             buttonIMG: "/assets/button.jpg"
-        }
-    })
+            }
+        })
+        evaluationPage.push(EvaluationPage(GetEvaluationPageData(val2)))
+    }else{
+        evaluationPage.push(EvaluationPage(GetEvaluationPageData([])))
+    }
 
-    evaluationPage.push(EvaluationPage(GetEvaluationPageData(val2)))
+    
 
     document.querySelector('#app').innerHTML = loginPage;
 
@@ -124,7 +129,11 @@ window.onload = function(){
         if(localStorage.length !== 0){
             aux = JSON.parse(localStorage.getItem("evaluation"))
         }
-        aux.push(obj)
+        if(aux == null){
+            aux = [].push(obj)
+        }else{
+            aux.push(obj)
+        }
         if(localStorage.getItem("evaluation")===null){
             console.log(aux)
         }
@@ -153,6 +162,7 @@ window.onload = function(){
                 }
             })
             document.querySelector('#app').innerHTML = EvaluationPage(GetEvaluationPageData(val2));
+            console.log(val2)
             logged()
             });
     };    
