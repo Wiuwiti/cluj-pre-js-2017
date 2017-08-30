@@ -26,7 +26,7 @@ window.onload = function(){
         }
 
     }
-    var s = new Storage();
+    
     window.addEventListener("click", function(event){
         if (event.target.type === "radio"){
             s.setRadioBox(event.target.value)
@@ -96,46 +96,55 @@ window.onload = function(){
         })
     }
 
+    const instantiateObject = function(){
+        var s = new Storage();
+        s.addCandidate({
+            candidate: document.getElementById("newEvaluationCandidate").value,
+            interviewer: document.getElementById("newEvaluationInterviewer").value,
+            date: document.getElementById("newElementDate").value
+        });
+        GetNewEvaluationPageData().newEvaluationTextAreaContent.map(function(element, i ){
+            s.setTextArea({
+                input: document.getElementById(""+element.textAreaID+i).value
+            })
+        })
+        const legendVector = GetNewEvaluationPageData().newEvaluationDropDownContent.map(function(element){
+            const vl = element.selectBox.map(function(element){
+                return document.getElementById(element.idName).value                 
+            })
+            return vl
+        })
+        s.setlegendBoxes(legendVector)
+        return s
+    }
+
+
+    const addObjectToLocalstorage = function(obj){
+        let aux = []
+        if(localStorage.length !== 0){
+            aux = JSON.parse(localStorage.getItem("evaluation"))
+        }
+        aux.push(obj)
+        if(localStorage.getItem("evaluation")===null){
+            console.log(aux)
+        }
+        localStorage.setItem("evaluation",JSON.stringify(aux))
+    }
+
+
     const submitButton = function(){
         document.querySelector('#newEvalsubmit').addEventListener("click", function(event) {
             event.preventDefault();
 
-            s.addCandidate({
-                candidate: document.getElementById("newEvaluationCandidate").value,
-                interviewer: document.getElementById("newEvaluationInterviewer").value,
-                date: document.getElementById("newElementDate").value
-            });
-        
-            GetNewEvaluationPageData().newEvaluationTextAreaContent.map(function(element, i ){
-                s.setTextArea({
-                    input: document.getElementById(""+element.textAreaID+i).value
-                })
-            })
-
-            const legendVector = GetNewEvaluationPageData().newEvaluationDropDownContent.map(function(element){
-                const vl = element.selectBox.map(function(element){
-                    return document.getElementById(element.idName).value                 
-                })
-                return vl
-            })
-            let aux = []
-            if(localStorage.length !== 0){
-                aux = JSON.parse(localStorage.getItem("evaluation"))
-            }
-            aux.push(s)
-            if(localStorage.getItem("evaluation")===null){
-                console.log(aux)
-            }
-            localStorage.setItem("evaluation",JSON.stringify(aux))
-
-            s.setlegendBoxes(legendVector)
-
+            let newEvalObj = instantiateObject();
+            addObjectToLocalstorage(newEvalObj);
+            
             let val = []
             if(localStorage !== null){
                 val = JSON.parse(localStorage.getItem("evaluation"))
             }
-            val = JSON.parse(localStorage.getItem("evaluation"))
-            val2 = val.map(function(element){
+            
+            val2 = JSON.parse(localStorage.getItem("evaluation")).map(function(element){
                 return {
                     nume:element.inputCandidate[0].candidate,
                     technologie:element.textArea[2].input,
