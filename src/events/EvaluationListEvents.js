@@ -5,13 +5,12 @@ const EvaluationListEvents = function() {
             e.preventDefault();
             
             window.dataStorage.remove('userData');
-            build();
+            build(newEval= false, Eval= false);
         });
         const newEvaluationPage = document.getElementById('newEvaluationPage');
         newEvaluationPage.addEventListener('click',function(e){
             e.preventDefault();
-            
-            build();
+            build(newEval=true, Eval= false);
         })
     }
 }

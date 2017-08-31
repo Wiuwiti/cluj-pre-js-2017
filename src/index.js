@@ -7,10 +7,14 @@
         return !!window.dataStorage.get('userData');
     }
 
-    const build = function() {
+    const build = function(NewEval  , Eval) {
         const component = Manager.app({
-            isLogged: isLogged()
+            isLogged: isLogged(),
+            isNewEval: NewEval,
+            NewEval: Eval
         });
+
+        
 
         appElem.innerHTML = component.view.markup;
         if (component.setupEvents !== undefined) {

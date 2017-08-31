@@ -35,12 +35,7 @@ const GetEvaluationPageData = function(evalTableContent){
 
     
     const evaluationTableHeader = ["Nume", "Technologie", "Nivel"];
-    const evaluationTableContent = [{
-        nume:"kjksda",
-        technologie: "Js",
-        nivel: 'ala',
-        buttonIMG: "/assets/button.jpg"
-    }]
+    const evaluationTableContent = evalTableContent;
     const evaluationFooterContent = {
         footerText : "SoftVision@2017"
     };
@@ -60,16 +55,18 @@ const GetNewEvaluationPageData = function (){
     
     const newEvaluationHeaderContent = [
         {
-            link: "evaluationPageLink",
+            
+            link: "evaluationPage",
             text: "Evaluation"
+           
         },
         {
-            link: "newEvaluationPageLink",
+            link: "newEvaluationPage",
             text: "New Evaluation",
             activePage: "navigation-bar-active-page navigation-bar-active-page-theme"
         },
         {
-            link: "",
+            link: "logout",
             text: "Logout",
             rightSidedButton: "float-right-element"
         }
