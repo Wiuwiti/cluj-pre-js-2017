@@ -1,0 +1,3 @@
+const showContent = function(object){
+    
+}

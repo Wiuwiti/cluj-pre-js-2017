@@ -1,7 +1,11 @@
-const EvaluationList = function(lis) {
+const EvaluationList = function(lis, obj = {}) {
+    if(obj = {}){
     this.markup = `
         ${EvaluationPage(GetEvaluationPageData(lis))}
-    `;
+    `;}
+    else{
+        this.markup =`jcvfa`
+    }
 }
 
 const InsertHeader = function(tableHeaderContent = {}){
@@ -32,7 +36,7 @@ const TableRows = function(tableContent = {}){
        <td class= "td-theme">${tableContent.nivel}</td>
        <td class="detail-button td-theme">Detail</td>
        <td class= "td-theme">
-           <img src="${tableContent.buttonIMG}" alt="More Deatails">
+           <img src="${tableContent.buttonIMG}" alt="More Deatails" class="evalContentBut">
        </td>
    </tr>
    `
@@ -50,7 +54,7 @@ const TableConstructor = function (tableContent ={} , tableHeaderContent ={} ){
 
 const TableBody = function(tableContent = {}, tableHeaderContent = {}){
     return `
-    <table cellspacing="0" cellpadding= "0" class = "evaluation-table evaluation-table-theme" >
+    <table id = "evalTable" cellspacing="0" cellpadding= "0" class = "evaluation-table evaluation-table-theme" >
         ${TableConstructor(tableContent, tableHeaderContent)}
     </table>
     `

@@ -7,11 +7,12 @@
         return !!window.dataStorage.get('userData');
     }
 
-    const build = function(NewEval  , Eval) {
+    const build = function(NewEval  , Eval, Obj=null) {
         const component = Manager.app({
             isLogged: isLogged(),
             isNewEval: NewEval,
-            NewEval: Eval
+            NewEval: Eval,
+            extraObj: Obj
         });
 
         
