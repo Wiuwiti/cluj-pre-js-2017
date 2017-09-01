@@ -18,7 +18,7 @@ Setup.prototype.app = function (options) {
   if(localStorage.getItem("evaluation") !== null){
     q = JSON.parse(localStorage.getItem("evaluation")).map(function(element){
       return {
-        nume:element.inputCandidate[0].candidate,
+        nume:element.inputCandidate[0][0],
         technologie:element.textArea[2].input,
         nivel: element.radioBox,
         buttonIMG: "/assets/button.jpg"
