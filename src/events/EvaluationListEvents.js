@@ -33,9 +33,7 @@ const EvaluationListEvents = function(w) {
                 //     <img src="/assets/button.jpg" alt="More Deatails" class="evalContentBut">
                 // </td></tr>`
                 // row.className = "border-bottom"                
-                console.log(w[ind])
-                const yet = window.open("", "Evaluation details", "width=1400,height=500")
-                yet.document.write(JSON.stringify(w[ind]))
+                showContent(w[ind])
             })
         }
 
