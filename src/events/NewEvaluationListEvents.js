@@ -82,7 +82,6 @@ const NewEvaluationListEvents = function() {
             event.preventDefault();
             let newEvalObj = instantiateObject();
             addObjectToLocalstorage(newEvalObj)
-            //console.log(JSON.parse(localStorage.getItem("evaluation")))
             let val =[]
             if(localStorage !== null){
                 val = JSON.parse(localStorage.getItem("evaluation"))
@@ -95,7 +94,6 @@ const NewEvaluationListEvents = function() {
                     buttonIMG: "/assets/button.jpg"
                 }
             })
-            console.log(val2)
             build(false,true);
         })
 

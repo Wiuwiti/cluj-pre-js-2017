@@ -3,7 +3,6 @@ const showContent = function(object){
     const popPage = window.open("", "Evaluation details", "width=1400,height=500")
     clearWindow(popPage)
     const obj = object
-    //console.log(obj.inputCandidate)
     popPage.document.write(`<body> ${evaluationDetails(obj.inputCandidate)} </body>`)
 }
 

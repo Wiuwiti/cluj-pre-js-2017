@@ -29,13 +29,7 @@ Setup.prototype.app = function (options) {
   if(localStorage.getItem("evaluation") !== null){
     w = JSON.parse(localStorage.getItem("evaluation"))
   }
-  //console.log(w)
-  // if(options.extraObj !==null){
-  //   return {
-  //     view: new EvaluationList(q, w[ind]),
-  //     setupEvents: new EvaluationListEvents(w)
-  //   }
-  // }
+
   return {
     view: new EvaluationList(q),
     setupEvents: new EvaluationListEvents(w)
