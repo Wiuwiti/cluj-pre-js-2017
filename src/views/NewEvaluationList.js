@@ -139,8 +139,14 @@ const NewEvaluationPageGrid = function (option = {}){
     `
 }
 
-const NewEvaluationPage = function(options = {}){
-    return `${NavigationBar(options.newEvaluationHeaderContent, options.newEvaluationLogoContent)}
-    ${NewEvaluationPageGrid(options)}
-    ${FooterConstructor(options.newEvaluationFooterContent)}`
+const NewEvaluationPage = function(options = {}, obj = {}){
+    if(Object.keys(obj).length === 0){
+        return `${NavigationBar(options.newEvaluationHeaderContent, options.newEvaluationLogoContent)}
+        ${NewEvaluationPageGrid(options)}
+        ${FooterConstructor(options.newEvaluationFooterContent)}`
+    }else{
+        return `
+        ${NewEvaluationPageGrid(options)}
+        `
+    }
 }

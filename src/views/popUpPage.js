@@ -12,7 +12,7 @@ const showContent = function(object){
     </head>
     
     
-    <body> ${evaluationDetails(obj.inputCandidate)} 
+    <body> ${evaluationDetails(obj)} 
     
     
     </body>`)
@@ -22,9 +22,9 @@ const clearWindow = function(object){
     object.document.getElementsByTagName('body')[0].innerHTML = ''
 }
 
-const evaluationDetails = function(array){
-    const candidateContent = array[0]
+const evaluationDetails = function(selectedObject){
+    console.log(selectedObject)
     return `
-    ${NewEvaluationPage(GetNewEvaluationPageData())}
+    ${NewEvaluationPage(GetNewEvaluationPageData(), selectedObject)}
     `
 }

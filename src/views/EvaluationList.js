@@ -58,6 +58,7 @@ const TableBody = function(tableContent = {}, tableHeaderContent = {}){
 
 
 const EvaluationPage = function(pageContent = {}){
+    
     return `${NavigationBar(pageContent.evaluationHeaderContent, pageContent.evaluationLogoContent)}
     ${TableBody(pageContent.evaluationTableContent, pageContent.evaluationTableHeader)}
     ${FooterConstructor(pageContent.evaluationFooterContent)}
