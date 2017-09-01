@@ -25,8 +25,6 @@ const clearWindow = function(object){
 const evaluationDetails = function(array){
     const candidateContent = array[0]
     return `
-    <label for="firstname"> Candidate Name: </label><input type="text" name="firstname" value="${candidateContent[0]}"></input><br>
-    <label for="lastname"> Interviewer name: </label><input type="text" name="lastname" value="${candidateContent[1]}"></input><br>
-    <label for="date"> Examination Date: </label><input type="date" name="date" value="${candidateContent[2]}"></input>
+    ${NewEvaluationPage(GetNewEvaluationPageData())}
     `
 }
