@@ -59,36 +59,61 @@ const result = technicalContent.headers.map((element, i) => `<li class="${techni
     </ul>`
 }
 
-const TechnicalLevelPickerBottomSection = function (option = {}){
+const checkIT = function(w,s){
+    console.log(w)
+    console.log(s)
+    if(w === s){
+        console.log("SELECTED")
+        return `checked="checked"`
+    }return ``
+}
+
+const TechnicalLevelPickerBottomSection = function (option = {}, opt){
     return option.inputLevel.map((element , i ) => `
     <li class = "${option.classes[i]}" id ="${option.ID[i]}">
-        <input type="radio" name="level" value = "${element}">
+        <input type="radio" name="level" value = "${element}" ${checkIT(element, opt)}>
     </li>`).join('')
 }
 
 
-const TechnicalLevelPickerBottom = function (columnData = {}){
-const result = columnData.map((element) => TechnicalLevelPickerBottomSection(element)).join('')
-    return ` 
-    <ul class="down-list-radio">
-        ${result}
-        <div class="clearfix"></div>
-    </ul>`
+const TechnicalLevelPickerBottom = function (columnData = {}, opt= {}){
+    if(Object.keys(opt).length === 0){
+        const result = columnData.map((element) => TechnicalLevelPickerBottomSection(element)).join('')
+        return ` 
+        <ul class="down-list-radio">
+            ${result}
+            <div class="clearfix"></div>
+        </ul>`
+    }else{
+        const result = columnData.map((element,i) => TechnicalLevelPickerBottomSection(element, opt)).join('')
+        return ` 
+        <ul class="down-list-radio">
+            ${result}
+            <div class="clearfix"></div>
+        </ul>`
+    }
 }
 
-const TechnicalLevelPickerConstructor = function(technicalContent = {}){
-    return `${TechnicalLevelPickerHeader(technicalContent.HeaderTitle)}
-    ${TechnicalLevelPickerTop(technicalContent)}
-    ${TechnicalLevelPickerBottom(technicalContent.columnData)}
-    `
+const TechnicalLevelPickerConstructor = function(technicalContent = {}, opt = {}){
+    if(Object.keys(opt).length === 0){
+        return `${TechnicalLevelPickerHeader(technicalContent.HeaderTitle)}
+        ${TechnicalLevelPickerTop(technicalContent)}
+        ${TechnicalLevelPickerBottom(technicalContent.columnData)}
+        `
+    }
+    return `
+        ${TechnicalLevelPickerHeader(technicalContent.HeaderTitle)}
+        ${TechnicalLevelPickerTop(technicalContent)}
+        ${TechnicalLevelPickerBottom(technicalContent.columnData, opt)}
+        `
 }
-const TechnicalLevelPicker = function (technicalContent = {}, option = ""){
-    if(option === ""){
+const TechnicalLevelPicker = function (technicalContent = {}, option = {}){
+    if(Object.keys(option).length === 0){
     return `<div class="radio-boxes">
         ${TechnicalLevelPickerConstructor(technicalContent)}
     </div>
     `}else{
-        `<div class="radio-boxes">
+        return `<div class="radio-boxes">
         ${TechnicalLevelPickerConstructor(technicalContent, option)}
         </div>
     `
@@ -121,8 +146,6 @@ const TextArea = function (textAreaContent = {}, array = []){
 
 
 const SelectConstructor = function(selectContent = {}, selected = {}){
-    console.log(selected)
-    console.log(selectContent)
     const result = []
     result.push(`<option selected disabled hidden>Evaluation</option>`)
     result.push(selectContent.map(function(element){
@@ -137,7 +160,6 @@ const SelectConstructor = function(selectContent = {}, selected = {}){
 
 
 const DropDownConstructor = function (selectBoxContent = {}, selectContent = {}, selectedValues = []){
-    console.log(selectedValues)
     if(selectedValues === []){
     return selectBoxContent.map( (element,i) => 
     `
@@ -214,7 +236,7 @@ const NewEvaluationPageGrid = function (option = {}, obj = {}){
         return `	
         <div class = "mainBlock">
             ${CandidateDetailsForm(option.newEvaluationCandidateContent, obj.inputCandidate)}
-            ${TechnicalLevelPicker(option.newEvaluationTechnicalLevelContent)}
+            ${TechnicalLevelPicker(option.newEvaluationTechnicalLevelContent, obj.radioBox)}
             ${TextArea(option.newEvaluationTextAreaContent, obj.textArea)}
             ${NewEvaluationForm(option.newEvaluationDropDownContent, obj.legendBoxes)}
         </div>
