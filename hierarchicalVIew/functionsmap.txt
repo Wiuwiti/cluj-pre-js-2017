@@ -11,3 +11,21 @@
             NavationContructor(option)]
     }
 }
+
+const LoginPage = function() {
+    this.markup = `
+    <form id = "loginForm" class="login-box login-boxT">
+    <h2 class= "login-box-header login-box-headerT">
+        Interview Feedback
+    </h2>
+    <div class="credential-box credential-boxT">
+        <input class="credential-field credential-fieldT" type ="text" placeholder="Username" autocomplete="on" name ="username" required/> 
+        <input class="credential-field credential-fieldT" type="password" type="password" name="password" placeholder="Password" required/>
+        <input type="submit" value="Login" />
+    </div>
+    </form>
+        `;
+}
+
+
+

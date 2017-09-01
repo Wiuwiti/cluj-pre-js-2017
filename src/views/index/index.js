@@ -26,7 +26,7 @@ window.onload = function(){
         }
 
     }
-    var s = new Storage();
+    
     window.addEventListener("click", function(event){
         if (event.target.type === "radio"){
             s.setRadioBox(event.target.value)
@@ -36,12 +36,31 @@ window.onload = function(){
 
     const loginPage = [];
     loginPage.push(LoginPage(GetLoginPageData()))
-    const evaluationPage = [];
-    evaluationPage.push(EvaluationPage(GetEvaluationPageData()))
+    let evaluationPage = [];
+    
     const newEvaluationPage = [];
     newEvaluationPage.push(NewEvaluationPage(GetNewEvaluationPageData()))
 
 
+    let val = []
+    if(localStorage.length !== 0){
+        val = JSON.parse(localStorage.getItem("evaluation"))
+    }
+    if(val !== null){
+    let val2 = val.map(function(element){
+        return {
+            nume:element.inputCandidate[0].candidate,
+            technologie:element.textArea[2].input,
+            nivel: element.radioBox,
+            buttonIMG: "/assets/button.jpg"
+            }
+        })
+        evaluationPage.push(EvaluationPage(GetEvaluationPageData(val2)))
+    }else{
+        evaluationPage.push(EvaluationPage(GetEvaluationPageData([])))
+    }
+
+    
 
     document.querySelector('#app').innerHTML = loginPage;
 
@@ -82,44 +101,70 @@ window.onload = function(){
         })
     }
 
-    const submitButton = function(){
-        document.querySelector('#newEvalsubmit').addEventListener("click", function(event) {
-            alert(1);
-            event.preventDefault();
-
-            s.addCandidate({
-                candidate: document.getElementById("newEvaluationCandidate").value,
-                interviewer: document.getElementById("newEvaluationInterviewer").value,
-                date: document.getElementById("newElementDate").value
-            });
-        
-            //console.log(newEvaluationPage)
-        
-            GetNewEvaluationPageData().newEvaluationTextAreaContent.map(function(element, i ){
-                s.setTextArea({
-                    input: document.getElementById(""+element.textAreaID+i).value
-                })
+    const instantiateObject = function(){
+        var s = new Storage();
+        s.addCandidate({
+            candidate: document.getElementById("newEvaluationCandidate").value,
+            interviewer: document.getElementById("newEvaluationInterviewer").value,
+            date: document.getElementById("newElementDate").value
+        });
+        GetNewEvaluationPageData().newEvaluationTextAreaContent.map(function(element, i ){
+            s.setTextArea({
+                input: document.getElementById(""+element.textAreaID+i).value
             })
-
-            const legendVector = GetNewEvaluationPageData().newEvaluationDropDownContent.map(function(element){
-                const jew = element.selectBox.map(function(element){
-                    return document.getElementById(element.idName).value                 
-                })
-                return jew
+        })
+        const legendVector = GetNewEvaluationPageData().newEvaluationDropDownContent.map(function(element){
+            const vl = element.selectBox.map(function(element){
+                return document.getElementById(element.idName).value                 
             })
-            //console.log(legendVector)
-            //console.log(newEvaluationOptions.newEvaluationDropDownContent)
-            //onsole.log(s)
+            return vl
+        })
+        s.setlegendBoxes(legendVector)
+        return s
+    }
+
+
+    const addObjectToLocalstorage = function(obj){
         let aux = []
         if(localStorage.length !== 0){
             aux = JSON.parse(localStorage.getItem("evaluation"))
         }
-        aux.push(s)
+        if(aux == null){
+            aux = [].push(obj)
+        }else{
+            aux.push(obj)
+        }
+        if(localStorage.getItem("evaluation")===null){
+            console.log(aux)
+        }
         localStorage.setItem("evaluation",JSON.stringify(aux))
+    }
 
-        s.setlegendBoxes(legendVector)
-        console.log(s)
-        });
+
+    const submitButton = function(){
+        document.querySelector('#newEvalsubmit').addEventListener("click", function(event) {
+            event.preventDefault();
+
+            let newEvalObj = instantiateObject();
+            addObjectToLocalstorage(newEvalObj);
+            
+            let val = []
+            if(localStorage !== null){
+                val = JSON.parse(localStorage.getItem("evaluation"))
+            }
+            
+            val2 = JSON.parse(localStorage.getItem("evaluation")).map(function(element){
+                return {
+                    nume:element.inputCandidate[0].candidate,
+                    technologie:element.textArea[2].input,
+                    nivel: element.radioBox,
+                    buttonIMG: "/assets/button.jpg"
+                }
+            })
+            document.querySelector('#app').innerHTML = EvaluationPage(GetEvaluationPageData(val2));
+            console.log(val2)
+            logged()
+            });
     };    
 }
 
