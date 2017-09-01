@@ -120,23 +120,44 @@ const TextArea = function (textAreaContent = {}, array = []){
 }
 
 
-const SelectConstructor = function(selectContent = {}){
+const SelectConstructor = function(selectContent = {}, selected = {}){
+    console.log(selected)
+    console.log(selectContent)
     const result = []
     result.push(`<option selected disabled hidden>Evaluation</option>`)
-    result.push(selectContent.map((element) =>  `<option value = "${element }"> ${element}</option>`).join(''))
+    result.push(selectContent.map(function(element){
+        if(element === selected){
+            return `<option value = "${element }" selected> ${element}</option>`
+        }else{
+            return `<option value = "${element }"> ${element}</option>`
+        }
+    }))
     return result.join('')
 }
 
 
-const DropDownConstructor = function (selectBoxContent = {}, selectContent = {}){
+const DropDownConstructor = function (selectBoxContent = {}, selectContent = {}, selectedValues = []){
+    console.log(selectedValues)
+    if(selectedValues === []){
     return selectBoxContent.map( (element,i) => 
     `
     <li class="legend-box-drop">
         <label for="${element.selectName}"> ${element.labelTitle}</label>
         <select id = "${element.idName}" name="${element.selectName}">
-        ${SelectConstructor(selectContent.Values)}
+        ${SelectConstructor(selectContent.Values, selectedValues[i])}
         </select>
     </li>`).join('')
+    }else{
+
+        return selectBoxContent.map( (element,i) => 
+        `
+        <li class="legend-box-drop">
+            <label for="${element.selectName}"> ${element.labelTitle}</label>
+            <select id = "${element.idName}" name="${element.selectName}">
+            ${SelectConstructor(selectContent.Values, selectedValues[i])}
+            </select>
+        </li>`).join('')
+    }
 }
 
 const NewEvaluationForm = function (dropDownContent = {}, selectedDropdown = []){
