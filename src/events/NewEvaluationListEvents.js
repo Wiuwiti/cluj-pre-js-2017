@@ -34,7 +34,7 @@ const NewEvaluationListEvents = function() {
             setlegendBoxes: function(arr){
                 this.legendBoxes = arr
             }
-        }
+        } 
         var s = new Storage();
 
         window.addEventListener("click", function(event){

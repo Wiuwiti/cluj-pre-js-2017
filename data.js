@@ -35,7 +35,13 @@ const GetEvaluationPageData = function(evalTableContent){
 
     
     const evaluationTableHeader = ["Nume", "Technologie", "Nivel"];
-    const evaluationTableContent = evalTableContent;
+    const evaluationTableContent = [{
+        nume: "dasf",
+        technologie: "ceva",
+        nivel: "Jew",
+        buttonIMG: "/assets/button.jpg"
+
+    }];
     const evaluationFooterContent = {
         footerText : "SoftVision@2017"
     };
@@ -51,7 +57,7 @@ const GetEvaluationPageData = function(evalTableContent){
 }
 
 
-const GetNewEvaluationPageData = function (){
+const GetNewEvaluationPageData = function (predefinedPage){
     
     const newEvaluationHeaderContent = [
         {
@@ -392,7 +398,8 @@ const GetNewEvaluationPageData = function (){
         newEvaluationTechnicalLevelContent,
         newEvaluationTextAreaContent,
         newEvaluationDropDownContent,
-        newEvaluationFooterContent
+        newEvaluationFooterContent,
+        predefinedPage
     };
     
 }

@@ -183,20 +183,7 @@ const DropDownConstructor = function (selectBoxContent = {}, selectContent = {},
 }
 
 const NewEvaluationForm = function (dropDownContent = {}, selectedDropdown = []){
-    if(selectedDropdown === []){
-        return dropDownContent.map((element) =>
-            `
-            <form class="legend-box" id="${element.boxID}">
-                <fieldset>
-                    <legend>${element.Title}</legend>
-                    <ul class="legend-box-list">
-                        ${DropDownConstructor(element.selectBox, element.newEvaluationSelectContent)}
-                    </ul>
-                </fieldset>
-            </form>`).join('')
-
-    }else{
-        return dropDownContent.map((element,i) =>
+        return dropDownContent.map((element,i) => 
         `
         <form class="legend-box" id="${element.boxID}">
             <fieldset>
@@ -206,8 +193,6 @@ const NewEvaluationForm = function (dropDownContent = {}, selectedDropdown = [])
                 </ul>
             </fieldset>
         </form>`).join('')
-    } 
-
 }
 
 

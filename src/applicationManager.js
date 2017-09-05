@@ -1,5 +1,7 @@
-const Setup = function() {}
 
+
+const Setup = function() {}
+const interview = {}
 Setup.prototype.app = function (options) {
 	if (options.isLogged === false) { 
 		return {
@@ -35,4 +37,5 @@ Setup.prototype.app = function (options) {
     setupEvents: new EvaluationListEvents(w)
   }
 };
+
 

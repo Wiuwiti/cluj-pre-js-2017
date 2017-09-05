@@ -1,4 +1,4 @@
-const EvaluationList = function(lis, obj = {}) {
+EvaluationList =  function(lis, obj = {}) {
     this.markup = `
         ${EvaluationPage(GetEvaluationPageData(lis))}
     `;
