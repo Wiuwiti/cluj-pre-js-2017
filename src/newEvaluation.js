@@ -154,6 +154,7 @@
 
     const goToLogin = function(event){
         event.preventDefault();
+        localStorage.setItem('userData', null);
         interviewApp.navigate('login');
     }
 

@@ -6,13 +6,16 @@ var interviewApp = {};
 
 
     interviewApp.navigate = function(page){
+        console.log(page)
         if (typeof page !== 'string') {
-            page = 'evaluation';
+            page = 'login';
         }
         if(module){
             module.destroy();
         }
         module = interviewApp[page];
+
+
         module.init(container);
         sessionStorage.setItem(`currentPage`, page)
        
