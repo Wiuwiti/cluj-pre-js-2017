@@ -1,20 +1,29 @@
-var interviewApp = {}
+var interviewApp = {};
 (function(){
     const container = document.getElementById(`app`);
     let module = null;
     
 
+
     interviewApp.navigate = function(page){
-        console.log(page)
         if (typeof page !== 'string') {
             page = 'evaluation';
         }
+        if(module){
+            module.destroy();
+        }
         module = interviewApp[page];
-        console.log(interviewApp)
         module.init(container);
         sessionStorage.setItem(`currentPage`, page)
        
     };
 
-    interviewApp.navigate(`evaluation`)
+    interviewApp.startup = function() {
+        let currentPage = sessionStorage.getItem('currentPage');
+        interviewApp.navigate(currentPage);
+    }
 })();
+window.addEventListener("load", function()
+{
+    interviewApp.startup();
+})

@@ -64,10 +64,38 @@
     }
     
 
+    const goToNewEval = function(event){
+        event.preventDefault();
+        interviewApp.navigate('newEvaluation');
+    };
+
+    const goToLogin = function(event){
+        event.preventDefault();
+        interviewApp.navigate('login');
+    }
+    const setupEvents = function(){
+        newEvalButton.addEventListener('click', goToNewEval);
+        logout.addEventListener('click', goToLogin);
+    };
+
+    const removeEvents = function(){
+        newEvalButton.removeEventListener('click', goToNewEval);
+        logout.removeEventListener('click',goToLogin);
+    };
+
 
     interviewApp.evaluation = {
         init: function(container){
-            render(container)
+            render(container);
+            newEvalButton = document.getElementById('newEvaluationPage');
+            logout = document.getElementById('logout');
+            setupEvents();
+
+        },
+        destroy: function(){
+            removeEvents();
+            newEvalButton = undefined;
+            logout = undefined;
         }
     }
     
