@@ -208,26 +208,32 @@ const GetNewEvaluationPageData = function (predefinedPage){
             newEvaluationSelectContent,
             selectBox:[
                 {
+                    idName: "selectorProtocol",
                     selectName:"Protocol",
                     labelTitle:"Protocol"
                 },
                 {
+                    idName: "selectorResponse",
                     selectName:"Response codes",
                     labelTitle:"Response codes"
                 },
                 {
+                    idName: "selectorREST",
                     selectName:"REST",
                     labelTitle:"REST"
                 },
                 {
+                    idName: "selectorHeaders",
                     selectName:"Headers",
                     labelTitle:"Headers"
                 },
                 {
+                    idName: "selectorRequestMethods",
                     selectName:"Request methods",
                     labelTitle:"Request methods"
                 },
                 {
+                    idName: "selectorIssueTracking",
                     selectName:"Issue Tracking",
                     labelTitle:"Sessions &#38; Cookies"
                 }
@@ -239,18 +245,22 @@ const GetNewEvaluationPageData = function (predefinedPage){
             newEvaluationSelectContent,
             selectBox:[
                 {
+                    idName: "selectorDoctype",
                     selectName:"Doctype",
                     labelTitle:"Doctype"
                 },
                 {
+                    idName: "selectorTags",
                     selectName:"Tags",
                     labelTitle:"Tags"
                 },
                 {
+                    idName: "selectorBasic",
                     selectName:"Basic SEO",
                     labelTitle:"Basic SEO"
                 },
                 {
+                    idName: "selectorSyntax",
                     selectName:"Syntax Rules",
                     labelTitle:"Syntax Rules"
                 }
@@ -262,26 +272,32 @@ const GetNewEvaluationPageData = function (predefinedPage){
             newEvaluationSelectContent,
             selectBox:[
                 {
+                    idName: "selectorUsage",
                     selectName:"Usage",
                     labelTitle:"Protocol"
                 },
                 {
+                    idName: "selectorBox",
                     selectName:"Box Modeling",
                     labelTitle:"Box Modeling"
                 },
                 {
+                    idName: "selectorCSS",
                     selectName:"CSS 3.0",
                     labelTitle:"CSS 3.0"
                 },
                 {
+                    idName: "selectorSelectors",
                     selectName:"Selectors",
                     labelTitle:"Selectors"
                 },
                 {
+                    idName: "selectorStyling",
                     selectName:"Styling",
                     labelTitle:"Styling"
                 },
                 {
+                    idName: "selectorDynamic",
                     selectName:"Dynamic Stylesheets",
                     labelTitle:"Dynamic Stylesheets"
                 }
@@ -293,70 +309,87 @@ const GetNewEvaluationPageData = function (predefinedPage){
             newEvaluationSelectContent,
             selectBox:[
                 {
+                    idName: "selectorDateTypes",
                     selectName:"Date types",
                     labelTitle:"Date types"
                 },
                 {
+                    idName: "selectorObjectManipulator",
                     selectName:"Object manipulation",
                     labelTitle:"Object manipulation"
                 },
                 {
+                    idName: "selectorDOM",
                     selectName:"DOM manipulation",
                     labelTitle:"DOM manipulation"
                 },
                 {
+                    idName: "selectorFunctions",
                     selectName:"Functions",
                     labelTitle:"Functions"
                 },
                 {
+                    idName: "selectorTemplating",
                     selectName:"Templating",
                     labelTitle:"Templating"
                 },
                 {
+                    idName: "selectorIssueTrack",
                     selectName:"Issue Tracking",
                     labelTitle:"Issue Tracking"
                 },
                 {
+                    idName: "selectorEventHandling",
                     selectName:"Event Handling",
                     labelTitle:"Event Handling"
                 },
                 {
+                    idName: "selectorPrototype",
                     selectName:"Prototype",
                     labelTitle:"Prototype &#38; OOP"
                 },
                 {
+                    idName: "selectorTesting",
                     selectName:"Testing",
                     labelTitle:"Testing(unit, E2E)"
                 },
                 {
+                    idName: "selectorAJAX",
                     selectName:"AJAX",
                     labelTitle:"AJAX"
                 },
                 {
+                    idName: "selectorDebugging",
                     selectName:"Debugging",
                     labelTitle:"Debugging"
                 },
                 {
+                    idName: "selectorWebSockets",
                     selectName:"Websockets",
                     labelTitle:"Websockets"
                 },
                 {
+                    idName: "selectorTooling",
                     selectName:"Tooling",
                     labelTitle:"Tooling"
                 },
                 {
+                    idName: "selectorLibraries",
                     selectName:"Libraries",
                     labelTitle:"Libraries"
                 },
                 {
+                    idName: "selectorPromisses",
                     selectName:"Promisses",
                     labelTitle:"Promisses"
                 },
                 {
+                    idName: "selectorBrowserEngien",
                     selectName:"Browser Engines",
                     labelTitle:"Browser Engines"
                 },
                 {
+                    idName: "selectorFrameWorks",
                     selectName:"Frameworks",
                     labelTitle:"Frameworks"
                 }
@@ -368,18 +401,22 @@ const GetNewEvaluationPageData = function (predefinedPage){
             newEvaluationSelectContent,
             selectBox:[
                 {
+                    idName: "selectorFrameWorks",
                     selectName:"Backend frameworks",
                     labelTitle:"Backend frameworks"
                 },
                 {
+                    idName: "selectorTemplating",
                     selectName:"Templating",
                     labelTitle:"Templating"
                 },
                 {
+                    idName: "selectorDOManipulation",
                     selectName:"DOM Manipulation",
                     labelTitle:"DOM Manipulation"
                 },
                 {
+                    idName: "selectorUnitTesting",
                     selectName:"Unit Testing",
                     labelTitle:"Unit Testing"
                 }
