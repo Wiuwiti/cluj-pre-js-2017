@@ -71,6 +71,7 @@
 
     const goToLogin = function(event){
         event.preventDefault();
+        window.localStorage.removeItem('userData');
         interviewApp.navigate('login');
     }
     const setupEvents = function(){
