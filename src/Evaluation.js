@@ -1,5 +1,5 @@
 (function(){
-
+    let newEvalButton, logout;
     const render = function(container) {
         container.innerHTML = `${EvaluationPage(GetEvaluationPageData())}`
     }
@@ -13,7 +13,7 @@
        <colgroup>
            <col class="table-button">
            <col span="4" >
-           <col class="table-button">
+           <col class="table-button">   
        </colgroup>
        <tr>
            <th></th>
