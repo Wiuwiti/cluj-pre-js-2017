@@ -3,6 +3,17 @@ var interviewApp = {};
     const container = document.getElementById(`app`);
     let module = null;
     
+    
+    const checkIfLogged = function(){
+        const isLogged = function() {
+            return !!window.localStorage.getItem('userData');
+        }
+        console.log(isLogged())
+        if(!isLogged()){
+            return 'login'
+        }
+        return ''
+    }
 
 
     interviewApp.navigate = function(page){
@@ -10,8 +21,12 @@ var interviewApp = {};
         if (typeof page !== 'string') {
             page = 'login';
         }
+
         if(module){
             module.destroy();
+        }
+        if(checkIfLogged() != ''){
+            page = checkIfLogged();
         }
         module = interviewApp[page];
 
