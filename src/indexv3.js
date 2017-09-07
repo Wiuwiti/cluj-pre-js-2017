@@ -8,7 +8,7 @@ var interviewApp = {};
         const isLogged = function() {
             return !!window.localStorage.getItem('userData');
         }
-        console.log(isLogged())
+        //console.log(isLogged())
         if(!isLogged()){
             return 'login'
         }
@@ -17,7 +17,7 @@ var interviewApp = {};
 
 
     interviewApp.navigate = function(page){
-        console.log(page)
+        //console.log(page)
         if (typeof page !== 'string') {
             page = 'login';
         }
@@ -30,7 +30,19 @@ var interviewApp = {};
         module = interviewApp[page];
 
 
-        module.init(container);
+        
+            if(localStorage.getItem("evaluation") !== null){
+                q = JSON.parse(localStorage.getItem("evaluation")).map(function(element){
+                  return {
+                    nume:element.inputCandidate[0][0],
+                    technologie:element.textArea[2].input,
+                    nivel: element.radioBox,
+                    buttonIMG: "/assets/button.jpg"
+                }
+                });
+              }
+            module.init(container);
+        
         sessionStorage.setItem(`currentPage`, page)
        
     };

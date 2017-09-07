@@ -1,7 +1,9 @@
 (function(){
     let loginButton;
-    const render = function(container){
-        container.innerHTML = `${LoginContent(GetLoginPageData())}`
+    const render = function(container,p){
+        
+        container.innerHTML = `${LoginContent(p)}`
+
     }
     const LoginForm = function(option = {}){
         return `
@@ -40,6 +42,7 @@
     }
     
     
+
     const SubmitFeedbackResult = function(option = {}){
         return `
         <div class="special-color"> 
@@ -87,10 +90,18 @@
 
     interviewApp.login = {
         init:function(container){
-            render(container);
-            loginButton = document.getElementById('loginForm');
-            setupEvents();
-            
+            let p 
+            var http = new XMLHttpRequest();
+            http.open("GET", "/src/data.json", true);
+            http.send();
+            http.onreadystatechange = function(){
+                if(http.readyState == 4 && http.status ==200){
+                    p = JSON.parse(http.response).LoginPageData;
+                    render(container,p);
+                    loginButton = document.getElementById('loginForm');
+                    setupEvents();
+                }
+            }
 
         },
         destroy: function(){

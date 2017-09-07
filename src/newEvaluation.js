@@ -2,12 +2,6 @@
 
     let evalButton, logout, submitButton;
 
-
-    
-
-
-
-
     function Storage(){
         this.inputCandidate = [],
         this.radioBox= "",
@@ -57,10 +51,8 @@
             const vl = element.selectBox.map(function(element){
                 return document.getElementById(element.idName).value                 
             })
-            console.log(vl)
             return vl
         });
-        console.log(legendVector)
         s.setlegendBoxes(legendVector)
         return s
     }
@@ -84,7 +76,7 @@
 
 
 
-    const render = function(container){
+    const render = function(container, pageContent){
         const CandidateLine = function (candidateContent = {}) {
             return `
             <input id = "${candidateContent.elementID}" class="input-candidate" type="${candidateContent.dataType}" name="${candidateContent.inputName}" autocomplete="on" placeholder="${candidateContent.placeHolder}" required />
@@ -186,7 +178,7 @@
             <li class="legend-box-drop">
                 <label for="${element.selectName}"> ${element.labelTitle}</label>
                 <select id = "${element.idName}" name="${element.selectName}">
-                ${SelectConstructor(selectContent.Values)}
+                ${SelectConstructor(selectContent.values)}
                 </select>
             </li>`).join('')
         }
@@ -228,8 +220,7 @@
             ${NewEvaluationPageGrid(options)}
             ${FooterConstructor(options.newEvaluationFooterContent)}`
         }
-
-        container.innerHTML = `${NewEvaluationPage(GetNewEvaluationPageData())}`;
+        container.innerHTML = `${NewEvaluationPage(pageContent)}`;
     }
 
 
@@ -269,11 +260,20 @@
 
     interviewApp.newEvaluation = {
         init: function(container){
-            render(container);
-            evalButton = document.getElementById('evaluationPage');
-            logout = document.getElementById('logout');
-            submitButton = document.getElementById('newEvalsubmit');
-            setupEvents();
+            var http = new XMLHttpRequest();
+            http.open("GET", "/src/data.json", true);
+            http.send();
+            http.onreadystatechange = function(){
+                if(http.readyState ==4 && http.status<400){
+                    var w =  JSON.parse(http.response).NewEvaluationPageData;
+                    render(container, w);
+                    evalButton = document.getElementById('evaluationPage');
+                    logout = document.getElementById('logout');
+                    submitButton = document.getElementById('newEvalsubmit');
+                    setupEvents();
+                }
+            }
+           
         },
         destroy: function(){
             removeEvents();
