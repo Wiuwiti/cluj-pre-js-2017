@@ -21,7 +21,6 @@ var interviewApp = {};
         if (typeof page !== 'string') {
             page = 'login';
         }
-
         if(module){
             module.destroy();
         }

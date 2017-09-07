@@ -35,13 +35,8 @@ const GetEvaluationPageData = function(evalTableContent){
 
     
     const evaluationTableHeader = ["Nume", "Technologie", "Nivel"];
-    const evaluationTableContent = [{
-        nume: "dasf",
-        technologie: "ceva",
-        nivel: "Jew",
-        buttonIMG: "/assets/button.jpg"
-
-    }];
+    const evaluationTableContent = JSON.parse(localStorage.getItem('evaluation'))
+    console.log(evaluationTableContent)
     const evaluationFooterContent = {
         footerText : "SoftVision@2017"
     };
