@@ -77,6 +77,7 @@
 
 
     const render = function(container, pageContent){
+
         const CandidateLine = function (candidateContent = {}) {
             return `
             <input id = "${candidateContent.elementID}" class="input-candidate" type="${candidateContent.dataType}" name="${candidateContent.inputName}" autocomplete="on" placeholder="${candidateContent.placeHolder}" required />
@@ -203,25 +204,28 @@
                 </form>
             </div>`
         }
-        const NewEvaluationPageGrid = function (option = {}, obj = {}){
+        const NewEvaluationPageGrid = function (pageContent = {}){
             return `	
             <div class = "mainBlock">
-                ${CandidateDetailsForm(option.newEvaluationCandidateContent)}
-                ${TechnicalLevelPicker(option.newEvaluationTechnicalLevelContent)}
-                ${TextArea(option.newEvaluationTextAreaContent)}
-                ${NewEvaluationForm(option.newEvaluationDropDownContent)}
+                ${CandidateDetailsForm(pageContent.newEvaluationCandidateContent)}
+                ${TechnicalLevelPicker(pageContent.newEvaluationTechnicalLevelContent)}
+                ${TextArea(pageContent.newEvaluationTextAreaContent)}
+                ${NewEvaluationForm(pageContent.newEvaluationDropDownContent)}
                 ${SubmitButton()}
             </div>
             `
         }
         
-        const NewEvaluationPage = function(options = {}){
-            return `${NavigationBar(options.newEvaluationHeaderContent, options.newEvaluationLogoContent)}
-            ${NewEvaluationPageGrid(options)}
-            ${FooterConstructor(options.newEvaluationFooterContent)}`
+        const NewEvaluationPage = function(pageContent = {}){
+            return `${NavigationBar(pageContent.newEvaluationHeaderContent, pageContent.newEvaluationLogoContent)}
+            ${NewEvaluationPageGrid(pageContent)}
+            ${FooterConstructor(pageContent.newEvaluationFooterContent)}`
         }
+
         container.innerHTML = `${NewEvaluationPage(pageContent)}`;
     }
+
+
 
 
     const goToEval = function(event){
@@ -256,7 +260,43 @@
 
 
 
+    const renderModule = function(container, pageContent, selectedContent){
 
+
+        const CandidateLine = function (candidateContent = {},selectedContent = {},i) {
+            return `
+            <input id = "${candidateContent.elementID}" class="input-candidate" type="${candidateContent.dataType}" name="${candidateContent.inputName}" autocomplete="on" placeholder="${candidateContent.placeHolder}" required /> ${selectedContent[i]} </input>
+            `
+
+        }
+        const ConstructDetailsForm = function(candidateContent = {}, selectedContent = {}){
+                return candidateContent.map((element,i) => CandidateLine(element, selectedContent, i)).join('')
+
+        }
+
+
+        const CandidateDetailsForm = function (candidateContent = {}, selectedContent = {}){
+            return `
+            <form class = "candidate-input-box">
+                ${ConstructDetailsForm(candidateContent, selectedContent)}
+            </form>`
+            
+        }
+
+        const NewEvaluationPageGrid = function (pageContent = {}, selectedContent = {}){
+            return `	
+            <div class = "mainBlock">
+                ${CandidateDetailsForm(pageContent.newEvaluationCandidateContent, selectedContent)}
+                
+            </div>
+            `
+        }
+
+        const ModuleNewEval = function(pageContent = {}, selectedContent = {}){
+            return `${NewEvaluationPageGrid(pageContent, selectedContent)}`
+        }
+        container.innerHTML = `${ModuleNewEval(pageContent, selectedContent)}`
+    }
 
     interviewApp.newEvaluation = {
         init: function(container){
@@ -264,9 +304,9 @@
             http.open("GET", "/src/data.json", true);
             http.send();
             http.onreadystatechange = function(){
-                if(http.readyState ==4 && http.status<400){
-                    var w =  JSON.parse(http.response).NewEvaluationPageData;
-                    render(container, w);
+                if(http.readyState == 4 && http.status<400){
+                    var pageLayoutFromJSON =  JSON.parse(http.response).NewEvaluationPageData;
+                    render(container, pageLayoutFromJSON);
                     evalButton = document.getElementById('evaluationPage');
                     logout = document.getElementById('logout');
                     submitButton = document.getElementById('newEvalsubmit');
@@ -275,9 +315,20 @@
             }
            
         },
+        getPage: function(container, selectedValue){
+            var http = new XMLHttpRequest();
+            http.open("GET", "/src/data.json", true);
+            http.send();
+            http.onreadystatechange = function(){
+                if(http.readyState ==4 && http.status<400){
+                    var pageLayoutFromJSON = JSON.parse(http.response).NewEvaluationPageData;
+                    renderModule(container, pageLayoutFromJSON, selectedValue);
+                }
+            }
+        },
         destroy: function(){
             removeEvents();
-            submitButton= undefined;
+            submitButton = undefined;
             evalButton = undefined;
             logout = undefined;
         }

@@ -83,54 +83,60 @@
         interviewApp.navigate('login');
     }
 
-    const detailsButton = function (w){
-        var predicate = function(element, ind, context){
+
+
+
+    const detailsButton = function (ew,container,w){
+        var predicate = function(element, i){
+            //console.log(element)
             element.addEventListener("click", function(e) {             
-                showContent(w[ind])
-                console.log(w[ind])
+                showContent(container,ew[i])
+                //console.log(ew[i])
             })
         }
 
         let inter = document.getElementsByClassName("evalContentBut");
+       
         Array.prototype.map.call(inter, predicate)
     }
-const showContent = function(object){
-    
-    const popPage = window.open("", "Evaluation details", "width=1400,height=500")
-    clearWindow(popPage)
-    const obj = object
-    popPage.document.write(`
-    <head>
-        <title></title>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link href="test.css" rel="stylesheet" type="text/css" />
-        <link rel="stylesheet" type="text/css" href="/css/NewEvaluation.css">
-    </head>
-    
-    
-    <body> ${evaluationDetails(obj)} 
-    
-    
-    </body>`)
-}
+    const showContent = function(container,object){
+        
+        const popPage = window.open("", "Evaluation details", "width=1400,height=500")
+        clearWindow(popPage)
+        const obj = object
+        
+        popPage.document.write(`
+        <head>
+            <title></title>
+            <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+            <link href="test.css" rel="stylesheet" type="text/css" />
+            <link rel="stylesheet" type="text/css" href="/css/NewEvaluation.css">
+        </head>
+        
+        
+        <body> ${evaluationDetails(container,obj)} 
+        
+        
+        </body>`)
+    }
 
-const clearWindow = function(object){
-    object.document.getElementsByTagName('body')[0].innerHTML = ''
-}
+    const clearWindow = function(object){
+        object.document.getElementsByTagName('body')[0].innerHTML = ''
+    }
 
-const evaluationDetails = function(selectedObject){
-    //console.log(selectedObject)
-    return `
-    Here is a potato
-    `
-}
+    const evaluationDetails = function(container,selectedObject){
+        console.log(selectedObject)
+        return `
+        ${interviewApp.newEvaluation.getPage(container, selectedObject)}
+        `
+    }
 
 
     
-    const setupEvents = function(){
+    const setupEvents = function(container,e){
         newEvalButton.addEventListener('click', goToNewEval);
         logout.addEventListener('click', goToLogin);
-        detailsButton(JSON.stringify(localStorage.getItem('evaluation')));
+        detailsButton(e,container,JSON.stringify(localStorage.getItem('evaluation')));
 
     };
 
@@ -148,10 +154,13 @@ const evaluationDetails = function(selectedObject){
             http.onreadystatechange = function(){
                 if(http.readyState ==4 && http.status<400){
                     var w =  JSON.parse(http.response).EvaluationPageData;
+                    //console.log(w)
+                    var e = JSON.parse(localStorage.getItem('evaluation'))
+                    //console.log(e)
                     render(container,q,w);
                     newEvalButton = document.getElementById('newEvaluationPage');
                     logout = document.getElementById('logout');
-                    setupEvents();
+                    setupEvents(container,e);
                 }
             }
             
