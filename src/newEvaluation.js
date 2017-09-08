@@ -262,10 +262,12 @@
 
     const renderModule = function(container, pageContent, selectedContent){
 
-
+        /*
+            Candidate input details
+        */
         const CandidateLine = function (candidateContent = {},selectedContent = {},i) {
             return `
-            <input id = "${candidateContent.elementID}" class="input-candidate" type="${candidateContent.dataType}" name="${candidateContent.inputName}" autocomplete="on" placeholder="${candidateContent.placeHolder}" required /> ${selectedContent[i]} </input>
+            <input id = "${candidateContent.elementID}" class="input-candidate" type="${candidateContent.dataType}" name="${candidateContent.inputName}" autocomplete="on" placeholder="${candidateContent.placeHolder}" value = "${selectedContent.inputCandidate[0][i]}" required />  </input>
             `
 
         }
@@ -273,8 +275,6 @@
                 return candidateContent.map((element,i) => CandidateLine(element, selectedContent, i)).join('')
 
         }
-
-
         const CandidateDetailsForm = function (candidateContent = {}, selectedContent = {}){
             return `
             <form class = "candidate-input-box">
@@ -283,21 +283,159 @@
             
         }
 
+        /*
+            Technical level picker
+        */ 
+
+
+        const TechnicalLevelPickerHeader = function(headerTitle = {}){
+            return ` 
+            <h3>
+                ${headerTitle}
+            </h3>`
+        }
+
+        const TechnicalLevelPickerTop = function(technicalContent = {}){
+            const result = technicalContent.headers.map((element, i) => `<li class="${technicalContent.classes[i]}" id="${technicalContent.ID[i]}">${element}</li>`).join('') 
+                return `
+                <ul class="top-list-radio" >
+                    <li id="placeHolder"></li>
+                        ${result}
+                    <li id="extra"></li>
+                    <div class="clearfix"></div>
+                </ul>`
+            }
+            
+        const checkIT = function(w,s){
+            console.log(w, "is" , s)
+            if(w === s){
+                return `checked="checked"`
+            }return ``
+        }
+        
+        const TechnicalLevelPickerBottomSection = function (option = {}, opt){
+            console.log(opt)
+            return option.inputLevel.map((element , i ) => `
+            <li class = "${option.classes[i]}" id ="${option.ID[i]}">
+                <input type="radio" name="level" value = "${element}" ${checkIT(element, opt)}>
+            </li>`).join('')
+        }
+        
+        
+        const TechnicalLevelPickerBottom = function (columnData = {}, opt= {}){
+            const result = columnData.map((element,i) => TechnicalLevelPickerBottomSection(element, opt)).join('')
+            console.log(opt)
+            return ` 
+            <ul class="down-list-radio">
+                ${result}
+                <div class="clearfix"></div>
+            </ul>`
+            
+        }
+        
+        const TechnicalLevelPickerConstructor = function(technicalContent = {}, opt = {}){
+            
+            return `
+                ${TechnicalLevelPickerHeader(technicalContent.HeaderTitle)}
+                ${TechnicalLevelPickerTop(technicalContent)}
+                ${TechnicalLevelPickerBottom(technicalContent.columnData, opt.radioBox)}
+                `
+        }
+        const TechnicalLevelPicker = function (technicalContent = {}, option = {}){
+            if(Object.keys(option).length !== 0){
+                return `<div class="radio-boxes">
+                ${TechnicalLevelPickerConstructor(technicalContent, option)}
+                </div>`
+            } 
+        }
+
+        const TextAreaBox = function(textAreaContent = {},i, array = ""){
+            
+            return `
+            <div class="user-textarea">
+                <h3>${textAreaContent.headerTitle}</h3>
+                <textarea id="${textAreaContent.textAreaID}${i}"placeholder="${textAreaContent.placeHolder}" required>${array.input}</textarea>
+            </div>`
+            
+        }
+        const TextArea = function (textAreaContent = {}, array = []){
+            
+            return textAreaContent.map((element,i) =>TextAreaBox(element,i, array[i])).join('')
+            
+        }
+
+        const SelectConstructor = function(selectContent = {}, selected = {})
+            {console.log(selectContent, "then", selected)
+            const result = []
+            result.push(`<option selected disabled hidden>Evaluation</option>`)
+            result.push(selectContent.map(function(element){
+                if(element === selected){
+                    return `<option value = "${element }" selected> ${element}</option>`
+                }else{
+                    return `<option value = "${element }"> ${element}</option>`
+                }
+            }))
+            return result.join('')
+        }
+        
+        
+        const DropDownConstructor = function (selectBoxContent = {}, selectContent = {}, selectedValues = []){
+            return selectBoxContent.map( (element,i) => 
+                `
+                <li class="legend-box-drop">
+                    <label for="${element.selectName}"> ${element.labelTitle}</label>
+                    <select id = "${element.idName}" name="${element.selectName}">
+                    ${SelectConstructor(selectContent.values, selectedValues[i])}
+                    </select>
+                </li>`).join('')
+            
+        }
+        
+        const NewEvaluationForm = function (dropDownContent = {}, selectedDropdown = []){
+                return dropDownContent.map((element,i) => 
+                `
+                <form class="legend-box" id="${element.boxID}">
+                    <fieldset>
+                        <legend>${element.Title}</legend>
+                        <ul class="legend-box-list">
+                            ${DropDownConstructor(element.selectBox, element.newEvaluationSelectContent,selectedDropdown[i])}
+                        </ul>
+                    </fieldset>
+                </form>`).join('')
+        }
+
+
+
+
+
+
         const NewEvaluationPageGrid = function (pageContent = {}, selectedContent = {}){
+
             return `	
             <div class = "mainBlock">
                 ${CandidateDetailsForm(pageContent.newEvaluationCandidateContent, selectedContent)}
-                
+                ${TechnicalLevelPicker(pageContent.newEvaluationTechnicalLevelContent, selectedContent)}
+                ${TextArea(pageContent.newEvaluationTextAreaContent, selectedContent.textArea)}
+                ${NewEvaluationForm(pageContent.newEvaluationDropDownContent, selectedContent.legendBoxes)}
             </div>
             `
         }
 
         const ModuleNewEval = function(pageContent = {}, selectedContent = {}){
-            return `${NewEvaluationPageGrid(pageContent, selectedContent)}`
+            return `
+                <div id="simpleModal class="modal">
+                    <div class=modal-content">  
+                    <span class="closeBtn">&times;</span>   
+                    ${NewEvaluationPageGrid(pageContent, selectedContent)}</div>
+                </div>
+            `
         }
-        container.innerHTML = `${ModuleNewEval(pageContent, selectedContent)}`
+        console.log(container)
+        container.innerHTML += `${ModuleNewEval(pageContent, selectedContent)}`
     }
 
+
+    
     interviewApp.newEvaluation = {
         init: function(container){
             var http = new XMLHttpRequest();
