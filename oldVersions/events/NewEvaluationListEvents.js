@@ -34,7 +34,7 @@ const NewEvaluationListEvents = function() {
             setlegendBoxes: function(arr){
                 this.legendBoxes = arr
             }
-        }
+        } 
         var s = new Storage();
 
         window.addEventListener("click", function(event){
@@ -45,11 +45,11 @@ const NewEvaluationListEvents = function() {
 
         const instantiateObject = function(){
             
-            s.addCandidate({
-                candidate: document.getElementById("newEvaluationCandidate").value,
-                interviewer: document.getElementById("newEvaluationInterviewer").value,
-                date: document.getElementById("newElementDate").value
-            });
+            s.addCandidate([
+                document.getElementById("newEvaluationCandidate").value,
+                document.getElementById("newEvaluationInterviewer").value,
+                document.getElementById("newElementDate").value
+            ]);
             GetNewEvaluationPageData().newEvaluationTextAreaContent.map(function(element, i ){
                 s.setTextArea({
                     input: document.getElementById(""+element.textAreaID+i).value
@@ -81,21 +81,21 @@ const NewEvaluationListEvents = function() {
         submitButton.addEventListener('click', function(event){
             event.preventDefault();
             let newEvalObj = instantiateObject();
+            console.log(newEvalObj)
             addObjectToLocalstorage(newEvalObj)
-            //console.log(JSON.parse(localStorage.getItem("evaluation")))
             let val =[]
             if(localStorage !== null){
                 val = JSON.parse(localStorage.getItem("evaluation"))
+                console.log(val)
             }
             val2 = val.map(function(element){
                 return {
-                    nume:element.inputCandidate[0].candidate,
+                    nume:element.inputCandidate,
                     technologie:element.textArea[2].input,
                     nivel: element.radioBox,
                     buttonIMG: "/assets/button.jpg"
                 }
             })
-            console.log(val2)
             build(false,true);
         })
 

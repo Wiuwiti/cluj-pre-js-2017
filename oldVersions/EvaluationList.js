@@ -1,11 +1,8 @@
-const EvaluationList = function(lis, obj = {}) {
-    if(obj = {}){
+EvaluationList =  function(lis, obj = {}) {
     this.markup = `
         ${EvaluationPage(GetEvaluationPageData(lis))}
-    `;}
-    else{
-        this.markup =`jcvfa`
-    }
+    `;
+
 }
 
 const InsertHeader = function(tableHeaderContent = {}){
@@ -46,7 +43,6 @@ const TableRows = function(tableContent = {}){
 const TableConstructor = function (tableContent ={} , tableHeaderContent ={} ){
    const result = []
    result.push(TableHeader(tableHeaderContent))
-   //console.log(tableContent)
    result.push(tableContent.map(TableRows).join(''))
    return result.join('')
 }
@@ -62,6 +58,7 @@ const TableBody = function(tableContent = {}, tableHeaderContent = {}){
 
 
 const EvaluationPage = function(pageContent = {}){
+    
     return `${NavigationBar(pageContent.evaluationHeaderContent, pageContent.evaluationLogoContent)}
     ${TableBody(pageContent.evaluationTableContent, pageContent.evaluationTableHeader)}
     ${FooterConstructor(pageContent.evaluationFooterContent)}

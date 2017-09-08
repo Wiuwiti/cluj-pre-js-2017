@@ -134,9 +134,6 @@ window.onload = function(){
         }else{
             aux.push(obj)
         }
-        if(localStorage.getItem("evaluation")===null){
-            console.log(aux)
-        }
         localStorage.setItem("evaluation",JSON.stringify(aux))
     }
 
@@ -162,7 +159,7 @@ window.onload = function(){
                 }
             })
             document.querySelector('#app').innerHTML = EvaluationPage(GetEvaluationPageData(val2));
-            console.log(val2)
+            //console.log(val2)
             logged()
             });
     };    

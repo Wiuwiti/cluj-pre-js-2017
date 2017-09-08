@@ -1,5 +1,7 @@
-const Setup = function() {}
 
+
+const Setup = function() {}
+const interview = {}
 Setup.prototype.app = function (options) {
 	if (options.isLogged === false) { 
 		return {
@@ -18,7 +20,7 @@ Setup.prototype.app = function (options) {
   if(localStorage.getItem("evaluation") !== null){
     q = JSON.parse(localStorage.getItem("evaluation")).map(function(element){
       return {
-        nume:element.inputCandidate[0].candidate,
+        nume:element.inputCandidate[0][0],
         technologie:element.textArea[2].input,
         nivel: element.radioBox,
         buttonIMG: "/assets/button.jpg"
@@ -29,16 +31,11 @@ Setup.prototype.app = function (options) {
   if(localStorage.getItem("evaluation") !== null){
     w = JSON.parse(localStorage.getItem("evaluation"))
   }
-  //console.log(w)
-  // if(options.extraObj !==null){
-  //   return {
-  //     view: new EvaluationList(q, w[ind]),
-  //     setupEvents: new EvaluationListEvents(w)
-  //   }
-  // }
+
   return {
     view: new EvaluationList(q),
     setupEvents: new EvaluationListEvents(w)
   }
 };
+
 
